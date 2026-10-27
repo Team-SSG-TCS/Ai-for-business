@@ -1,0 +1,502 @@
+Total pages: 66
+
+Page 1: DYNAMIC EVENT TICKETING MARKETPLACE WITH | PREDICTIVE SCALPING MITIGATION ALGORITHMS | PROJECT REPORT
+--- Full Page 1 ---
+DYNAMIC EVENT TICKETING MARKETPLACE WITH 
+PREDICTIVE SCALPING MITIGATION ALGORITHMS 
+PROJECT REPORT 
+ 
+ 
+Submitted by 
+ 
+DEEPAK A (7376242AD136)  
+        THIRUMURUGAN K (7376242AL210) 
+In partial fulfilment for the award of the degree 
+of 
+BACHELOR OF TECHNOLOGY 
+in 
+ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING 
+ 
+BANNARI AMMAN INSTITUTE OF TECHNOLOGY 
+(An Autonomous Institution Affiliated to Anna University, Chennai) 
+SATHYAMANGALAM-638401 
+ 
+ANNA UNIVERSITY: CHENNAI 600 025 
+ 
+OCTOBER 2026
+---------------------
+
+Page 2: BONAFIDE CERTIFICATE | Certified that this project report “DYNAMIC EVENT TICKETING | MARKETPLACE WITH PREDICTIVE SCALPING MITIGATION
+--- Full Page 2 ---
+BONAFIDE CERTIFICATE 
+ 
+Certified that this project report “DYNAMIC EVENT TICKETING 
+MARKETPLACE WITH PREDICTIVE SCALPING MITIGATION 
+ALGORITHMS” 
+is 
+the 
+bonafide 
+work 
+of 
+“DEEPAK 
+A 
+(7376242AD136),THIRUMURUGAN K (7376242AL210)” who carried out 
+the project work under my supervision. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+SIGNATURE 
+Dr. A. Bharathi 
+HEAD OF THE DEPARTMENT 
+Department of Artificial Intelligence and 
+Machine Learning 
+Bannari Amman Institute of Technology 
+Sathyamangalam-638401 
+SIGNATURE 
+Prof.  Balamurugan . E 
+ASSISTANT PROFESSOR 
+Department of Artificial Intelligence and 
+Machine Learning 
+Bannari Amman Institute of Technology 
+Sathyamangalam-638401 
+ 
+ 
+Submitted for Project Viva Voce examination held on ……………… 
+ 
+ 
+ 
+ 
+ 
+ 
+Internal Examiner I 
+Internal Examiner II
+---------------------
+
+Page 3: DECLARATION | We affirm that the project work titled “Dynamic Event Ticketing Marketplace | With Predictive Scalping Mitigation Algorithms” being submitted in partial
+--- Full Page 3 ---
+DECLARATION 
+ 
+We affirm that the project work titled “Dynamic Event Ticketing Marketplace 
+With Predictive Scalping Mitigation Algorithms” being submitted in partial 
+fulfilment for the award of the degree of Bachelor of Technology in Artificial 
+Intelligence and Machine Learning is the record of original work done by us 
+under the guidance of Prof. Balamurugan E, Assistant Professor level I I , 
+Department of Artificial Intelligence and Machine Learning. It has not formed a 
+part of any other project work(s) submitted for the award of any degree or 
+diploma, either in this or any other University. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+DEEPAK A 
+THIRUMURUGAN K 
+(7376242AD136) 
+(7376242AL210) 
+ 
+ 
+ 
+I certify that the declaration made above by the candidates is true. 
+ 
+ 
+ 
+ 
+ 
+ 
+(Signature of the Guide)  
+Prof. Balamurugan E
+---------------------
+
+Page 4: ACKNOWLEDGEMENT | We express our sincere gratitude to our esteemed Chairman Dr. S. V. | Balasubramaniam and the respected Principal Dr. C. Palanisamy for providing the
+--- Full Page 4 ---
+ACKNOWLEDGEMENT 
+ 
+ 
+We express our sincere gratitude to our esteemed Chairman Dr. S. V. 
+Balasubramaniam and the respected Principal Dr. C. Palanisamy for providing the 
+academic environment, facilities and support required to carry out this project. 
+ 
+We are grateful to Dr. Bharathi A, Head of the Department, Department of 
+Artificial Intelligence and Machine learning, for his valuable suggestions to carry out the 
+project work successfully. 
+ 
+We wish to express our sincere thanks to Faculty guide Prof. Balamurugan E, 
+Assistant Professor level II , Department of Artificial Intelligence and Machine learning 
+, for his constructive ideas, inspirations, encouragement, excellent guidance, and much 
+needed technical support extended to complete our project work. 
+ 
+ 
+We would like to thank our friends, faculty and non-teaching staff who have 
+directly and indirectly contributed to the success of this project. 
+ 
+ 
+DEEPAK A (7376242AD136) 
+THIRUMURUGAN K (7376242AL210)
+---------------------
+
+Page 5: ABSTRACT | Choosing a suitable technology career and identifying the skills required to reach it | posed a challenge for students with uneven exposure to programming languages, tools
+--- Full Page 5 ---
+ABSTRACT 
+ 
+Choosing a suitable technology career and identifying the skills required to reach it 
+posed a challenge for students with uneven exposure to programming languages, tools 
+and applied concepts. Existing career guidance and learning platforms often addressed 
+role selection and content delivery separately. This project developed CareerCompass 
+AI as a prototype connecting technical skill-profile analysis with a structured learning 
+workspace. The career-analysis component accepted technical-skill text, normalized 
+the input, converted it into Term Frequency-Inverse Document Frequency features and 
+applied a multi-class Logistic Regression classifier to rank likely roles. It returned up 
+to three candidate roles, confidence values, matched and missing skill tokens, and a 
+token-based coverage percentage. The curated dataset contained 440 labelled skill 
+profiles across 11 technology roles, with 40 profiles per role. The repository-reported 
+five-fold stratified cross-validation benchmark showed 78.86% mean accuracy with a 
+standard deviation of 1.54%; macro precision, recall and F1-score were 0.8014, 
+0.7886 and 0.7833. The learning component requested a six-to-eight-node prerequisite 
+graph from an external generative service and supported concept explanations, 
+practice tasks, learning resources, prerequisite-based unlocking, completion tracking, 
+recommendations and progress visualizations. The resource workflow searched 
+educational videos, retrieved available transcripts and selected a short segment; 
+submitted practice answers could receive automated scores and feedback. The results 
+demonstrated the feasibility of connecting role hypotheses, vocabulary-based gap 
+summaries and AI-assisted learning functions. They did not establish live 
+labour-market demand or employment outcomes. The skill-role dataset remained 
+curated and static, the coverage measure represented vocabulary overlap rather than 
+proficiency, and a stricter evaluation was needed because vectorization preceded the 
+documented cross-validation folds. The prototype was therefore positioned as 
+educational decision support. Live job-posting aggregation, integrated end-to-end 
+testing and user-centred evaluation remained future work. 
+Keywords: Career recommendation; skill gap analysis; text classification; knowledge graph; 
+personalized learning path.
+---------------------
+
+Page 6: TABLE OF CONTENTS | CHAPTER NO. | TITLE
+--- Full Page 6 ---
+TABLE OF CONTENTS 
+ 
+CHAPTER NO. 
+TITLE 
+PAGE NO. 
+ACKNOWLEDGEMENT 
+v 
+ABSTRACT 
+vi 
+TABLE OF CONTENTS 
+vii 
+LIST OF FIGURES 
+x 
+LIST OF TABLES 
+xi 
+ABBREVIATIONS AND NOMENCLATURE 
+xii 
+1 
+INTRODUCTION 
+1 
+1.1 
+Background of the Work 
+1 
+1.2 
+Problem Statement 
+2 
+1.3 
+Motivation 
+3 
+1.4 
+Objectives of the Proposed Work 
+3 
+1.5 
+Scope of the Proposed Work 
+4 
+1.6 
+Contributions of the Work 
+5 
+SUMMARY 
+5 
+2 
+LITERATURE SURVEY 
+6 
+2.1 
+Skill Gaps and Changing Career Requirements 
+6 
+2.2 
+AI-Based Career Recommendation 
+7 
+2.3 
+Text Representation and Classification 
+7 
+2.4 
+Knowledge Graphs and Learning Path Recommendation 
+8 
+2.5 
+Generative AI and Learning Resource Support 
+9 
+2.6 
+Summary of Relevant Literature 
+10 
+Identified Research Gap and Problem Definition 
+10
+---------------------
+
+Page 7: TABLE OF CONTENTS | CHAPTER NO. | 3
+--- Full Page 7 ---
+TABLE OF CONTENTS 
+ 
+CHAPTER NO. 
+3 
+TITLE 
+OBJECTIVES AND METHODOLOGY 
+PAGE NO. 
+11 
+3.1 
+Objectives 
+11 
+3.2 
+Requirements Analysis 
+11 
+3.3 
+System Architecture and Workflow 
+12 
+3.4 
+Career Prediction Methodology 
+14 
+3.5 
+Learning Graph Methodology 
+16 
+3.6 
+Tools, Technologies and Deployment 
+17 
+3.7 
+Evaluation Methodology 
+18 
+3.8 
+Detailed Career Prediction Workflow 
+19 
+3.9 
+Dataset Structure and Class Coverage 
+20 
+3.10 
+Text Feature Construction 
+21 
+3.11 
+Model Selection and Evaluation Protocol 
+21 
+3.12 
+Skill-Gap Calculation Procedure 
+22 
+3.13 
+Learning-Graph Generation and Validation 
+23 
+3.14 
+Learning Resources, Video Snippets and Practice 
+24 
+3.15 
+API Boundaries, Persistence and Security 
+24 
+3.16 
+Reproducibility and Evidence Limitations 
+25 
+3.17 
+Test Design and Error Handling 
+25 
+4 
+PROPOSED WORK MODULES 
+27 
+4.1 
+Career Profile and Role Prediction Module 
+27 
+4.2 
+Skill Gap and Coverage Analysis Module 
+28 
+4.3 
+Personalized Knowledge Graph Module 
+29
+---------------------
+
+Page 8: TABLE OF CONTENTS (CONTINUED) | CHAPTER NO. | TITLE
+Page 9: LIST OF FIGURES | SI. NO. | FIGURE NAME
+Page 10: LIST OF TABLES | NO. | TITLE
+Page 11: ABBREVIATIONS AND NOMENCLATURE | ABBREVIATION | EXPANSION
+Page 12: CHAPTER - I | INTRODUCTION | 1.1​BACKGROUND OF THE WORK
+Page 13: The project uses a supervised text-classification model for the role-prediction task and | a generative- AI service for the creation of learning content. These methods serve | different purposes. The classifier is trained on labeled skill-profile examples and
+Page 14: to skill-demand aggregation. In the current implementation, role requirements are | represented by a curated, static skill-profile dataset and a vocabulary derived from | those records; automated collection and aggregation of live job-posting demand have
+Page 15: 3.​ Return the highest-ranked role and up to two alternative roles, along with model | confidence and an uncertainty indication when the top probability is below the | configured threshold.
+Page 16: tooling. Configuration and deployment files are present, but availability of external | APIs depends on credentials, network access, quota and service behaviour. | The following items are outside the validated current scope: a continuously refreshed
+Page 17: CHAPTER - II | LITERATURE SURVEY | This chapter reviews literature and technical documentation relevant to the main
+Page 18: 2.2​AI-BASED CAREER RECOMMENDATION | AI-based job recommendation systems attempt to rank roles or vacancies based on | representations of job seekers, their skills, experience and preferences. A 2023 survey
+Page 19: TfidfVectorizer implements this family of transformation and can produce sparse | feature matrices suitable for machine-learning algorithms [5]. | Logistic Regression is a discriminative classifier that can produce class probabilities
+Page 20: CareerCompass AI adopts the graph representation as a practical interface and | progress model. For a topic supplied by the learner, the generative service is prompted | to return six to eight concepts, prerequisite edges, short explanations, practice tasks
+Page 21: 2.6​SUMMARY OF RELEVANT LITERATURE | Table 2.1. Summary of relevant literature. | Source
+Page 22: CHAPTER - III | OBJECTIVES AND METHODOLOGY | 3.1​OBJECTIVES
+Page 23: 3.2.2​Non-functional requirements | Table 3.2. Non-functional requirements. | Requirement
+Page 24: Figure 3.1. Conceptual modular architecture of CareerCompass AI. | The architecture represents the intended career-to-learning journey rather than a | verified singleprocess deployment. The code contains the core services and interface
+Page 25: Figure 3.2. End-to-end workflow from skill profile to learning progress. Live demand aggregation is a proposed | extension. | 3.4​CAREER PREDICTION METHODOLOGY
+Page 26: 3.4.2​Text preprocessing and vectorization | The preprocessing function converts input to lowercase, replaces non-alphanumeric | characters with spaces and normalizes repeated whitespace. The saved TF-IDF
+Page 27: Figure 3.3. Model inference pipeline and role-skill coverage calculation. | 3.4.4​Skill-gap calculation | The career predictor builds a skill knowledge base by collecting all unique
+Page 28: description, beginner explanation, initial status, level, practice problems, related topics | and resource metadata. The prompt requires each nonroot node to have at least one | prerequisite edge, with the first one or two nodes initially recommended and later
+Page 29: Layer / purpose | Technology in implementation | Role in the project
+Page 30: generalization claims.
+Page 31: 3.8​Detailed Career Prediction Workflow | The career-analysis implementation followed a staged inference sequence. The request | began with a non-empty text field containing a learner’s technical skills. The backend
+Page 32: punctuation, and expected a validation error. In the backend implementation, the | cleaning function returned an empty string for values that were not strings; for valid | strings it converted characters to lowercase, replaced characters outside letters, digits
+Page 33: Role label | Records | Mobile Developer
+Page 34: The comparison used mean accuracy, accuracy standard deviation, macro precision, | macro
+Page 35: recall and macro F1-score. Logistic Regression was the selected classifier according to | the documented mean accuracy and macro metrics. The current report retained those | values in the Results and Discussion chapter and did not treat them as a measure of
+Page 36: 3.13​Learning-Graph Generation and Validation | The supplied learning-path code requested a structured JSON graph for a | learner-selected
+Page 37: 3.14​Learning Resources, Video Snippets and Practice | The resource service used video search and transcript tooling to locate candidate | educational videos and retrieve transcripts where available. A generative service then
+Page 38: 3.16​Reproducibility and Evidence Limitations | The supplied career backend test runner was executed during validation of the | supplied source files. It returned successful responses for the health endpoint,
+Page 39: learning-path code supported generation of
+Page 40: prerequisite graphs, concept resources, practice feedback and progress tracking. The | available career API tests passed in the preparation environment, subject to | scikit-learn version warnings. These checks did not validate a complete shared-user
+Page 41: CHAPTER - IV | PROPOSED WORK MODULES | This chapter describes the main functional modules and the data flow between them.
+Page 42: Figure 4.1. Career skill-input interface with selected technical skills and the analysis action. | Figure 4.2. Predicted career roles with model confidence, skill coverage, matched skills and missing skills. | 4.2​SKILL GAP AND COVERAGE ANALYSIS MODULE
+Page 43: highest vocabulary coverage, and different candidate roles can require different next | learning steps. | The coverage implementation uses a set intersection and set difference, which are
+Page 44: The front end uses React Flow to render an interactive canvas with pan, zoom and | drag behaviours. Concept statuses are visually distinguished so the learner can | understand what is completed, available, weak or locked. Selecting a node opens its
+Page 45: The dashboard and recommendation pages summarize progress for the active topic. | Their functions include overall completion percentage, number of completed concepts, | learning streak, knowledge gaps and a radar chart of concept levels. The
+Page 46: Figure 4.6. Skill Assessment view for the selected “video editing” topic, showing completion status, average | level and recommended next topics. | 4.5​RESOURCE, VIDEO SNIPPET AND PRACTICE MODULES
+Page 47: Figure 4.7. Resource explorer displaying learning resources and an educational-video snippet. | Figure 4.8. Practice interaction showing answer feedback and the correctness explanation. | 4.6​USER MANAGEMENT AND DATA PERSISTENCE
+Page 48: environment-specific secrets and correct alignment between the front-end client ID | and the back-end audience check. | The learning database represents goals, concepts, prerequisite edges, resources and
+Page 49: /api/grade-answer | POST | Grade practice response
+Page 50: CHAPTER - V | RESULTS AND DISCUSSION | The results in this chapter distinguish three forms of evidence: quantitative benchmark
+Page 51: macro F1-score among the evaluated candidates. Random Forest achieved 75.91% | mean accuracy, Gradient Boosting 70.23%, XGBoost 65.00% and LightGBM 25.00%. | The result supports selecting Logistic Regression as the current baseline for this
+Page 52: 5.1.3​Interpretation of uncertainty and skill coverage | The API sets an uncertainty flag when the top role probability falls below 0.40. In this | case the system still reports the three candidate roles and their gap summaries, which
+Page 53: Uncertainty handling | Vague skill input returns a response | with uncertainty state and top- three
+Page 54: Progress and streak | Record completion and activity date; | update dashboard figures.
+Page 55: CV preprocessing leakage risk | Notebook fits TF-IDF on the full | dataset before splitting indices into
+Page 56: Generative AI | Graph generation, grading and snippet selection depend on | API availability and usage quotas; budget must be
+Page 57: CHAPTER - VI | CONCLUSIONS AND SUGGESTIONS FOR FUTURE WORK | 6.1​Conclusion
+Page 58: The raw token-coverage calculation should be replaced by a reviewed skill taxonomy | covering synonyms, multiword competencies, proficiency levels and evidence of | practical ability, with role requirements validated against dated employer sources. The
+Page 59: REFERENCES | [1]​ | World Economic Forum, “The Future of Jobs Report 2025,” Geneva,
+Page 60: in Proc. 2024 IEEE International Conference on Big Data (BigData), Washington, DC, | USA, Dec. 2024, pp. 8145-8153, doi: 10.1109/BigData62323.2024.10825001. | [9]​
+Page 61: APPENDIX I | SELECTED CODE EXCERPTS | The excerpts below reproduce small portions of the supplied source code to document
+Page 62: APPENDIX II | SUPPLEMENTARY TEST MATRIX | The following test cases are present in the supplied career backend tests.
+--- Full Page 62 ---
+APPENDIX II 
+SUPPLEMENTARY TEST MATRIX 
+The following test cases are present in the supplied career backend tests. 
+ 
+Test area 
+Test expectation in supplied tests 
+Evidence / outcome 
+Health endpoint 
+HTTP 200; healthy status; 
+model_loaded true; version 1.0.0 
+Pass in supplied test runner 
+Role listing 
+Eleven role records with role, skill 
+count and prerequisite-skill fields 
+Pass in supplied test runner 
+Valid prediction 
+Known Python/deep-learning skills 
+map to AI Engineer; three candidates 
+returned 
+Pass in supplied test runner 
+Empty input 
+Whitespace-only value returns HTTP 
+422 
+Pass in supplied test runner 
+Invalid input 
+Digits/punctuation-only value returns 
+HTTP 422 
+Covered by pytest source 
+Low-confidence input 
+Uncertain flag and top-three 
+candidates returned 
+Covered by pytest source 
+Known role regression 
+Eleven representative skill strings 
+mapped to expected role labels 
+Covered by separate pytest 
+parametrized tests 
+Learning graph generation 
+External Gemini request and graph 
+fields defined in repository code 
+No controlled test results supplied in 
+current report 
+Practice grading 
+AI-supported score and feedback 
+endpoint described in source 
+No human-rated quality benchmark 
+supplied 
+Cross-module journey 
+Shared career-to-learning end-to-end 
+workflow 
+Not validated by available test 
+evidence 
+ 
+Verification note: the supplied command-line API test runner completed successfully 
+in the preparation environment. It also emitted scikit-learn inconsistent-version 
+warnings because saved artefacts were created under version 1.4.2 while the active 
+environment used version 1.8.0. The warning must remain documented until the 
+environment is pinned or the model artefacts are rebuilt.
+---------------------
+
+Page 63: APPENDIX III | CERTIFICATE
+--- Full Page 63 ---
+APPENDIX III 
+CERTIFICATE
+---------------------
+
+Page 64: APPENDIX IV | INDIVIDUAL WORK CONTRIBUTION | PROJECT: DYNAMIC EVENT TICKETING MARKETPLACE WITH PREDICTIVE
+--- Full Page 64 ---
+APPENDIX IV 
+INDIVIDUAL WORK CONTRIBUTION 
+PROJECT: DYNAMIC EVENT TICKETING MARKETPLACE WITH PREDICTIVE 
+SCALPING MITIGATION ALGORITHMS  
+DEEPAK A (7376242AD136) 
+•​ Deepak built the TicketFlow back end in Java 17 and Spring Boot 3.5.6. He 
+developed the REST APIs for login (JWT access and refresh tokens), event 
+management, seat setup, reservations and booking confirmation. He also built the 
+real-time updates using Server-Sent Events (SSE). These send live queue position, 
+wait time and seat status to users . 
+•​ He implemented the anti-bot and fair-access features. The virtual queue uses Redis 
+lists with normal and VIP lanes. The QueueDecisionService switches between 
+direct access and a waiting queue based on system load. Admitted users get a 
+temporary X-Queue-Token that is invalidated after booking. He also added the 
+bot-detection checks and the ticket limits that block bulk and automated booking 
+attempt . 
+•​ He made booking safe under heavy traffic. Redis distributed seat locks, sorted to 
+avoid deadlocks, and Hibernate @Version optimistic locking prevent double 
+booking. An Idempotency-Key header stops duplicate charges. Quartz jobs open 
+and close sales on schedule. RabbitMQ sends confirmation emails with a 
+dead-letter queue and retries, and Actuator with Prometheus monitors the system .
+---------------------
+
+Page 65: APPENDIX IV | INDIVIDUAL WORK CONTRIBUTION | PROJECT: DYNAMIC EVENT TICKETING MARKETPLACE WITH PREDICTIVE
+--- Full Page 65 ---
+APPENDIX IV 
+INDIVIDUAL WORK CONTRIBUTION 
+PROJECT: DYNAMIC EVENT TICKETING MARKETPLACE WITH PREDICTIVE 
+SCALPING MITIGATION ALGORITHMS  
+THIRUMURUGAN K (7376242AL210) 
+•​ Built the front end in React.js. He created the components for registration and 
+login, event listing, the seat map, the queue waiting room, checkout and booking 
+confirmation. The screens show live availability, queue position and booking 
+status from the back-end APIs. The interface is simple and responsive.  
+•​ He implemented role-based access control. Buyers and administrators see 
+different screens after login. Admin pages such as event creation and seat setup 
+are shown only to ADMIN users. He also kept the JWT tokens on the client, sent 
+them with each API request and protected routes that need login . 
+•​ Designed the SQL schema for the MySQL database. It covers users with roles, 
+events, seats, reservations and bookings, with the fields the booking flow needs, 
+such as seat status, reservation expiry and the version column for optimistic 
+locking. He also tested the checkout journey from the front end to the back end, 
+including failure cases such as an expired reservation or a failed payment s.
+---------------------
+
+Page 66: APPENDIX V | PLAGIARISM REPORT
+--- Full Page 66 ---
+APPENDIX V 
+PLAGIARISM REPORT
+---------------------
+
