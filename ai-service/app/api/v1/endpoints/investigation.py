@@ -323,3 +323,24 @@ async def run_custom_investigation(request: InvestigationRequest):
     case_id = request.case_id or f"CUSTOM-{int(time.time())}"
     return await run_investigation(case_id=case_id, request=request)
 
+
+
+@router.post("/scan-dataset", summary="Autonomously scan entire enterprise dataset, discover anomalies, and plan fixes")
+def scan_dataset_for_anomalies():
+    from app.services.dataset_analyzer import dataset_analysis_engine
+    return dataset_analysis_engine.scan_entire_dataset()
+
+@router.post("/remediate", summary="Execute compliance remediation fix on an anomalous entity")
+def apply_remediation_fix(payload: Dict[str, str] = Body(...)):
+    from app.services.dataset_analyzer import dataset_analysis_engine
+    action_id = payload.get("action_id", "ACT-001")
+    action_type = payload.get("action_type", "FREEZE_ACCOUNT")
+    target_entity = payload.get("target_entity", "")
+    if not target_entity:
+        raise HTTPException(status_code=400, detail="target_entity is required")
+    return dataset_analysis_engine.execute_remediation_fix(action_id, action_type, target_entity)
+
+@router.get("/remediation-audit", summary="Get audit trail of all applied compliance remediation fixes")
+def get_remediation_audit():
+    from app.services.dataset_analyzer import dataset_analysis_engine
+    return dataset_analysis_engine.remediation_audit_log
