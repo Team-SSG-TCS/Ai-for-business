@@ -83,7 +83,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
               </div>
               <div>
                 <span className="font-extrabold tracking-tight text-base text-[#0F172A] block leading-tight">
-                  NEXUS
+                  NEXORA
                 </span>
                 <span className="text-[10px] text-[#059669] font-bold block uppercase tracking-wider">
                   Financial Crime AI
