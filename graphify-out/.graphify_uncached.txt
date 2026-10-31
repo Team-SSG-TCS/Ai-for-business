@@ -1,0 +1,15 @@
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\README.md
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\ai-service\README.md
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\ai-service\data\network_visualizer.html
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\ai-service\data\pyvis_alert-001.html
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\ai-service\data\pyvis_full_enterprise.html
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\ai-service\requirements.txt
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\backend\README.md
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\client\README.md
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\client\design.md
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\client\index.html
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\client\public\favicon.svg
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\client\public\icons.svg
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\client\src\assets\hero.png
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\client\src\assets\react.svg
+D:\AI DEVELOPEMENT\Hackathon\Ai-for-business\client\src\assets\vite.svg

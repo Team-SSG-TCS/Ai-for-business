@@ -1,0 +1,118 @@
+{
+  "nodes": [
+    {
+      "id": "readme_ai_for_business_architecture",
+      "label": "AI For Business Architecture",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": "L7-L38",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ai_service_readme_multiprovider_failover",
+      "label": "Multi-Provider LLM Failover",
+      "file_type": "concept",
+      "source_file": "ai-service/README.md",
+      "source_location": "L13-L34",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ai_service_readme_guardrails",
+      "label": "Enterprise AI Guardrails",
+      "file_type": "concept",
+      "source_file": "ai-service/README.md",
+      "source_location": "L7-L18",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "backend_readme_no_orm_architecture",
+      "label": "Direct SQL Pooler Architecture",
+      "file_type": "rationale",
+      "source_file": "backend/README.md",
+      "source_location": "L5-L10",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "client_design_enterprise_b2b_theme",
+      "label": "Competera B2B SaaS Design System",
+      "file_type": "concept",
+      "source_file": "client/design.md",
+      "source_location": "L24-L55",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "readme_ai_for_business_architecture",
+      "target": "ai_service_readme_multiprovider_failover",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_ai_for_business_architecture",
+      "target": "backend_readme_no_orm_architecture",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "readme_ai_for_business_architecture",
+      "target": "client_design_enterprise_b2b_theme",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "ai_service_readme_guardrails",
+      "target": "ai_service_readme_multiprovider_failover",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "ai-service/README.md",
+      "source_location": "L13",
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "microservice_triad",
+      "label": "Fullstack Microservice Architecture",
+      "nodes": [
+        "readme_ai_for_business_architecture",
+        "backend_readme_no_orm_architecture",
+        "ai_service_readme_multiprovider_failover"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "README.md"
+    }
+  ],
+  "input_tokens": 1200,
+  "output_tokens": 350
+}

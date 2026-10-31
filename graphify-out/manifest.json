@@ -1,0 +1,752 @@
+{
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\api\\v1\\api.py": {
+    "mtime": 1793426320.1312563,
+    "seen": 1793428370.2819724,
+    "ast_hash": "f737f80074cc05ac4ca15e52d400c9b3",
+    "semantic_hash": "f737f80074cc05ac4ca15e52d400c9b3"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\api\\v1\\endpoints\\analyze.py": {
+    "mtime": 1793426320.1322565,
+    "seen": 1793428370.2819886,
+    "ast_hash": "7bd5fe439f32515e2e89a99daa83f131",
+    "semantic_hash": "7bd5fe439f32515e2e89a99daa83f131"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\api\\v1\\endpoints\\chat.py": {
+    "mtime": 1793426320.1322565,
+    "seen": 1793428370.2819943,
+    "ast_hash": "0946ad5dd496337b2a6e0433d448c32b",
+    "semantic_hash": "0946ad5dd496337b2a6e0433d448c32b"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\api\\v1\\endpoints\\graph.py": {
+    "mtime": 1793426320.1322565,
+    "seen": 1793428370.2819967,
+    "ast_hash": "75ecec580409202836a2a6dbd9338d8c",
+    "semantic_hash": "75ecec580409202836a2a6dbd9338d8c"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\api\\v1\\endpoints\\guardrails.py": {
+    "mtime": 1793426320.1322565,
+    "seen": 1793428370.281999,
+    "ast_hash": "14be4439120c30e63313e9dc401b68d0",
+    "semantic_hash": "14be4439120c30e63313e9dc401b68d0"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\api\\v1\\endpoints\\investigation.py": {
+    "mtime": 1793426320.1322565,
+    "seen": 1793428370.2820013,
+    "ast_hash": "86c9c9a05526fc11fdc5b5b1edf19b9a",
+    "semantic_hash": "86c9c9a05526fc11fdc5b5b1edf19b9a"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\api\\v1\\endpoints\\models.py": {
+    "mtime": 1793426320.1322565,
+    "seen": 1793428370.2820034,
+    "ast_hash": "702d82b29ad3802b8577f847fbe77872",
+    "semantic_hash": "702d82b29ad3802b8577f847fbe77872"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\core\\config.py": {
+    "mtime": 1793426320.1332793,
+    "seen": 1793428370.2820053,
+    "ast_hash": "a926907778b454103898f59c31a380ab",
+    "semantic_hash": "a926907778b454103898f59c31a380ab"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\schemas\\ai.py": {
+    "mtime": 1793426320.1332793,
+    "seen": 1793428370.2820067,
+    "ast_hash": "8cb68beba09faeca3e2c66c1f8c443b0",
+    "semantic_hash": "8cb68beba09faeca3e2c66c1f8c443b0"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\schemas\\financial_graph.py": {
+    "mtime": 1793426320.1332793,
+    "seen": 1793428370.2820086,
+    "ast_hash": "d417f2c3b77d98a559a9b375d450c940",
+    "semantic_hash": "d417f2c3b77d98a559a9b375d450c940"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\schemas\\investigation.py": {
+    "mtime": 1793426320.1332793,
+    "seen": 1793428370.28201,
+    "ast_hash": "80a4e59bbac8de1af39025ffb5193ae1",
+    "semantic_hash": "80a4e59bbac8de1af39025ffb5193ae1"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\services\\ai_engine.py": {
+    "mtime": 1793426320.1342564,
+    "seen": 1793428370.2820127,
+    "ast_hash": "35bf83af749170f6ec7437d535003e9f",
+    "semantic_hash": "35bf83af749170f6ec7437d535003e9f"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\services\\anomaly_detector.py": {
+    "mtime": 1793426320.1342564,
+    "seen": 1793428370.2820141,
+    "ast_hash": "14bb3c629ffbaa2f5b7a3899d55598de",
+    "semantic_hash": "14bb3c629ffbaa2f5b7a3899d55598de"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\services\\dataset_analyzer.py": {
+    "mtime": 1793426320.1342564,
+    "seen": 1793428370.282016,
+    "ast_hash": "06816f825aed95acf308f915f17f7223",
+    "semantic_hash": "06816f825aed95acf308f915f17f7223"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\services\\dataset_generator.py": {
+    "mtime": 1793426320.1342564,
+    "seen": 1793428370.282018,
+    "ast_hash": "7855276bb1f4cc53b96d7bc0bd890f55",
+    "semantic_hash": "7855276bb1f4cc53b96d7bc0bd890f55"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\services\\enterprise_dataset.py": {
+    "mtime": 1793426320.1342564,
+    "seen": 1793428370.2820199,
+    "ast_hash": "28c0b70ce746a3bb95e6104dbbad7a4c",
+    "semantic_hash": "28c0b70ce746a3bb95e6104dbbad7a4c"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\services\\entity_resolver.py": {
+    "mtime": 1793426320.1352553,
+    "seen": 1793428370.2820213,
+    "ast_hash": "b629fceba650b386870b871c840284b2",
+    "semantic_hash": "b629fceba650b386870b871c840284b2"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\services\\graph_engine.py": {
+    "mtime": 1793426320.1352553,
+    "seen": 1793428370.2820232,
+    "ast_hash": "5406de27cf1336c990f80a3d569bc492",
+    "semantic_hash": "5406de27cf1336c990f80a3d569bc492"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\services\\graph_visualizer.py": {
+    "mtime": 1793426320.1352553,
+    "seen": 1793428370.2820249,
+    "ast_hash": "9104c71ae3a8cd8632b6e4543d8b3a7d",
+    "semantic_hash": "9104c71ae3a8cd8632b6e4543d8b3a7d"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\services\\guardrails.py": {
+    "mtime": 1793426320.1352553,
+    "seen": 1793428370.2820265,
+    "ast_hash": "b0e8f2c5785a3771c344a05fc57cf9f2",
+    "semantic_hash": "b0e8f2c5785a3771c344a05fc57cf9f2"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\services\\llm_assistant.py": {
+    "mtime": 1793426320.1362815,
+    "seen": 1793428370.2820277,
+    "ast_hash": "7dde899ce00982e9d0afc2b49b995ca1",
+    "semantic_hash": "7dde899ce00982e9d0afc2b49b995ca1"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\app\\services\\multi_agent_investigator.py": {
+    "mtime": 1793426320.1362815,
+    "seen": 1793428370.2820299,
+    "ast_hash": "72f8ac4d851e8b2b2d573c0a244285e0",
+    "semantic_hash": "72f8ac4d851e8b2b2d573c0a244285e0"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\data\\CASE_001_MULE_RING\\CASE_001_MULE_RING_full.json": {
+    "mtime": 1793426320.1362815,
+    "seen": 1793428370.2820332,
+    "ast_hash": "7c620445e59dc7fbc67422bb37088e8f",
+    "semantic_hash": "7c620445e59dc7fbc67422bb37088e8f"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\data\\CASE_002_CAMPUS_WIFI\\CASE_002_CAMPUS_WIFI_full.json": {
+    "mtime": 1793426320.137272,
+    "seen": 1793428370.2820349,
+    "ast_hash": "66568c7666880fe6def2e91b69b99ff3",
+    "semantic_hash": "66568c7666880fe6def2e91b69b99ff3"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\data\\CASE_003_RAPID_LAYERING\\CASE_003_RAPID_LAYERING_full.json": {
+    "mtime": 1793426320.1382718,
+    "seen": 1793428370.2820365,
+    "ast_hash": "50c80283f65223d25761092fe99662be",
+    "semantic_hash": "50c80283f65223d25761092fe99662be"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\data\\CASE_004_CORPORATE_PAYROLL\\CASE_004_CORPORATE_PAYROLL_full.json": {
+    "mtime": 1793426320.1392713,
+    "seen": 1793428370.2820382,
+    "ast_hash": "c4397f46d2e158501c7c0c82c188969d",
+    "semantic_hash": "c4397f46d2e158501c7c0c82c188969d"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\data\\SYNTHETIC_LARGE_ENTERPRISE\\enterprise_network_full.json": {
+    "mtime": 1793426320.1412725,
+    "seen": 1793428370.2820399,
+    "ast_hash": "90d8013c04f0a841581b410d4b71ed48",
+    "semantic_hash": "90d8013c04f0a841581b410d4b71ed48"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\main.py": {
+    "mtime": 1793426583.8339076,
+    "seen": 1793428370.2820413,
+    "ast_hash": "583374648d2a02a2ada9986a5fbcd63a",
+    "semantic_hash": "583374648d2a02a2ada9986a5fbcd63a"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\scripts\\generate_and_export_data.py": {
+    "mtime": 1793426320.1442611,
+    "seen": 1793428370.2820432,
+    "ast_hash": "83eeecc47b703c3cf24c166895a1eabc",
+    "semantic_hash": "83eeecc47b703c3cf24c166895a1eabc"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\scripts\\generate_large_synthetic_network.py": {
+    "mtime": 1793426320.1442611,
+    "seen": 1793428370.282045,
+    "ast_hash": "8432725a596170c5a0c0defc710a8c10",
+    "semantic_hash": "8432725a596170c5a0c0defc710a8c10"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\scripts\\visualize_with_pyvis.py": {
+    "mtime": 1793426320.1442611,
+    "seen": 1793428370.2820466,
+    "ast_hash": "35138db34565f80a584db6e11376ded4",
+    "semantic_hash": "35138db34565f80a584db6e11376ded4"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\test_investigation.py": {
+    "mtime": 1793426320.1442611,
+    "seen": 1793428370.282048,
+    "ast_hash": "30c6dc6c5e27c563d9daeeb4a0d14216",
+    "semantic_hash": "30c6dc6c5e27c563d9daeeb4a0d14216"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\backend\\package.json": {
+    "mtime": 1793426320.145298,
+    "seen": 1793428370.28205,
+    "ast_hash": "2d6c1f13fc1525c97baa3e1fe1fc2ab6",
+    "semantic_hash": "2d6c1f13fc1525c97baa3e1fe1fc2ab6"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\backend\\src\\config\\db.js": {
+    "mtime": 1793426320.145298,
+    "seen": 1793428370.2820516,
+    "ast_hash": "0cc6b73d75705e4de4ef6a058ade3614",
+    "semantic_hash": "0cc6b73d75705e4de4ef6a058ade3614"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\backend\\src\\controllers\\items.controller.js": {
+    "mtime": 1793426320.145298,
+    "seen": 1793428370.2820535,
+    "ast_hash": "417cc4156d8be08c886bb122d177c1f2",
+    "semantic_hash": "417cc4156d8be08c886bb122d177c1f2"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\backend\\src\\index.js": {
+    "mtime": 1793426320.1462545,
+    "seen": 1793428370.2820551,
+    "ast_hash": "fb821d659c383d3c83cdd6e6c6ab02c8",
+    "semantic_hash": "fb821d659c383d3c83cdd6e6c6ab02c8"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\backend\\src\\middleware\\errorHandler.js": {
+    "mtime": 1793426320.1462545,
+    "seen": 1793428370.282057,
+    "ast_hash": "75546ec4862e913ef2f1840a82b79c62",
+    "semantic_hash": "75546ec4862e913ef2f1840a82b79c62"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\backend\\src\\routes\\health.routes.js": {
+    "mtime": 1793426320.1462545,
+    "seen": 1793428370.2820587,
+    "ast_hash": "00d375ca97e4428fd859c80470b6a3ed",
+    "semantic_hash": "00d375ca97e4428fd859c80470b6a3ed"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\backend\\src\\routes\\items.routes.js": {
+    "mtime": 1793426320.1462545,
+    "seen": 1793428370.2820604,
+    "ast_hash": "5a5d90be550aeff5b661827393896c33",
+    "semantic_hash": "5a5d90be550aeff5b661827393896c33"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\.oxlintrc.json": {
+    "mtime": 1793426320.1462545,
+    "seen": 1793428370.282062,
+    "ast_hash": "1f0703525c59e961c2b7f20e78aa1cd4",
+    "semantic_hash": "1f0703525c59e961c2b7f20e78aa1cd4"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\package.json": {
+    "mtime": 1793426583.8379116,
+    "seen": 1793428370.2820637,
+    "ast_hash": "89d2aef47e842ebbaadedfe605efb073",
+    "semantic_hash": "89d2aef47e842ebbaadedfe605efb073"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\App.tsx": {
+    "mtime": 1793426583.8389108,
+    "seen": 1793428370.2820652,
+    "ast_hash": "01a2a58e5042f401d8ec9abff1ed521b",
+    "semantic_hash": "01a2a58e5042f401d8ec9abff1ed521b"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\dashboard\\AiTester.tsx": {
+    "mtime": 1793426320.1492555,
+    "seen": 1793428370.2820666,
+    "ast_hash": "3f1f4d3be46008020239bc67c107d7bc",
+    "semantic_hash": "3f1f4d3be46008020239bc67c107d7bc"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\dashboard\\DbTester.tsx": {
+    "mtime": 1793426320.1492555,
+    "seen": 1793428370.2820697,
+    "ast_hash": "92416d25a6170b15e3ced4f43c502947",
+    "semantic_hash": "92416d25a6170b15e3ced4f43c502947"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\dashboard\\ServiceStatus.tsx": {
+    "mtime": 1793426320.1492555,
+    "seen": 1793428370.2820716,
+    "ast_hash": "d40d9b36f6ddd125d634d09409264184",
+    "semantic_hash": "d40d9b36f6ddd125d634d09409264184"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\dashboard\\TeamGuide.tsx": {
+    "mtime": 1793426320.1492555,
+    "seen": 1793428370.282073,
+    "ast_hash": "af1ef53bc718acb168b8b3b3dd7612b8",
+    "semantic_hash": "af1ef53bc718acb168b8b3b3dd7612b8"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\layout\\AnnouncementBar.tsx": {
+    "mtime": 1793426320.1492555,
+    "seen": 1793428370.282075,
+    "ast_hash": "f662b7819d0c42451535eaa002e09574",
+    "semantic_hash": "f662b7819d0c42451535eaa002e09574"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\layout\\AppLayout.tsx": {
+    "mtime": 1793426583.8399363,
+    "seen": 1793428370.2820764,
+    "ast_hash": "5a9a2c0fd01d64fbafb4c26bfc605db7",
+    "semantic_hash": "5a9a2c0fd01d64fbafb4c26bfc605db7"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\layout\\Footer.tsx": {
+    "mtime": 1793426320.1492555,
+    "seen": 1793428370.282078,
+    "ast_hash": "36393298839e28dbe13c930b2a3957a1",
+    "semantic_hash": "36393298839e28dbe13c930b2a3957a1"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\layout\\Header.tsx": {
+    "mtime": 1793426583.8409085,
+    "seen": 1793428370.2820795,
+    "ast_hash": "169bbb319d802510f7da69570f2bf7e5",
+    "semantic_hash": "169bbb319d802510f7da69570f2bf7e5"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\layout\\Navbar.tsx": {
+    "mtime": 1793426320.1502755,
+    "seen": 1793428370.2820814,
+    "ast_hash": "0b65789b8e558e5727b84ada339c1690",
+    "semantic_hash": "0b65789b8e558e5727b84ada339c1690"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\moneytrail\\MoneyTrailFlow.tsx": {
+    "mtime": 1793426583.8419178,
+    "seen": 1793428370.2820828,
+    "ast_hash": "b75008fd9f817209738fd2f162cf5aff",
+    "semantic_hash": "b75008fd9f817209738fd2f162cf5aff"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\network\\NetworkGraph.tsx": {
+    "mtime": 1793426583.8439095,
+    "seen": 1793428370.2820847,
+    "ast_hash": "4ffb63e4f4ea27e7ac45f86458f3d917",
+    "semantic_hash": "4ffb63e4f4ea27e7ac45f86458f3d917"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\AwardsStrip.tsx": {
+    "mtime": 1793426320.1502755,
+    "seen": 1793428370.282086,
+    "ast_hash": "a68a7731318fc50fb6df30b99ef284c1",
+    "semantic_hash": "a68a7731318fc50fb6df30b99ef284c1"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\BadgeRow.tsx": {
+    "mtime": 1793426320.1502755,
+    "seen": 1793428370.2820895,
+    "ast_hash": "4b8cb392ca90a71ed1cae755d8bd84fd",
+    "semantic_hash": "4b8cb392ca90a71ed1cae755d8bd84fd"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\CaseStudies.tsx": {
+    "mtime": 1793426320.1502755,
+    "seen": 1793428370.2820904,
+    "ast_hash": "60f6a79c4228f20fc6cc4cbbe6d4991e",
+    "semantic_hash": "60f6a79c4228f20fc6cc4cbbe6d4991e"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\ClosingCTA.tsx": {
+    "mtime": 1793426583.8449101,
+    "seen": 1793428370.2820914,
+    "ast_hash": "1f8ff2ef87bd12f2112f84f128277eec",
+    "semantic_hash": "1f8ff2ef87bd12f2112f84f128277eec"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\FeatureGrid.tsx": {
+    "mtime": 1793426320.151275,
+    "seen": 1793428370.282092,
+    "ast_hash": "ab38ff38ec3dc5af4fc2abf4058a2932",
+    "semantic_hash": "ab38ff38ec3dc5af4fc2abf4058a2932"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\FeatureTabs.tsx": {
+    "mtime": 1793426320.151275,
+    "seen": 1793428370.2820928,
+    "ast_hash": "86c29ff060602ea2fb9edf578d48a8ca",
+    "semantic_hash": "86c29ff060602ea2fb9edf578d48a8ca"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\Hero.tsx": {
+    "mtime": 1793426583.8459113,
+    "seen": 1793428370.2820935,
+    "ast_hash": "33c82560a6e9c668480432a69f665d3e",
+    "semantic_hash": "33c82560a6e9c668480432a69f665d3e"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\IndustryGrid.tsx": {
+    "mtime": 1793426320.151275,
+    "seen": 1793428370.2820942,
+    "ast_hash": "53c779b0a768edbb5d0726d61f1a9434",
+    "semantic_hash": "53c779b0a768edbb5d0726d61f1a9434"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\LogoMarquee.tsx": {
+    "mtime": 1793426320.151275,
+    "seen": 1793428370.2820952,
+    "ast_hash": "8f5bc804e9ea0b4eead56c6728801a33",
+    "semantic_hash": "8f5bc804e9ea0b4eead56c6728801a33"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\NewsGrid.tsx": {
+    "mtime": 1793426320.151275,
+    "seen": 1793428370.2820961,
+    "ast_hash": "f02feaaf69dfb81e0770757e44465204",
+    "semantic_hash": "f02feaaf69dfb81e0770757e44465204"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\ProcessStepper.tsx": {
+    "mtime": 1793426320.151275,
+    "seen": 1793428370.2820966,
+    "ast_hash": "0c844751d00e4c18293010331ec3113f",
+    "semantic_hash": "0c844751d00e4c18293010331ec3113f"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\SecurityBand.tsx": {
+    "mtime": 1793426320.1522725,
+    "seen": 1793428370.2820973,
+    "ast_hash": "b6eeab96f8fad8fdebd6eeb0c7589fd9",
+    "semantic_hash": "b6eeab96f8fad8fdebd6eeb0c7589fd9"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\SplitFeature.tsx": {
+    "mtime": 1793426320.1522725,
+    "seen": 1793428370.2820983,
+    "ast_hash": "77dcb21bbfee3e593fa7893ba870bfa2",
+    "semantic_hash": "77dcb21bbfee3e593fa7893ba870bfa2"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\sections\\ValueProps.tsx": {
+    "mtime": 1793426320.1522725,
+    "seen": 1793428370.2820992,
+    "ast_hash": "c37a436e48f8d70ceeaf2a3cc0007e4e",
+    "semantic_hash": "c37a436e48f8d70ceeaf2a3cc0007e4e"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\ui\\Button.tsx": {
+    "mtime": 1793426320.1522725,
+    "seen": 1793428370.2821,
+    "ast_hash": "54bfc46f3215aa164c51329c63489b31",
+    "semantic_hash": "54bfc46f3215aa164c51329c63489b31"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\ui\\Container.tsx": {
+    "mtime": 1793426320.1522725,
+    "seen": 1793428370.2821007,
+    "ast_hash": "dde6b1a0b7158984e455ec13b747f034",
+    "semantic_hash": "dde6b1a0b7158984e455ec13b747f034"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\ui\\DemoModal.tsx": {
+    "mtime": 1793426320.1522725,
+    "seen": 1793428370.2821014,
+    "ast_hash": "ad940b284db52507d0bee1352fe86038",
+    "semantic_hash": "ad940b284db52507d0bee1352fe86038"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\ui\\Eyebrow.tsx": {
+    "mtime": 1793426320.1522725,
+    "seen": 1793428370.2821023,
+    "ast_hash": "241045fb2ce40733ac81f17d1adf9967",
+    "semantic_hash": "241045fb2ce40733ac81f17d1adf9967"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\components\\ui\\ThemeToggle.tsx": {
+    "mtime": 1793426320.1522725,
+    "seen": 1793428370.282103,
+    "ast_hash": "ce68c09017fb2f60adc260d590eca1b2",
+    "semantic_hash": "ce68c09017fb2f60adc260d590eca1b2"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\awards.ts": {
+    "mtime": 1793426320.1522725,
+    "seen": 1793428370.282104,
+    "ast_hash": "0e17e6a0209475ffc58e772decd2ca5d",
+    "semantic_hash": "0e17e6a0209475ffc58e772decd2ca5d"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\badges.ts": {
+    "mtime": 1793426320.1532714,
+    "seen": 1793428370.2821045,
+    "ast_hash": "bd1cfaad6dae4e1e2432d3b404e65560",
+    "semantic_hash": "bd1cfaad6dae4e1e2432d3b404e65560"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\caseStudies.ts": {
+    "mtime": 1793426320.1532714,
+    "seen": 1793428370.2821057,
+    "ast_hash": "82cae4abefcf002215eec224793fc2d4",
+    "semantic_hash": "82cae4abefcf002215eec224793fc2d4"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\closingCta.ts": {
+    "mtime": 1793426320.1532714,
+    "seen": 1793428370.2821064,
+    "ast_hash": "dc2db9d45c8197e1b03740beae0eb13b",
+    "semantic_hash": "dc2db9d45c8197e1b03740beae0eb13b"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\features.ts": {
+    "mtime": 1793426320.1532714,
+    "seen": 1793428370.282107,
+    "ast_hash": "27ec44f064373c3391cecf5e63673d47",
+    "semantic_hash": "27ec44f064373c3391cecf5e63673d47"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\footer.ts": {
+    "mtime": 1793426320.1532714,
+    "seen": 1793428370.282108,
+    "ast_hash": "a2c76d13f6c02bd1b75983e0b0ce5242",
+    "semantic_hash": "a2c76d13f6c02bd1b75983e0b0ce5242"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\hero.ts": {
+    "mtime": 1793426320.1532714,
+    "seen": 1793428370.282109,
+    "ast_hash": "7a708898ca2c0ce3c77a76ee72f716c7",
+    "semantic_hash": "7a708898ca2c0ce3c77a76ee72f716c7"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\industries.ts": {
+    "mtime": 1793426320.1532714,
+    "seen": 1793428370.2821097,
+    "ast_hash": "904733ad0cbdc3bebacb10ff9d567cfe",
+    "semantic_hash": "904733ad0cbdc3bebacb10ff9d567cfe"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\marquee.ts": {
+    "mtime": 1793426320.1532714,
+    "seen": 1793428370.2821107,
+    "ast_hash": "fdd30c33e3c9b4d2a14c87a7a3cd2c5a",
+    "semantic_hash": "fdd30c33e3c9b4d2a14c87a7a3cd2c5a"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\nav.ts": {
+    "mtime": 1793426320.154272,
+    "seen": 1793428370.2821114,
+    "ast_hash": "1384088b8a632367ffb3d693ffea324a",
+    "semantic_hash": "1384088b8a632367ffb3d693ffea324a"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\news.ts": {
+    "mtime": 1793426320.154272,
+    "seen": 1793428370.282112,
+    "ast_hash": "9961b47a903b633538ef0db353d27d5f",
+    "semantic_hash": "9961b47a903b633538ef0db353d27d5f"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\security.ts": {
+    "mtime": 1793426320.154272,
+    "seen": 1793428370.282113,
+    "ast_hash": "d070417b7c4490924cdac22b4536d84f",
+    "semantic_hash": "d070417b7c4490924cdac22b4536d84f"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\splitFeature.ts": {
+    "mtime": 1793426320.154272,
+    "seen": 1793428370.2821138,
+    "ast_hash": "2f241f28837851361fb4f56cc81c591c",
+    "semantic_hash": "2f241f28837851361fb4f56cc81c591c"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\steps.ts": {
+    "mtime": 1793426320.154272,
+    "seen": 1793428370.2821147,
+    "ast_hash": "cf9f350c9893f06ca55f836e01f4673d",
+    "semantic_hash": "cf9f350c9893f06ca55f836e01f4673d"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\tabs.ts": {
+    "mtime": 1793426320.154272,
+    "seen": 1793428370.2821167,
+    "ast_hash": "b5f4ce7bd133d0b5142c5cd59da5b910",
+    "semantic_hash": "b5f4ce7bd133d0b5142c5cd59da5b910"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\content\\valueProps.ts": {
+    "mtime": 1793426320.154272,
+    "seen": 1793428370.2821174,
+    "ast_hash": "34a694255687370de8ef400e7816be96",
+    "semantic_hash": "34a694255687370de8ef400e7816be96"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\main.tsx": {
+    "mtime": 1793426320.1552548,
+    "seen": 1793428370.282118,
+    "ast_hash": "df3369963799e47ef5a77cdca932abf0",
+    "semantic_hash": "df3369963799e47ef5a77cdca932abf0"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\mock\\financialData.ts": {
+    "mtime": 1793426583.8474226,
+    "seen": 1793428370.2821217,
+    "ast_hash": "9853a506a22e8aed2529c86b3ab02ccb",
+    "semantic_hash": "9853a506a22e8aed2529c86b3ab02ccb"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\pages\\AuditLogsPage.tsx": {
+    "mtime": 1793426583.848435,
+    "seen": 1793428370.2821229,
+    "ast_hash": "62fa8f446df1a7db123a6145b736544d",
+    "semantic_hash": "62fa8f446df1a7db123a6145b736544d"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\pages\\CaseManagementPage.tsx": {
+    "mtime": 1793426583.8494341,
+    "seen": 1793428370.2821236,
+    "ast_hash": "5b5215966a07750f71fe5cb7299f18b9",
+    "semantic_hash": "5b5215966a07750f71fe5cb7299f18b9"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\pages\\DataManagementPage.tsx": {
+    "mtime": 1793426583.8504355,
+    "seen": 1793428370.2821243,
+    "ast_hash": "9788c40e70fcf3898f8e6f9202db5901",
+    "semantic_hash": "9788c40e70fcf3898f8e6f9202db5901"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\pages\\DetectionCenterPage.tsx": {
+    "mtime": 1793426583.8514369,
+    "seen": 1793428370.2821252,
+    "ast_hash": "a22f935c8fcfad2da0a07dc0e6032b27",
+    "semantic_hash": "a22f935c8fcfad2da0a07dc0e6032b27"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\pages\\DeviceIntelligencePage.tsx": {
+    "mtime": 1793426583.8524377,
+    "seen": 1793428370.2821262,
+    "ast_hash": "ec5fb4a2e8fe1ca854195a4077a426e8",
+    "semantic_hash": "ec5fb4a2e8fe1ca854195a4077a426e8"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\pages\\InvestigationWorkspacePage.tsx": {
+    "mtime": 1793426583.8534353,
+    "seen": 1793428370.282127,
+    "ast_hash": "8b21d385654c8ae2af0d5d21f6c32583",
+    "semantic_hash": "8b21d385654c8ae2af0d5d21f6c32583"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\pages\\LandingPage.tsx": {
+    "mtime": 1793426583.8534353,
+    "seen": 1793428370.2821276,
+    "ast_hash": "1f7df4d4f32b2cd2d0ac9309952c1ce4",
+    "semantic_hash": "1f7df4d4f32b2cd2d0ac9309952c1ce4"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\pages\\MoneyTrailPage.tsx": {
+    "mtime": 1793426583.8544352,
+    "seen": 1793428370.2821283,
+    "ast_hash": "da9781ff5d4675177e9dbf38dbdf0d29",
+    "semantic_hash": "da9781ff5d4675177e9dbf38dbdf0d29"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\pages\\NetworkIntelligencePage.tsx": {
+    "mtime": 1793426583.8544352,
+    "seen": 1793428370.282129,
+    "ast_hash": "eae6c39156201cff64ebdb726f979f28",
+    "semantic_hash": "eae6c39156201cff64ebdb726f979f28"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\pages\\OverviewPage.tsx": {
+    "mtime": 1793426583.8554344,
+    "seen": 1793428370.28213,
+    "ast_hash": "17e4f26014a15b045c0d88c9c1b20462",
+    "semantic_hash": "17e4f26014a15b045c0d88c9c1b20462"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\pages\\ReportsPage.tsx": {
+    "mtime": 1793426583.8554344,
+    "seen": 1793428370.2821307,
+    "ast_hash": "65bdff0e313732f19832ae4baa9e4822",
+    "semantic_hash": "65bdff0e313732f19832ae4baa9e4822"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\pages\\SettingsPage.tsx": {
+    "mtime": 1793426583.856434,
+    "seen": 1793428370.2821314,
+    "ast_hash": "23ba7872ddf671554fe96ac09bf0772a",
+    "semantic_hash": "23ba7872ddf671554fe96ac09bf0772a"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\services\\api.ts": {
+    "mtime": 1793426320.1552548,
+    "seen": 1793428370.2821321,
+    "ast_hash": "eb8f023af91ef5a9794a3d454270fc26",
+    "semantic_hash": "eb8f023af91ef5a9794a3d454270fc26"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\types\\index.ts": {
+    "mtime": 1793426320.1552548,
+    "seen": 1793428370.282133,
+    "ast_hash": "79a8e88cc1f1b4d154804b588dade948",
+    "semantic_hash": "79a8e88cc1f1b4d154804b588dade948"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\tsconfig.app.json": {
+    "mtime": 1793426583.856434,
+    "seen": 1793428370.2821338,
+    "ast_hash": "1e3ac28a34e2298f6b34ccaf6e44cbf8",
+    "semantic_hash": "1e3ac28a34e2298f6b34ccaf6e44cbf8"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\tsconfig.json": {
+    "mtime": 1793426320.1552548,
+    "seen": 1793428370.2821345,
+    "ast_hash": "852c3a5df14a4b43ac28e9554ebedf4a",
+    "semantic_hash": "852c3a5df14a4b43ac28e9554ebedf4a"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\tsconfig.node.json": {
+    "mtime": 1793426320.1562562,
+    "seen": 1793428370.2821352,
+    "ast_hash": "74cde0261ad0a13045ca0a05ab1542ae",
+    "semantic_hash": "74cde0261ad0a13045ca0a05ab1542ae"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\vite.config.ts": {
+    "mtime": 1793426320.1562562,
+    "seen": 1793428370.282136,
+    "ast_hash": "f1b206f664691dd0b7995982c6aae0ba",
+    "semantic_hash": "f1b206f664691dd0b7995982c6aae0ba"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\package.json": {
+    "mtime": 1793426320.1562562,
+    "seen": 1793428370.282137,
+    "ast_hash": "70280865241ba6420c47fa7880adf5c3",
+    "semantic_hash": "70280865241ba6420c47fa7880adf5c3"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\start-all.ps1": {
+    "mtime": 1793426320.1562562,
+    "seen": 1793428370.2821376,
+    "ast_hash": "68e17f5ca7e61576ed6f464830d0e458",
+    "semantic_hash": "68e17f5ca7e61576ed6f464830d0e458"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\README.md": {
+    "mtime": 1793426320.1312563,
+    "seen": 1793428370.2821383,
+    "ast_hash": "741ca5f2784feb4d9e7d476591899e91",
+    "semantic_hash": "741ca5f2784feb4d9e7d476591899e91"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\README.md": {
+    "mtime": 1793426320.1312563,
+    "seen": 1793428370.282139,
+    "ast_hash": "db064b1838e63b6edba1710f3bfd9a9f",
+    "semantic_hash": "db064b1838e63b6edba1710f3bfd9a9f"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\data\\network_visualizer.html": {
+    "mtime": 1793426320.1422565,
+    "seen": 1793428370.28214,
+    "ast_hash": "33cfb09e9b75feb1880deb24ce2ea3ee",
+    "semantic_hash": "33cfb09e9b75feb1880deb24ce2ea3ee"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\data\\pyvis_alert-001.html": {
+    "mtime": 1793426320.1432755,
+    "seen": 1793428370.282141,
+    "ast_hash": "74399a1d802fa15b39029983fabd648d",
+    "semantic_hash": "74399a1d802fa15b39029983fabd648d"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\data\\pyvis_full_enterprise.html": {
+    "mtime": 1793426320.1432755,
+    "seen": 1793428370.2821417,
+    "ast_hash": "0db1d5121005a527b3aa0fcc721ac2e5",
+    "semantic_hash": "0db1d5121005a527b3aa0fcc721ac2e5"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\ai-service\\requirements.txt": {
+    "mtime": 1793426320.1432755,
+    "seen": 1793428370.2821424,
+    "ast_hash": "6d8736f26f89b8d31d4167ee19186233",
+    "semantic_hash": "6d8736f26f89b8d31d4167ee19186233"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\backend\\README.md": {
+    "mtime": 1793426320.1442611,
+    "seen": 1793428370.282143,
+    "ast_hash": "4d4de460f10a4084099f4c83af8f07a9",
+    "semantic_hash": "4d4de460f10a4084099f4c83af8f07a9"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\README.md": {
+    "mtime": 1793426320.1462545,
+    "seen": 1793428370.282144,
+    "ast_hash": "9a8d61dca9723b7af9bd0eb95e294997",
+    "semantic_hash": "9a8d61dca9723b7af9bd0eb95e294997"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\design.md": {
+    "mtime": 1793426320.1472714,
+    "seen": 1793428370.2821448,
+    "ast_hash": "d44f1d32d4d1f6309c6ef09084836801",
+    "semantic_hash": "d44f1d32d4d1f6309c6ef09084836801"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\index.html": {
+    "mtime": 1793426583.8349078,
+    "seen": 1793428370.2821455,
+    "ast_hash": "fb315d983aadeb2304100c9334edd9a7",
+    "semantic_hash": "fb315d983aadeb2304100c9334edd9a7"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\public\\favicon.svg": {
+    "mtime": 1793426320.1472714,
+    "seen": 1793428370.2821462,
+    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "semantic_hash": "7e840862161341271697daa99a40d76b"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\public\\icons.svg": {
+    "mtime": 1793426320.1482549,
+    "seen": 1793428370.2821474,
+    "ast_hash": "21c7473c592c67dc87223d49892c8f0a",
+    "semantic_hash": "21c7473c592c67dc87223d49892c8f0a"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\assets\\hero.png": {
+    "mtime": 1793426320.1482549,
+    "seen": 1793428370.2821481,
+    "ast_hash": "aead493361b27e7510691c5d7072dfc1",
+    "semantic_hash": "aead493361b27e7510691c5d7072dfc1"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\assets\\react.svg": {
+    "mtime": 1793426320.1482549,
+    "seen": 1793428370.2821488,
+    "ast_hash": "f0402b67b6ce880f65666bb49e841696",
+    "semantic_hash": "f0402b67b6ce880f65666bb49e841696"
+  },
+  "D:\\AI DEVELOPEMENT\\Hackathon\\Ai-for-business\\client\\src\\assets\\vite.svg": {
+    "mtime": 1793426320.1482549,
+    "seen": 1793428370.2821498,
+    "ast_hash": "6d5180a782d64c8cf51ba01c2a2184d8",
+    "semantic_hash": "6d5180a782d64c8cf51ba01c2a2184d8"
+  }
+}
