@@ -1,0 +1,302 @@
+{
+  "case_id": "CASE_001_MULE_RING",
+  "title": "Syndicate Money Mule Ring with Shared Hardware Orchestration",
+  "description": "5 student accounts structured deposits below $10,000 from one device and drained to Cyprus beneficiary.",
+  "expected_category": "FRAUD_RING",
+  "customers": [
+    {
+      "customer_id": "CUST-101",
+      "full_name": "Lucas Vance",
+      "tax_id": "XXX-XX-1120",
+      "phone": "+1-555-0101",
+      "email": "lucas.v@gmail.com",
+      "risk_rating": "MEDIUM",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-102",
+      "full_name": "Marcus Vance",
+      "tax_id": "XXX-XX-1121",
+      "phone": "+1-555-0102",
+      "email": "marcus.v@gmail.com",
+      "risk_rating": "MEDIUM",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-103",
+      "full_name": "Elena Rostova",
+      "tax_id": "XXX-XX-4491",
+      "phone": "+1-555-0103",
+      "email": "elena.r@outlook.com",
+      "risk_rating": "HIGH",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-104",
+      "full_name": "Darius Thorne",
+      "tax_id": "XXX-XX-8823",
+      "phone": "+1-555-0104",
+      "email": "darius.t@gmail.com",
+      "risk_rating": "MEDIUM",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-105",
+      "full_name": "Chloe Bennett",
+      "tax_id": "XXX-XX-9012",
+      "phone": "+1-555-0105",
+      "email": "chloe.b@yahoo.com",
+      "risk_rating": "MEDIUM",
+      "kyc_status": "VERIFIED"
+    }
+  ],
+  "accounts": [
+    {
+      "account_number": "ACCT-US-1001",
+      "customer_id": "CUST-101",
+      "account_type": "CHECKING",
+      "balance": 45.2,
+      "currency": "USD",
+      "created_at": "2026-08-15"
+    },
+    {
+      "account_number": "ACCT-US-1002",
+      "customer_id": "CUST-102",
+      "account_type": "CHECKING",
+      "balance": 32.1,
+      "currency": "USD",
+      "created_at": "2026-08-20"
+    },
+    {
+      "account_number": "ACCT-US-1003",
+      "customer_id": "CUST-103",
+      "account_type": "CHECKING",
+      "balance": 18.5,
+      "currency": "USD",
+      "created_at": "2026-09-01"
+    },
+    {
+      "account_number": "ACCT-US-1004",
+      "customer_id": "CUST-104",
+      "account_type": "CHECKING",
+      "balance": 55.0,
+      "currency": "USD",
+      "created_at": "2026-09-10"
+    },
+    {
+      "account_number": "ACCT-US-1005",
+      "customer_id": "CUST-105",
+      "account_type": "CHECKING",
+      "balance": 22.8,
+      "currency": "USD",
+      "created_at": "2026-09-14"
+    }
+  ],
+  "devices": [
+    {
+      "device_id": "DEV-IPHONE-PRO-8912",
+      "device_type": "MOBILE",
+      "os": "iOS 18.2",
+      "browser_or_app": "MobileBankingApp/v4.2",
+      "hardware_fingerprint": "A9F1-E832-77BC-D091"
+    }
+  ],
+  "ips": [
+    {
+      "ip_address": "185.220.101.5",
+      "subnet": "185.220.101.0/24",
+      "isp": "M247 Europe Ltd",
+      "country": "NL",
+      "city": "Amsterdam",
+      "is_vpn_or_proxy": true
+    },
+    {
+      "ip_address": "185.220.101.6",
+      "subnet": "185.220.101.0/24",
+      "isp": "M247 Europe Ltd",
+      "country": "NL",
+      "city": "Amsterdam",
+      "is_vpn_or_proxy": true
+    }
+  ],
+  "merchants": [],
+  "beneficiaries": [
+    {
+      "beneficiary_id": "BENEF-CYPRUS-88",
+      "name": "Apex Holdings International Ltd",
+      "bank_name": "Bank of Cyprus Offshore",
+      "country": "CY",
+      "is_high_risk_jurisdiction": true
+    }
+  ],
+  "locations": [
+    {
+      "location_id": "LOC-NY",
+      "city": "New York",
+      "state": "NY",
+      "country": "US",
+      "lat": 40.7128,
+      "lon": -74.006
+    },
+    {
+      "location_id": "LOC-AMS",
+      "city": "Amsterdam",
+      "state": "NH",
+      "country": "NL",
+      "lat": 52.3676,
+      "lon": 4.9041
+    }
+  ],
+  "transactions": [
+    {
+      "tx_id": "TX-MULE-01",
+      "sender_account": "EXTERNAL-SOURCE-A",
+      "receiver_account": "ACCT-US-1001",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 9800.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T14:10:00Z",
+      "device_id": "DEV-IPHONE-PRO-8912",
+      "ip_address": "185.220.101.5",
+      "location_id": "LOC-AMS",
+      "tx_type": "DEPOSIT",
+      "description": "Consulting invoice settlement"
+    },
+    {
+      "tx_id": "TX-MULE-02",
+      "sender_account": "EXTERNAL-SOURCE-B",
+      "receiver_account": "ACCT-US-1002",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 9650.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T14:18:00Z",
+      "device_id": "DEV-IPHONE-PRO-8912",
+      "ip_address": "185.220.101.5",
+      "location_id": "LOC-AMS",
+      "tx_type": "DEPOSIT",
+      "description": "Private project fee"
+    },
+    {
+      "tx_id": "TX-MULE-03",
+      "sender_account": "EXTERNAL-SOURCE-C",
+      "receiver_account": "ACCT-US-1003",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 9900.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T14:25:00Z",
+      "device_id": "DEV-IPHONE-PRO-8912",
+      "ip_address": "185.220.101.6",
+      "location_id": "LOC-AMS",
+      "tx_type": "DEPOSIT",
+      "description": "Contract research stipend"
+    },
+    {
+      "tx_id": "TX-MULE-04",
+      "sender_account": "EXTERNAL-SOURCE-D",
+      "receiver_account": "ACCT-US-1004",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 9750.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T14:35:00Z",
+      "device_id": "DEV-IPHONE-PRO-8912",
+      "ip_address": "185.220.101.6",
+      "location_id": "LOC-AMS",
+      "tx_type": "DEPOSIT",
+      "description": "E-commerce distribution grant"
+    },
+    {
+      "tx_id": "TX-MULE-05",
+      "sender_account": "EXTERNAL-SOURCE-E",
+      "receiver_account": "ACCT-US-1005",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 9850.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T14:42:00Z",
+      "device_id": "DEV-IPHONE-PRO-8912",
+      "ip_address": "185.220.101.6",
+      "location_id": "LOC-AMS",
+      "tx_type": "DEPOSIT",
+      "description": "Software development advance"
+    },
+    {
+      "tx_id": "TX-DRAIN-01",
+      "sender_account": "ACCT-US-1001",
+      "receiver_account": null,
+      "merchant_id": null,
+      "beneficiary_id": "BENEF-CYPRUS-88",
+      "amount": 9750.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T14:55:00Z",
+      "device_id": "DEV-IPHONE-PRO-8912",
+      "ip_address": "185.220.101.5",
+      "location_id": "LOC-AMS",
+      "tx_type": "TRANSFER",
+      "description": "Disbursement to holding escrow"
+    },
+    {
+      "tx_id": "TX-DRAIN-02",
+      "sender_account": "ACCT-US-1002",
+      "receiver_account": null,
+      "merchant_id": null,
+      "beneficiary_id": "BENEF-CYPRUS-88",
+      "amount": 9600.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T15:02:00Z",
+      "device_id": "DEV-IPHONE-PRO-8912",
+      "ip_address": "185.220.101.5",
+      "location_id": "LOC-AMS",
+      "tx_type": "TRANSFER",
+      "description": "Disbursement to holding escrow"
+    },
+    {
+      "tx_id": "TX-DRAIN-03",
+      "sender_account": "ACCT-US-1003",
+      "receiver_account": null,
+      "merchant_id": null,
+      "beneficiary_id": "BENEF-CYPRUS-88",
+      "amount": 9850.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T15:10:00Z",
+      "device_id": "DEV-IPHONE-PRO-8912",
+      "ip_address": "185.220.101.6",
+      "location_id": "LOC-AMS",
+      "tx_type": "TRANSFER",
+      "description": "Disbursement to holding escrow"
+    },
+    {
+      "tx_id": "TX-DRAIN-04",
+      "sender_account": "ACCT-US-1004",
+      "receiver_account": null,
+      "merchant_id": null,
+      "beneficiary_id": "BENEF-CYPRUS-88",
+      "amount": 9700.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T15:15:00Z",
+      "device_id": "DEV-IPHONE-PRO-8912",
+      "ip_address": "185.220.101.6",
+      "location_id": "LOC-AMS",
+      "tx_type": "TRANSFER",
+      "description": "Disbursement to holding escrow"
+    },
+    {
+      "tx_id": "TX-DRAIN-05",
+      "sender_account": "ACCT-US-1005",
+      "receiver_account": null,
+      "merchant_id": null,
+      "beneficiary_id": "BENEF-CYPRUS-88",
+      "amount": 9800.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T15:20:00Z",
+      "device_id": "DEV-IPHONE-PRO-8912",
+      "ip_address": "185.220.101.6",
+      "location_id": "LOC-AMS",
+      "tx_type": "TRANSFER",
+      "description": "Disbursement to holding escrow"
+    }
+  ]
+}

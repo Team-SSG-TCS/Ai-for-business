@@ -1,0 +1,3 @@
+ip_address,subnet,isp,country,city,is_vpn_or_proxy
+194.38.20.15,194.38.20.0/24,DataCamp S.R.O.,PA,Panama City,True
+194.38.20.16,194.38.20.0/24,DataCamp S.R.O.,PA,Panama City,True

@@ -1,0 +1,7 @@
+customer_id,full_name,tax_id,phone,email,risk_rating,kyc_status
+CUST-201,Sarah Jenkins,XXX-XX-3011,+1-555-0201,s.jenkins@osu.edu,LOW,VERIFIED
+CUST-202,David Patel,XXX-XX-3012,+1-555-0202,d.patel@osu.edu,LOW,VERIFIED
+CUST-203,Maya Lin,XXX-XX-3013,+1-555-0203,m.lin@osu.edu,LOW,VERIFIED
+CUST-204,James O'Connor,XXX-XX-3014,+1-555-0204,j.oconnor@osu.edu,LOW,VERIFIED
+CUST-205,Aisha Rahman,XXX-XX-3015,+1-555-0205,a.rahman@osu.edu,LOW,VERIFIED
+CUST-206,Tyler Brooks,XXX-XX-3016,+1-555-0206,t.brooks@osu.edu,LOW,VERIFIED
