@@ -97,7 +97,7 @@ def typology_reasoner_node(state: InvestigationState) -> Dict[str, Any]:
                 "severity": finding.get("severity", "CRITICAL"),
                 "description": finding.get("description"),
                 "evidence_txs": finding.get("evidence_transaction_ids", []),
-                "statutory_violation": "31 U.S.C. 5324 (Anti-Structuring Provision)"
+                "statutory_violation": "PMLA 2002 Sec 3 & 12 / FIU-IND CTR Evasion (₹10,00,000 Threshold)"
             })
             
     # Check rapid drain findings
@@ -130,7 +130,7 @@ def typology_reasoner_node(state: InvestigationState) -> Dict[str, Any]:
     if len(evidence_items) > 0:
         theory = (
             f"The target cluster operating around [{seed_id}] exhibits systematic money mule structuring and pass-through "
-            f"layering. Inbound transactions evade the $10,000 CTR reporting threshold and are liquidated within minutes "
+            f"layering. Inbound transactions evade the ₹10,00,000 (10 Lakhs INR) FIU-IND CTR reporting threshold under PMLA 2002 and are liquidated within minutes "
             f"via coordinated hardware infrastructure."
         )
         prosecution_confidence = 0.94
@@ -234,11 +234,11 @@ def sar_adjudication_node(state: InvestigationState) -> Dict[str, Any]:
             
         requires_approval = True  # High risk requires human verification checkpoint
         sar_summary = (
-            f"=== FINCEN SUSPICIOUS ACTIVITY REPORT (SAR) ===\n"
+            f"=== FIU-IND SUSPICIOUS TRANSACTION REPORT (STR / SAR) ===\n"
             f"Subject Entity: {seed_id} ({seed_type})\n"
             f"Typology: {pros.get('crime_typology')}\n"
             f"Risk Assessment: CRITICAL (Score: 94/100) | Legitimacy Score: 15/100\n"
-            f"Key Violations: {len(evidence)} verified statutory violations including sub-$10k structuring and immediate >90% liquidity drain.\n"
+            f"Key Violations: {len(evidence)} verified statutory violations including sub-₹10 Lakh structuring under PMLA 2002 and immediate >90% liquidity drain.\n"
             f"Enforcement Action: Recommend {action_recommended} on affected entity and associated syndicate infrastructure."
         )
 

@@ -34,6 +34,15 @@ class Settings(BaseSettings):
     AI_MODEL_NAME: str = os.getenv("GROQ_MODEL", "openai/gpt-oss-120b")
 
     
+    # Indian AML & FIU-IND Regulatory Thresholds (PMLA 2002)
+    AML_JURISDICTION: str = os.getenv("AML_JURISDICTION", "INDIA")
+    CTR_THRESHOLD_INR: float = float(os.getenv("CTR_THRESHOLD_INR", "1000000.0"))  # ₹10,00,000 (10 Lakhs INR)
+    CTR_LOWER_BOUND_INR: float = float(os.getenv("CTR_LOWER_BOUND_INR", "900000.0"))  # ₹9,00,000 (9 Lakhs INR)
+    PAN_MANDATORY_THRESHOLD_INR: float = float(os.getenv("PAN_MANDATORY_THRESHOLD_INR", "50000.0"))  # ₹50,000 (Cash deposit Rule 114B)
+    REGULATORY_BODY: str = os.getenv("REGULATORY_BODY", "FIU-IND")
+    AML_STATUTE: str = os.getenv("AML_STATUTE", "PMLA 2002 (Prevention of Money Laundering Act, Sec 3 & 12)")
+    CURRENCY_SYMBOL: str = os.getenv("CURRENCY_SYMBOL", "₹")
+
     # Guardrails & Production Limits
     ENABLE_INJECTION_GUARDRAIL: bool = os.getenv("ENABLE_INJECTION_GUARDRAIL", "True").lower() == "true"
     ENABLE_PII_REDACTION: bool = os.getenv("ENABLE_PII_REDACTION", "True").lower() == "true"

@@ -10,12 +10,14 @@ export interface CytoscapeGraphProps {
   networkId?: string;
   focusEntityId?: string | null;
   onSelectEntity?: (entity: any) => void;
+  customElements?: cytoscape.ElementsDefinition;
 }
 
 export const CytoscapeGraph: React.FC<CytoscapeGraphProps> = ({
   networkId = 'NET-004',
   focusEntityId,
-  onSelectEntity
+  onSelectEntity,
+  customElements
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cyRef = useRef<Core | null>(null);
@@ -84,7 +86,7 @@ export const CytoscapeGraph: React.FC<CytoscapeGraphProps> = ({
 
     const cy = cytoscape({
       container: containerRef.current,
-      elements,
+      elements: (customElements && customElements.nodes && customElements.nodes.length > 0) ? customElements : elements,
       style: [
         // Default Node Styling (Clean light enterprise)
         {

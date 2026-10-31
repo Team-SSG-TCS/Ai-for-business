@@ -59,6 +59,7 @@ def test_investigation_pipeline():
     print("\n--- 6. Testing POST /api/v1/investigation/run (Ad-hoc custom payload from Laptop 1) ---")
     adhoc_payload = {
         "case_id": "CASE-LAPTOP1-LIVE",
+        "provider": "mock",
         "custom_transactions": [
             {"id": "TX-L1-01", "amount": 9500.0, "recipient_id": "ACC-MULE-1", "sender_id": "CASH", "timestamp": "2026-10-31T10:00:00Z"},
             {"id": "TX-L1-02", "amount": 9400.0, "sender_id": "ACC-MULE-1", "recipient_id": "ACC-OFFSHORE", "timestamp": "2026-10-31T10:30:00Z"}

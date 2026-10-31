@@ -114,7 +114,16 @@ def detect_structuring_and_velocity(account_id: str) -> str:
     to test for CTR structuring ($9,000-$9,999) and rapid pass-through drain velocity (>90% within 2h).
     """
     db = get_master_database()
-    tx_dicts = [t.model_dump() for t in db.transactions]
+    tx_dicts = []
+    for t in db.transactions:
+        d = t.model_dump()
+        d["id"] = d.get("id") or d.get("tx_id")
+        d["sender_id"] = d.get("sender_account") or d.get("sender_id") or d.get("source")
+        d["recipient_id"] = d.get("receiver_account") or d.get("beneficiary_id") or d.get("recipient_id") or d.get("target")
+        d["source"] = d["sender_id"]
+        d["target"] = d["recipient_id"]
+        d["account_id"] = d.get("account_id") or d["sender_id"]
+        tx_dicts.append(d)
     
     structuring_findings, _ = detect_structuring(tx_dicts)
     rapid_drain_findings, _ = detect_rapid_drain(tx_dicts)

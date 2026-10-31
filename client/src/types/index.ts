@@ -64,9 +64,13 @@ export interface ApiResponse<T = unknown> {
 // =============================================================================
 
 export interface EvidenceItemDTO {
-  type: string;
+  type?: string;
+  evidence_type?: string;
   severity: string;
   description: string;
+  tx_id?: string;
+  amount?: number;
+  timestamp?: string;
   evidence_txs?: string[];
   statutory_violation?: string;
 }
@@ -76,12 +80,15 @@ export interface ProsecutionHypothesisDTO {
   crime_typology: string;
   prosecution_confidence: number;
   evidence_count: number;
+  primary_statute?: string;
+  supporting_evidence?: string[];
 }
 
 export interface DefenseHypothesisDTO {
   counter_theory: string;
   innocent_plausibility: number;
-  benign_classification: string;
+  benign_classification?: string;
+  alternative_hypotheses?: Array<{ name: string; probability: number; status: string; notes?: string }>;
 }
 
 export interface AdjudicationDTO {
@@ -110,6 +117,37 @@ export interface LangGraphInvestigationResult {
   seed_id: string;
   seed_type: string;
   stage: string;
+  profile?: Record<string, any>;
+  network_summary?: {
+    node_count?: number;
+    edge_count?: number;
+    total_subgraph_flow_volume?: number;
+    most_central_hub?: string;
+    centrality_score?: number;
+    nodes?: Array<{ id: string; label: string; type: string; risk?: string }>;
+    links?: Array<{ source: string; target: string; relation: string; amount?: number; timestamp?: string }>;
+  };
+  structuring_velocity?: {
+    account_id?: string;
+    structuring_detected?: boolean;
+    structuring_findings?: Array<any>;
+    rapid_drain_detected?: boolean;
+    rapid_drain_findings?: Array<any>;
+  };
+  swarm_telemetry?: {
+    cluster_id?: string;
+    cluster_size?: number;
+    linked_accounts?: string[];
+    shared_devices?: string[];
+    proxy_ips?: string[];
+    risk_factors?: string[];
+  };
+  benign_context?: {
+    is_benign_cluster?: boolean;
+    infrastructure_type?: string;
+    public_nat_detected?: boolean;
+    confidence?: number;
+  };
   prosecution: ProsecutionHypothesisDTO;
   defense: DefenseHypothesisDTO;
   adjudication: AdjudicationDTO;

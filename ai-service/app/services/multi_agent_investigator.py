@@ -270,7 +270,7 @@ class MultiAgentInvestigator:
 
         # Generate FinCEN-standard Suspicious Activity Report Narrative
         sar_narrative = (
-            f"=== SUSPICIOUS ACTIVITY REPORT (SAR) NARRATIVE ===\n"
+            f"=== FIU-IND SUSPICIOUS TRANSACTION REPORT (STR / SAR) NARRATIVE ===\n"
             f"CASE REFERENCE: {case_summary.case_id} | TITLE: {case_summary.title}\n"
             f"INITIAL ALERT CATEGORY: {case_summary.category}\n\n"
             f"I. SUSPECT ENTITY AND NETWORK IDENTIFICATION:\n"
@@ -306,7 +306,7 @@ class MultiAgentInvestigator:
             narrative=sar_narrative,
             typologies_identified=typologies,
             human_action_checklist=[],
-            fincen_xml_reference=f"BSA-XML-2026-{case_summary.case_id[-4:]}-SAR",
+            fincen_xml_reference=f"FIU-IND-STR-2026-{case_summary.case_id[-4:]}",
             recommended_action=recommended_action,
         )
 
@@ -338,7 +338,7 @@ class MultiAgentInvestigator:
                 "2. Subpoena & Device Telemetry: Issue formal 314(b) requests and subpoena ISP/telecom carrier logs for the hardware fingerprint and IP addresses linked to the device swarm cluster.",
                 "3. Enhanced Due Diligence (EDD) & KYC Refresh: Issue formal Requests for Information (RFIs) demanding source of funds documentation, contracts, and proof of beneficial ownership for top recipient entities.",
                 "4. Beneficial Ownership Trace: Cross-reference recipient account routing numbers against FinCEN shell company advisories and OFAC sanctions registries.",
-                f"5. Formal Regulatory Submission: Finalize and electronically submit FinCEN Form 111 (Suspicious Activity Report) under BSA tracking reference {adjudication.sar_report.fincen_xml_reference or 'BSA-2026-SAR'}.",
+                f"5. Formal Regulatory Submission: Finalize and electronically submit FIU-IND Form STR (Suspicious Transaction Report under PMLA 2002) under BSA tracking reference {adjudication.sar_report.fincen_xml_reference or 'BSA-2026-SAR'}.",
             ]
 
         adjudication.sar_report.human_action_checklist = checklist
@@ -473,7 +473,7 @@ Return ONLY a JSON object matching this schema:
                 narrative=adj_data.get("sar_narrative", ""),
                 typologies_identified=adj_data.get("typologies_identified", []),
                 human_action_checklist=data.get("human_action_plan", []),
-                fincen_xml_reference=f"BSA-XML-2026-{case_summary.case_id[-4:]}-SAR",
+                fincen_xml_reference=f"FIU-IND-STR-2026-{case_summary.case_id[-4:]}",
                 recommended_action=adj_data.get("recommended_action", "FILE_SAR"),
             )
 

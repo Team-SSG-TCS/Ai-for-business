@@ -53,7 +53,60 @@ def detect_structuring(txs: List[Dict[str, Any]]) -> Tuple[List[Dict[str, Any]],
     if not txs:
         return findings, evidence_items
 
-    # 1. Direct threshold evasion ($9,000 - $9,999.99)
+    # 1. Direct threshold evasion
+    # India: FIU-IND CTR Threshold: ₹10,00,000 (Structuring Band: ₹9,00,000 - ₹9,99,999.99)
+    inr_ctr_txs = [t for t in txs if 900000.0 <= float(t.get("amount", 0.0)) < 1000000.0]
+    # India: Rule 114B PAN Threshold: ₹50,000 (Structuring Band: ₹45,000 - ₹49,999.99)
+    inr_pan_txs = [t for t in txs if 45000.0 <= float(t.get("amount", 0.0)) < 50000.0]
+
+    # Process Indian ₹10 Lakh CTR Structuring (FIU-IND / PMLA 2002)
+    if inr_ctr_txs:
+        total_inr = sum(float(t.get("amount", 0.0)) for t in inr_ctr_txs)
+        tx_ids = [str(t.get("id") or t.get("tx_id", "unknown")) for t in inr_ctr_txs]
+        findings.append({
+            "type": "FIU_IND_CTR_STRUCTURING",
+            "jurisdiction": "INDIA",
+            "regulatory_body": "FIU-IND",
+            "statutory_reference": "PMLA 2002 Section 3 & 12 (Rule 3 CTR Reporting)",
+            "count": len(inr_ctr_txs),
+            "threshold_limit": 1000000.0,
+            "total_amount": round(total_inr, 2),
+            "tx_ids": tx_ids,
+            "description": f"Detected {len(inr_ctr_txs)} transactions intentionally structured between ₹9,00,000 and ₹9,99,999 (totaling ₹{total_inr:,.2f}) to evade mandatory ₹10,00,000 (10 Lakhs) Cash Transaction Reporting (CTR) under FIU-IND & PMLA 2002.",
+            "severity": "CRITICAL" if len(inr_ctr_txs) >= 2 else "HIGH"
+        })
+        for t in inr_ctr_txs:
+            tid = str(t.get("id") or t.get("tx_id", "unknown"))
+            amt = float(t.get("amount", 0.0))
+            ts = str(t.get("timestamp", ""))
+            account = str(t.get("account_id") or t.get("sender_id") or t.get("recipient_id") or "account")
+            evidence_items.append(EvidenceItem(
+                tx_id=tid,
+                amount=amt,
+                timestamp=ts,
+                entity_id=account,
+                evidence_type=EvidenceType.STRUCTURING.value,
+                description=f"Transaction {tid} structured at ₹{amt:,.2f} on {ts} just below India's ₹10,00,000 FIU-IND CTR threshold (PMLA 2002).",
+                severity="HIGH"
+            ))
+
+    if inr_pan_txs and len(inr_pan_txs) >= 2:
+        total_pan = sum(float(t.get("amount", 0.0)) for t in inr_pan_txs)
+        tx_ids = [str(t.get("id") or t.get("tx_id", "unknown")) for t in inr_pan_txs]
+        findings.append({
+            "type": "PAN_THRESHOLD_EVASION_BAND",
+            "jurisdiction": "INDIA",
+            "regulatory_body": "Income Tax Department / FIU-IND",
+            "statutory_reference": "Rule 114B Income Tax Rules / PMLA 2002",
+            "count": len(inr_pan_txs),
+            "threshold_limit": 50000.0,
+            "total_amount": round(total_pan, 2),
+            "tx_ids": tx_ids,
+            "description": f"Detected {len(inr_pan_txs)} cash transactions structured between ₹45,000 and ₹49,999 (totaling ₹{total_pan:,.2f}) to evade mandatory PAN quoting threshold of ₹50,000 under Rule 114B.",
+            "severity": "HIGH"
+        })
+
+    # Standard / base demo threshold evasion (sub-10,000 or normalized)
     sub_threshold_txs = []
     for tx in txs:
         amt = float(tx.get("amount", 0.0))

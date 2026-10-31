@@ -88,6 +88,75 @@ export const MOCK_LANGGRAPH_RESULT: LangGraphInvestigationResult = {
   seed_id: 'ACCT-US-1001',
   seed_type: 'ACCOUNT',
   stage: 'COMPLETED',
+  profile: {
+    customer_name: 'Vikram Mehra / Primary Subject',
+    bank: 'HDFC Bank',
+    account_type: 'Checking',
+    kyc_status: 'VERIFIED'
+  },
+  network_summary: {
+    node_count: 10,
+    edge_count: 13,
+    total_subgraph_flow_volume: 48517.40,
+    most_central_hub: 'ACCT-US-1001',
+    centrality_score: 0.88,
+    nodes: [
+      { id: 'ACCT-US-1001', label: 'Vikram Mehra (ACC-9004)', type: 'account', risk: 'Critical' },
+      { id: 'ACCT-US-1002', label: 'Priya Sharma (ACC-9019)', type: 'account', risk: 'High' },
+      { id: 'ACCT-US-1003', label: 'Amit Verma (ACC-9042)', type: 'account', risk: 'High' },
+      { id: 'ACCT-US-1004', label: 'Ramesh Chawla (ACC-9088)', type: 'account', risk: 'Medium' },
+      { id: 'DEV-F8821', label: 'Android Emulator DEV-F8821', type: 'device', risk: 'Critical' },
+      { id: 'IP-TOR-01', label: 'Tor Relay 185.220.101.45', type: 'ip', risk: 'High' },
+      { id: 'MER-301', label: 'Zaveri Bullion Mumbai', type: 'merchant', risk: 'Medium' }
+    ],
+    links: [
+      { source: 'EXTERNAL_WIRE', target: 'ACCT-US-1001', relation: 'INWARD_DEPOSIT', amount: 1000000, timestamp: '2026-10-28 04:12 IST' },
+      { source: 'ACCT-US-1001', target: 'ACCT-US-1002', relation: 'FUND_SPLIT_IMPS', amount: 500000, timestamp: '2026-10-28 04:26 IST' },
+      { source: 'ACCT-US-1001', target: 'ACCT-US-1003', relation: 'FUND_SPLIT_RTGS', amount: 500000, timestamp: '2026-10-28 04:28 IST' },
+      { source: 'ACCT-US-1002', target: 'MER-301', relation: 'LIQUIDATION_BULLION', amount: 350000, timestamp: '2026-10-28 04:31 IST' },
+      { source: 'ACCT-US-1003', target: 'ACCT-US-1004', relation: 'INTERMEDIARY_UPI', amount: 350000, timestamp: '2026-10-28 04:33 IST' },
+      { source: 'ACCT-US-1004', target: 'ACCT-US-1001', relation: 'CIRCULAR_RETURN', amount: 150000, timestamp: '2026-10-28 04:37 IST' }
+    ]
+  },
+  structuring_velocity: {
+    account_id: 'ACCT-US-1001',
+    structuring_detected: true,
+    structuring_findings: [
+      {
+        type: 'FIU_IND_CTR_STRUCTURING',
+        severity: 'CRITICAL',
+        total_amount: 1000000,
+        count: 2,
+        description: 'Coordinated threshold evasion structuring inward wire funds into split accounts.'
+      }
+    ],
+    rapid_drain_detected: true,
+    rapid_drain_findings: [
+      {
+        type: 'RAPID_MULE_DRAIN',
+        account_id: 'ACCT-US-1001',
+        inbound_amount: 1000000,
+        outbound_amount: 980000,
+        drain_percentage: 98.0,
+        time_to_drain_minutes: 18,
+        description: 'Account ACCT-US-1001 evacuated 98.0% of funds within 18 minutes to downstream mules.'
+      }
+    ]
+  },
+  swarm_telemetry: {
+    cluster_id: 'CLUSTER-001',
+    cluster_size: 4,
+    linked_accounts: ['ACCT-US-1001', 'ACCT-US-1002', 'ACCT-US-1003', 'ACCT-US-1004'],
+    shared_devices: ['DEV-F8821 (IMEI: 869402049182910)'],
+    proxy_ips: ['185.220.101.45 (Tor Exit Relay)'],
+    risk_factors: ['SHARED_IMEI_HARDWARE_COLLISION', 'TOR_EXIT_NODE_BURST', 'HIGH_VELOCITY_DRAIN']
+  },
+  benign_context: {
+    is_benign_cluster: false,
+    infrastructure_type: 'ANONYMIZED_EMULATOR_FARM',
+    public_nat_detected: false,
+    confidence: 0.92
+  },
   prosecution: {
     theory: 'The target cluster operating around [ACCT-US-1001] exhibits systematic money mule structuring and pass-through layering. Inbound transactions evade the $10,000 CTR reporting threshold and are liquidated within minutes via coordinated hardware infrastructure.',
     crime_typology: 'MULE_RING_STRUCTURING_AND_PASS_THROUGH',
