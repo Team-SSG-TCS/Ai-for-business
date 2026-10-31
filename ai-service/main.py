@@ -54,6 +54,7 @@ async def root():
         "endpoints": {
             "graph": f"{settings.API_V1_STR}/graph",
             "investigation": f"{settings.API_V1_STR}/investigation",
+            "simulator": f"{settings.API_V1_STR}/simulator",
             "chat": f"{settings.API_V1_STR}/chat",
             "analyze": f"{settings.API_V1_STR}/analyze",
         }
