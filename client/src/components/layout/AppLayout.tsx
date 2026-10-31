@@ -9,7 +9,7 @@ import { CUSTOMERS, ACCOUNTS, TRANSACTIONS, SUSPICIOUS_NETWORKS } from '../../mo
 
 export type PageId =
   | 'dashboard'
-  | 'faculty-assistant'
+  | 'db-assistant'
   | 'transactions'
   | 'investigation-pipeline'
   | 'data-management'
@@ -44,12 +44,12 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
   // Primary Navigation Items
   const navItems = [
     { id: 'dashboard' as PageId, label: 'Dashboard', icon: LayoutDashboard, badge: null },
-    { id: 'faculty-assistant' as PageId, label: 'Faculty Data Assistant', icon: Sparkles, badge: 'NL Query' },
     { id: 'transactions' as PageId, label: 'Transactions & Scores', icon: ShieldAlert, badge: '38 Critical' },
     { id: 'investigation-pipeline' as PageId, label: 'Investigation Pipeline', icon: Cpu, badge: 'Active AI' },
     { id: 'data-management' as PageId, label: 'Data Ingestion & ETL', icon: Database, badge: 'Ingest' },
     { id: 'reports' as PageId, label: 'Regulatory Reports', icon: FileText, badge: 'FIU-IND' },
     { id: 'settings' as PageId, label: 'Risk Rules & Policy', icon: Settings, badge: null },
+    { id: 'db-assistant' as PageId, label: 'DB Assistant', icon: Sparkles, badge: 'AI Query' },
   ];
 
   // Quick search results
@@ -67,10 +67,10 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
   };
 
   return (
-    <div className="min-h-screen flex bg-[#F8FAFC] text-[#334155]">
+    <div className="h-screen w-screen flex overflow-hidden bg-[#F8FAFC] text-[#334155]">
       {/* 1. LEFT SIDEBAR (Clean Crisp White Theme) */}
       <aside
-        className={`bg-white border-r border-[#E2E8F0] flex flex-col justify-between transition-all duration-200 z-30 shrink-0 shadow-xs ${
+        className={`bg-white border-r border-[#E2E8F0] h-full flex flex-col justify-between transition-all duration-200 z-30 shrink-0 shadow-xs ${
           collapsed ? 'w-20' : 'w-64'
         }`}
       >
@@ -170,7 +170,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
       </aside>
 
       {/* 2. MAIN APPLICATION CONTENT WRAPPER */}
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+      <div className="flex-1 flex flex-col h-full min-w-0 overflow-hidden">
         {/* TOP NAVIGATION BAR */}
         <header className="h-16 bg-white border-b border-[#E2E8F0] px-6 flex items-center justify-between gap-4 shrink-0 z-20 shadow-xs">
           {/* Left: Breadcrumbs & System Status */}
@@ -282,7 +282,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
         )}
 
         {/* MAIN BODY AREA */}
-        <main className="flex-1 overflow-y-auto p-6 md:p-8 bg-[#F8FAFC]">
+        <main className="flex-1 overflow-y-auto p-4 md:p-6 bg-[#F8FAFC]">
           <div className="max-w-7xl mx-auto">
             {children}
           </div>

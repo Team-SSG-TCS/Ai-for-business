@@ -101,11 +101,11 @@ export const DataManagementPage: React.FC<DataManagementPageProps> = ({ onNaviga
 
         <div className="flex items-center gap-2">
           <button
-            onClick={() => onNavigate('faculty-assistant')}
+            onClick={() => onNavigate('db-assistant')}
             className="px-4 py-2 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow-xs transition-colors cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>Faculty Data Assistant (NL Filter)</span>
+            <span>DB Assistant (NL Query)</span>
           </button>
           <button
             onClick={() => onNavigate('transactions')}
