@@ -3,7 +3,7 @@ import { PageId } from '../components/layout/AppLayout';
 import {
   Database, UploadCloud, FileText, CheckCircle2,
   AlertTriangle, Play, RefreshCw, ArrowRight,
-  Layers, Check, Clock, Plus, ShieldCheck
+  Layers, Check, Clock, Plus, ShieldCheck, Sparkles
 } from 'lucide-react';
 
 interface DataManagementPageProps {
@@ -100,6 +100,13 @@ export const DataManagementPage: React.FC<DataManagementPageProps> = ({ onNaviga
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => onNavigate('faculty-assistant')}
+            className="px-4 py-2 bg-[#EA580C] hover:bg-[#C2410C] text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow-xs transition-colors cursor-pointer"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Faculty Data Assistant (NL Filter)</span>
+          </button>
           <button
             onClick={() => onNavigate('transactions')}
             className="px-4 py-2 bg-[#059669] hover:bg-[#047857] text-white rounded-lg text-xs font-bold flex items-center gap-2 shadow-xs transition-colors cursor-pointer"

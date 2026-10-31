@@ -1,3 +1,4 @@
+import { FacultyDataAssistantPage } from './pages/FacultyDataAssistantPage';
 import React, { useState } from 'react';
 import { AppLayout, PageId } from './components/layout/AppLayout';
 import { DashboardPage } from './pages/DashboardPage';
@@ -25,6 +26,8 @@ export const App: React.FC = () => {
 
   const renderPage = () => {
     switch (activePage) {
+      case 'faculty-assistant':
+        return <FacultyDataAssistantPage onNavigate={handleNavigate} />;
       case 'dashboard':
         return <DashboardPage onNavigate={handleNavigate} />;
       case 'transactions':

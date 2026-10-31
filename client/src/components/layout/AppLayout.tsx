@@ -3,12 +3,13 @@ import {
   LayoutDashboard, Database, Network, ShieldAlert, Cpu,
   GitBranch, Smartphone, FolderKanban, FileText, History,
   Settings, ChevronLeft, ChevronRight, Search, Bell,
-  Building, Calendar, Shield, X, CheckCircle2, ArrowRight
+  Building, Calendar, Shield, X, CheckCircle2, ArrowRight, Sparkles
 } from 'lucide-react';
 import { CUSTOMERS, ACCOUNTS, TRANSACTIONS, SUSPICIOUS_NETWORKS } from '../../mock/financialData';
 
 export type PageId =
   | 'dashboard'
+  | 'faculty-assistant'
   | 'transactions'
   | 'investigation-pipeline'
   | 'data-management'
@@ -43,6 +44,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
   // Primary Navigation Items
   const navItems = [
     { id: 'dashboard' as PageId, label: 'Dashboard', icon: LayoutDashboard, badge: null },
+    { id: 'faculty-assistant' as PageId, label: 'Faculty Data Assistant', icon: Sparkles, badge: 'NL Query' },
     { id: 'transactions' as PageId, label: 'Transactions & Scores', icon: ShieldAlert, badge: '38 Critical' },
     { id: 'investigation-pipeline' as PageId, label: 'Investigation Pipeline', icon: Cpu, badge: 'Active AI' },
     { id: 'data-management' as PageId, label: 'Data Ingestion & ETL', icon: Database, badge: 'Ingest' },
