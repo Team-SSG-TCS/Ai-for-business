@@ -24,7 +24,7 @@ export const InvestigationPipelinePage: React.FC<InvestigationPipelinePageProps>
   networkId = 'NET-004',
   onNavigate
 }) => {
-  const [activeTab, setActiveTab] = useState<string>('reasoning'); // Open Stage 4 / Reasoning by default or graph
+  const [activeTab, setActiveTab] = useState<string>('entity-resolution'); // Stage 1 default
   const [isAssistantOpen, setIsAssistantOpen] = useState<boolean>(true);
   const [isSignedOff, setIsSignedOff] = useState<boolean>(false);
   const [investigationData, setInvestigationData] = useState<LangGraphInvestigationResult>(MOCK_LANGGRAPH_RESULT);
