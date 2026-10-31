@@ -1,73 +1,148 @@
-import React from 'react';
-import { Navbar } from './components/layout/Navbar';
+import React, { useState } from 'react';
+import { AnnouncementBar } from './components/layout/AnnouncementBar';
+import { Header } from './components/layout/Header';
+import { Hero } from './components/sections/Hero';
+import { FeatureTabs } from './components/sections/FeatureTabs';
+import { ValueProps } from './components/sections/ValueProps';
+import { LogoMarquee } from './components/sections/LogoMarquee';
+import { AwardsStrip } from './components/sections/AwardsStrip';
+import { SplitFeature } from './components/sections/SplitFeature';
+import { FeatureGrid } from './components/sections/FeatureGrid';
+import { CaseStudies } from './components/sections/CaseStudies';
+import { ProcessStepper } from './components/sections/ProcessStepper';
+import { SecurityBand } from './components/sections/SecurityBand';
+import { IndustryGrid } from './components/sections/IndustryGrid';
+import { NewsGrid } from './components/sections/NewsGrid';
+import { ClosingCTA } from './components/sections/ClosingCTA';
+import { BadgeRow } from './components/sections/BadgeRow';
+import { Footer } from './components/layout/Footer';
+import { DemoModal } from './components/ui/DemoModal';
+
+// Developer Playground components for Hackathon Architecture testing
 import { ServiceStatus } from './components/dashboard/ServiceStatus';
 import { AiTester } from './components/dashboard/AiTester';
 import { DbTester } from './components/dashboard/DbTester';
 import { TeamGuide } from './components/dashboard/TeamGuide';
-import { Zap, Sparkles, Layers, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Terminal, X } from 'lucide-react';
 
 export const App: React.FC = () => {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const [isPlaygroundOpen, setIsPlaygroundOpen] = useState(false);
+
   return (
-    <div className="min-h-screen bg-[#07090e] text-gray-100 flex flex-col font-sans selection:bg-indigo-500 selection:text-white">
-      <Navbar />
+    <div className="min-h-screen flex flex-col bg-[var(--bg-page)] text-[var(--text-body)] selection:bg-[var(--color-brand-500)] selection:text-white">
+      {/* 1. Announcement bar */}
+      <AnnouncementBar />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-        {/* Hero Banner */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-950/60 via-purple-950/40 to-slate-950 border border-indigo-900/30 p-8 sm:p-10 shadow-2xl">
-          <div className="absolute top-0 right-0 -mt-12 -mr-12 w-96 h-96 rounded-full bg-indigo-600/10 blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-1/3 -mb-12 w-64 h-64 rounded-full bg-purple-600/10 blur-2xl pointer-events-none" />
+      {/* 2. Sticky header + mega-menu */}
+      <Header
+        onOpenDemo={() => setIsDemoModalOpen(true)}
+        onTogglePlayground={() => setIsPlaygroundOpen(!isPlaygroundOpen)}
+        isPlaygroundOpen={isPlaygroundOpen}
+      />
 
-          <div className="relative z-10 max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-semibold mb-4">
-              <Zap className="h-3.5 w-3.5" />
-              <span>Fullstack + AI Hackathon Starter Architecture</span>
+      {/* Collapsible Live Architecture Diagnostics Bar (for Hackathon Judges & Devs) */}
+      {isPlaygroundOpen && (
+        <aside
+          aria-label="Developer Architecture Diagnostics"
+          className="bg-[#0b0f19] text-gray-100 border-b border-indigo-900/50 py-8 px-4 sm:px-6 lg:px-8 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300"
+        >
+          <div className="max-w-7xl mx-auto space-y-6">
+            <div className="flex items-center justify-between pb-4 border-b border-gray-800">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center text-indigo-400">
+                  <Terminal className="w-4 h-4" />
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold text-white flex items-center gap-2">
+                    <span>Developer Architecture Hub & Live Diagnostics</span>
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                      Hackathon Mode
+                    </span>
+                  </h2>
+                  <p className="text-xs text-gray-400">
+                    Live end-to-end verification of Supabase PostgreSQL, Node Express backend, and Python FastAPI AI microservice.
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsPlaygroundOpen(false)}
+                className="p-2 rounded-lg bg-gray-900 hover:bg-gray-800 text-gray-400 hover:text-white border border-gray-700 min-h-[44px] min-w-[44px] inline-flex items-center justify-center"
+                aria-label="Close Developer Diagnostics"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
-              Ready-to-Deploy <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400">AI Collaboration Hub</span>
-            </h1>
-            <p className="text-gray-300 text-base sm:text-lg mb-6 leading-relaxed">
-              Engineered for 4-hour hackathons. React 19 + TypeScript frontend with Tailwind CSS, Express Node.js backend with raw Supabase PostgreSQL pooling, and Python FastAPI AI microservice.
-            </p>
 
-            <div className="flex flex-wrap items-center gap-3 text-xs text-gray-300">
-              <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-900/90 border border-gray-800">
-                <Layers className="h-4 w-4 text-cyan-400" />
-                <span>Frontend: React + Vite + Tailwind</span>
-              </span>
-              <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-900/90 border border-gray-800">
-                <ShieldCheck className="h-4 w-4 text-emerald-400" />
-                <span>Backend: Node + Express + Supabase</span>
-              </span>
-              <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-900/90 border border-gray-800">
-                <Sparkles className="h-4 w-4 text-purple-400" />
-                <span>AI Service: FastAPI + Python</span>
-              </span>
+            {/* Live Service Status */}
+            <ServiceStatus />
+
+            {/* Test Playgrounds */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <DbTester />
+              <AiTester />
             </div>
+
+            {/* Team Hackathon Setup Guide */}
+            <TeamGuide />
           </div>
-        </div>
+        </aside>
+      )}
 
-        {/* Live Architecture Connectivity Monitor */}
-        <ServiceStatus />
+      {/* Main Content Landmark (WCAG 2.2) */}
+      <main id="main-content" className="flex-1">
+        {/* 3. Hero */}
+        <Hero onOpenDemo={() => setIsDemoModalOpen(true)} />
 
-        {/* Live Playground Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <DbTester />
-          <AiTester />
-        </div>
+        {/* 4. Feature tabs + product screenshot */}
+        <FeatureTabs />
 
-        {/* Team Collaboration Guide */}
-        <TeamGuide />
+        {/* 5. Value-prop block with 3 stat chips */}
+        <ValueProps />
+
+        {/* 6. Customer logo marquee */}
+        <LogoMarquee />
+
+        {/* 7. Awards strip */}
+        <AwardsStrip />
+
+        {/* 8. Split section (text + product image) */}
+        <SplitFeature onOpenDemo={() => setIsDemoModalOpen(true)} />
+
+        {/* 9. Feature grid (5 items) */}
+        <FeatureGrid />
+
+        {/* 10. Case-study carousel (4 cards) */}
+        <CaseStudies onOpenDemo={() => setIsDemoModalOpen(true)} />
+
+        {/* 11. Numbered process stepper (01-05) */}
+        <ProcessStepper />
+
+        {/* 12. Security band */}
+        <SecurityBand />
+
+        {/* 13. Industries grid (8 tiles) */}
+        <IndustryGrid />
+
+        {/* 14. News / articles (3 cards) */}
+        <NewsGrid />
+
+        {/* 15. Closing CTA + wide banner */}
+        <ClosingCTA onOpenDemo={() => setIsDemoModalOpen(true)} />
+
+        {/* 16. Recognition badges row */}
+        <BadgeRow />
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-900 bg-gray-950 py-6 text-center text-xs text-gray-500">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>AI for Business Hackathon Template • Built for speed & teamwork</span>
-          <span className="flex items-center gap-1 text-gray-400">
-            Happy Hacking! <ArrowRight className="h-3 w-3" />
-          </span>
-        </div>
-      </footer>
+      {/* 17. Footer */}
+      <Footer />
+
+      {/* Accessible Demo Request Modal */}
+      <DemoModal
+        isOpen={isDemoModalOpen}
+        onClose={() => setIsDemoModalOpen(false)}
+      />
     </div>
   );
 };
