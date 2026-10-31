@@ -259,3 +259,4 @@ def generate_interactive_html(seed_id: str = "ALERT-001", radius: int = 2) -> st
 </html>
 """
     return html_content
+

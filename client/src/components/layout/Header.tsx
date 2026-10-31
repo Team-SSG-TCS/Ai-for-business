@@ -28,6 +28,7 @@ import {
 
 interface HeaderProps {
   onOpenDemo: () => void;
+  onOpenPlatform?: () => void;
   onTogglePlayground?: () => void;
   isPlaygroundOpen?: boolean;
 }
@@ -58,6 +59,7 @@ const renderNavIcon = (name: string) => {
 
 export const Header: React.FC<HeaderProps> = ({
   onOpenDemo,
+  onOpenPlatform,
   onTogglePlayground,
   isPlaygroundOpen = false,
 }) => {
@@ -252,30 +254,41 @@ export const Header: React.FC<HeaderProps> = ({
               <button
                 type="button"
                 onClick={onTogglePlayground}
-                className={`hidden md:inline-flex items-center gap-2 h-10 px-3.5 text-[13px] font-semibold rounded-[var(--radius-sm)] border transition-all cursor-pointer ${
+                className={`hidden md:inline-flex items-center gap-2 h-9 px-3 text-[12px] font-semibold rounded-[var(--radius-sm)] border transition-all cursor-pointer ${
                   isPlaygroundOpen
-                    ? 'bg-purple-950/60 border-purple-500 text-purple-300 shadow-sm'
-                    : 'bg-indigo-950/40 border-indigo-900/50 text-indigo-300 hover:bg-indigo-900/40 hover:text-white'
+                    ? 'bg-[var(--color-brand-100)] border-[var(--color-brand-600)] text-[var(--color-brand-400)] shadow-sm'
+                    : 'bg-[#131715] border-[var(--border-strong)] text-[var(--text-body)] hover:bg-[var(--color-brand-50)] hover:text-white'
                 }`}
                 title="Open live backend & AI microservice diagnostics"
               >
-                <Terminal className="w-4 h-4 text-purple-400" aria-hidden="true" />
+                <Terminal className="w-3.5 h-3.5 text-[var(--color-brand-500)]" aria-hidden="true" />
                 <span>{isPlaygroundOpen ? 'Close Dev Hub' : 'Live Dev Hub'}</span>
               </button>
             )}
 
-            {/* Competera Style Navigation Items: About Us + Pricing + Market Test CTA */}
+            {/* Launch Platform Button */}
+            {onOpenPlatform && (
+              <button
+                type="button"
+                onClick={onOpenPlatform}
+                className="hidden lg:inline-flex items-center gap-1.5 h-9 px-3.5 text-[13px] font-bold rounded-[var(--radius-sm)] border border-[var(--color-brand-600)]/60 bg-[var(--color-brand-50)] text-[var(--color-brand-400)] hover:bg-[var(--color-brand-600)] hover:text-black transition-all cursor-pointer shadow-[0_0_15px_rgba(0,208,108,0.2)]"
+              >
+                <span className="w-2 h-2 rounded-full bg-[var(--color-brand-600)] animate-pulse" />
+                <span>Launch Investigator App</span>
+              </button>
+            )}
+
+            {/* Competera Style Navigation Items: About Us + Pricing */}
             <a
               href="#closing-cta"
               className="hidden xl:inline-flex items-center gap-1.5 text-[14px] font-medium text-[var(--text-body)] hover:text-white px-2 cursor-pointer"
             >
-              <span className="w-2 h-2 rounded-full bg-[var(--color-brand-600)] animate-pulse" />
               <span>About us</span>
             </a>
 
             <a
               href="#value-props"
-              className="hidden sm:inline-block text-[14px] font-medium text-white border border-white/20 hover:border-white/50 rounded-[var(--radius-sm)] px-3.5 py-1.5 transition-colors cursor-pointer"
+              className="hidden sm:inline-block text-[14px] font-medium text-white border border-white/20 hover:border-white/50 rounded-[var(--radius-sm)] px-3 py-1.5 text-xs transition-colors cursor-pointer"
             >
               Pricing
             </a>

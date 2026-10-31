@@ -224,6 +224,127 @@ async def list_cases():
     return [c["summary"] for c in DEMO_CASES.values()]
 
 
+# LangGraph Multi-Agent Investigation Endpoints
+# =============================================================================
+
+@router.post("/langgraph/run", summary="Run LangGraph Forensic State Machine on any seed entity")
+def run_langgraph_investigation(
+    seed_id: str = Query(..., description="Target seed entity ID (account number, customer ID, device ID, or IP)"),
+    thread_id: Optional[str] = Query(default=None, description="Optional thread ID for state checkpointing")
+):
+    """
+    Executes the multi-node LangGraph state machine:
+    Triage -> Network Topology -> Prosecution Typology -> Devil's Advocate -> Adjudication -> Remediation.
+    Backed by deterministic LangChain @tool callables with state checkpointing.
+    """
+    from app.services.langgraph_pipeline import compiled_investigation_graph
+    
+    t_id = thread_id or f"thread_{seed_id}_{int(time.time())}"
+    config = {"configurable": {"thread_id": t_id}}
+    
+    initial_state = {
+        "seed_id": seed_id,
+        "seed_type": "",
+        "profile": {},
+        "network_summary": {},
+        "structuring_velocity": {},
+        "swarm_telemetry": {},
+        "benign_context": {},
+        "evidence_items": [],
+        "prosecution_hypothesis": {},
+        "defense_hypothesis": {},
+        "adjudication": {},
+        "sar_report": {},
+        "remediation_status": {},
+        "stage": "INITIATED",
+        "requires_human_approval": False
+    }
+    
+    try:
+        final_state = compiled_investigation_graph.invoke(initial_state, config=config)
+        return {
+            "success": True,
+            "thread_id": t_id,
+            "seed_id": seed_id,
+            "stage": final_state.get("stage"),
+            "seed_type": final_state.get("seed_type"),
+            "prosecution": final_state.get("prosecution_hypothesis"),
+            "defense": final_state.get("defense_hypothesis"),
+            "adjudication": final_state.get("adjudication"),
+            "sar_report": final_state.get("sar_report"),
+            "remediation": final_state.get("remediation_status"),
+            "evidence_count": len(final_state.get("evidence_items", [])),
+            "evidence_items": final_state.get("evidence_items", [])
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"LangGraph execution error: {str(e)}")
+
+
+@router.post("/langgraph/autonomous-scan", summary="Autonomously scan raw database and run LangGraph on all discovered anomalies")
+def autonomous_langgraph_scan():
+    """
+    Scans raw database transactions and devices for anomalies without canned alert labels.
+    Automatically spawns LangGraph investigation runs for each anomalous entity discovered.
+    """
+    from app.services.dataset_analyzer import dataset_analysis_engine
+    from app.services.langgraph_pipeline import compiled_investigation_graph
+    
+    scan_results = dataset_analysis_engine.scan_entire_dataset()
+    remediations = scan_results.get("recommended_remediations", [])
+    
+    candidate_seeds = []
+    seen = set()
+    for rem in remediations:
+        target = rem.get("target_entity")
+        if target and target not in seen:
+            seen.add(target)
+            candidate_seeds.append(target)
+                
+    langgraph_dossiers = []
+    for seed in candidate_seeds[:5]:
+        config = {"configurable": {"thread_id": f"auto_{seed}_{int(time.time())}"}}
+        initial_state = {
+            "seed_id": seed,
+            "seed_type": "",
+            "profile": {},
+            "network_summary": {},
+            "structuring_velocity": {},
+            "swarm_telemetry": {},
+            "benign_context": {},
+            "evidence_items": [],
+            "prosecution_hypothesis": {},
+            "defense_hypothesis": {},
+            "adjudication": {},
+            "sar_report": {},
+            "remediation_status": {},
+            "stage": "INITIATED",
+            "requires_human_approval": False
+        }
+        try:
+            res = compiled_investigation_graph.invoke(initial_state, config=config)
+            langgraph_dossiers.append({
+                "seed_id": seed,
+                "verdict": res.get("adjudication", {}).get("verdict"),
+                "risk_score": res.get("adjudication", {}).get("risk_score"),
+                "legitimacy_score": res.get("adjudication", {}).get("legitimacy_score"),
+                "action": res.get("adjudication", {}).get("recommended_action"),
+                "typology": res.get("prosecution_hypothesis", {}).get("crime_typology"),
+                "defense": res.get("defense_hypothesis", {}).get("counter_theory")
+            })
+        except Exception:
+            continue
+
+    return {
+        "status": "COMPLETED",
+        "total_anomalies_discovered": len(remediations),
+        "unique_seeds_investigated": len(langgraph_dossiers),
+        "dossiers": langgraph_dossiers
+    }
+
+# =============================================================================
+# Legacy Case-Specific Endpoints
+# =============================================================================
+
 @router.get("/{case_id}/graph", response_model=NetworkGraphData, summary="Get network visualizer graph for a case")
 async def get_case_graph(case_id: str):
     """
@@ -323,3 +444,27 @@ async def run_custom_investigation(request: InvestigationRequest):
     case_id = request.case_id or f"CUSTOM-{int(time.time())}"
     return await run_investigation(case_id=case_id, request=request)
 
+
+
+@router.post("/scan-dataset", summary="Autonomously scan entire enterprise dataset, discover anomalies, and plan fixes")
+def scan_dataset_for_anomalies():
+    from app.services.dataset_analyzer import dataset_analysis_engine
+    return dataset_analysis_engine.scan_entire_dataset()
+
+@router.post("/remediate", summary="Execute compliance remediation fix on an anomalous entity")
+def apply_remediation_fix(payload: Dict[str, str] = Body(...)):
+    from app.services.dataset_analyzer import dataset_analysis_engine
+    action_id = payload.get("action_id", "ACT-001")
+    action_type = payload.get("action_type", "FREEZE_ACCOUNT")
+    target_entity = payload.get("target_entity", "")
+    if not target_entity:
+        raise HTTPException(status_code=400, detail="target_entity is required")
+    return dataset_analysis_engine.execute_remediation_fix(action_id, action_type, target_entity)
+
+@router.get("/remediation-audit", summary="Get audit trail of all applied compliance remediation fixes")
+def get_remediation_audit():
+    from app.services.dataset_analyzer import dataset_analysis_engine
+    return dataset_analysis_engine.remediation_audit_log
+
+
+# =============================================================================
