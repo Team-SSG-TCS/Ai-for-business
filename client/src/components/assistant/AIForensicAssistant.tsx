@@ -79,39 +79,50 @@ export const AIForensicAssistant: React.FC<AIForensicAssistantProps> = ({
     (async () => {
       let replyText = '';
       let replyBreakdown = undefined;
-
       const lower = text.toLowerCase();
-      if (lower.includes('score') || lower.includes('calculate') || lower.includes('how')) {
-        replyText = `The composite risk score of ${riskScore}/100 was computed dynamically using our multi-factor econometric risk model. Here is the exact audit breakdown:`;
+
+      // If asking specifically for score breakdown, attach the structured matrix
+      if (lower.includes('score') || lower.includes('calculate') || lower.includes('audit matrix')) {
         replyBreakdown = [
           { factor: 'Base Account Baseline', impact: 'Neutral', points: 10, description: 'Standard baseline retail account score.' },
-          { factor: 'VPN / Proxy Hosting Node', impact: '+20 Points', points: 20, description: 'Originating IP 185.220.101.45 belongs to an offshore bulletproof server block.' },
-          { factor: 'Android Emulator Environment', impact: '+50 Points', points: 50, description: 'Client terminal DEV-F8821 reports build.prop qemu=1 and lacks native battery sensors.' },
-          { factor: 'Circular Money Mule Ring', impact: '+15 Points', points: 15, description: 'Rapid fund dispersal split into 2 accounts and ₹1.5L recycled to origin.' },
-          { factor: 'Verified KYC Dampener', impact: '-10 Points', points: -10, description: 'PAN Card validation on file partially mitigates identity fraud score.' }
+          { factor: 'VPN / Proxy Hosting Node', impact: '+20 Points', points: 20, description: 'Originating IP belongs to an anonymizing proxy pool.' },
+          { factor: 'Android Emulator Environment', impact: '+50 Points', points: 50, description: 'Client terminal reports QEMU virtual machine hooks and null sensor vectors.' },
+          { factor: 'Circular Money Mule Ring', impact: '+15 Points', points: 15, description: 'Rapid fund dispersal followed by kickback return loop.' },
+          { factor: 'Verified KYC Dampener', impact: '-10 Points', points: -10, description: 'Verified credentials partially mitigate synthetic identity fraud score.' }
         ];
-      } else if (lower.includes('emulator') || lower.includes('device') || lower.includes('bluestacks')) {
-        replyText = `Device DEV-F8821 was flagged as a Virtualized Android Emulator based on 4 independent telemetry markers:\n1. build.prop contains "ro.kernel.qemu=1" and "ro.hardware=goldfish".\n2. SensorManager reports a static 0.0, 9.8, 0.0 vector for accelerometer with 0Hz drift.\n3. Battery reporting API returns null charging cycles and fixed 100% AC state.\n4. Device ID is simultaneously bound to 4 unrelated customer accounts (Vikram Mehra, Priya Sharma, Amit Verma, Ramesh Chawla).`;
-      } else if (lower.includes('alternative') || lower.includes('benign') || lower.includes('payroll')) {
-        replyText = `The Alternative Explanations Agent evaluated 2 benign scenarios:\n\n• Hypothesis B1 (Corporate Payroll): Rejected because outward transfers were immediate (<19 mins) and ₹1,50,000 was routed back to the primary account within the same cycle, which is incompatible with salary disbursement.\n• Hypothesis B2 (Shared Office Wi-Fi): Rejected because the tie is at the physical hardware IMEI layer (DEV-F8821), not a local area network IP.`;
-      } else if (lower.includes('str') || lower.includes('narrative') || lower.includes('fiu') || lower.includes('report')) {
-        replyText = `Draft FIU-IND STR Narrative Summary:\n\n"Subject Vikram Mehra (ACC-9004) received ₹10,00,000 on Oct 28, 2026. Within 18 minutes, ₹5,00,000 was disbursed to Priya Sharma (ACC-9019) and ₹5,00,000 to Amit Verma (ACC-9042). Both transactions originated from emulator terminal DEV-F8821 routed through Tor IP 185.220.101.45. A circular refund of ₹1,50,000 returned to source from intermediary ACC-9088. This activity matches structured layering and money mule orchestration under PMLA Section 3."`;
-      } else {
-        replyText = `Based on current network telemetry for ${transactionId}, this transaction has a 94.6% statistical correlation with Money Mule Ring operations. Recommended actions: Place debit freeze on Account ACC-9004, suspend digital banking credentials for DEV-F8821, and file regulatory STR disclosure with FIU-IND.`;
       }
 
-      // If user asks a general question, attempt live LLM prompt
+      // Primary: Dispatch to live LLM Assistant (Groq / Gemini / DeepSeek with Guardrails)
+      try {
+        const aiRes = await sendAiPrompt({
+          prompt: `You are an AI Forensic Financial Crime Investigator analyzing Case ${transactionId} (Subject: ${customerName}, Value: ${amount}, Risk Score: ${riskScore}/100). The investigator asked: "${text}". Provide a crisp, authoritative forensic response citing specific indicators and regulatory compliance standards (PMLA 2002 / FIU-IND / BSA). Keep it under 3 concise paragraphs.`,
+          preset: 'business_assistant',
+          enable_guardrails: true
+        });
+        if (aiRes && aiRes.response) {
+          replyText = aiRes.response;
+        }
+      } catch (e) {
+        console.warn('Live LLM call error, using local fallback:', e);
+      }
+
+      // Fallback: If live LLM is unreachable or timed out
       if (!replyText) {
-        try {
-          const aiRes = await sendAiPrompt({
-            prompt: `You are an AI Forensic Financial Crime Investigator. Context: Subject Vikram Mehra, transaction ${transactionId}, value ${amount}, risk score ${riskScore}. User asked: "${text}". Answer concisely with exact forensic observations.`,
-            preset: 'business_assistant'
-          });
-          if (aiRes && aiRes.response) {
-            replyText = aiRes.response;
-          }
-        } catch (e) {
-          replyText = `Based on current network telemetry for ${transactionId}, this transaction has a 94.6% statistical correlation with Money Mule Ring operations. Recommended actions: Place debit freeze on Account ACC-9004, suspend digital banking credentials for DEV-F8821, and file regulatory STR disclosure with FIU-IND.`;
+        if (lower.includes('emulator') || lower.includes('device') || lower.includes('bluestacks')) {
+          replyText = `Hardware analysis flags a Virtualized Android Emulator based on 4 telemetry markers:
+1. build.prop contains "ro.kernel.qemu=1" and "ro.hardware=goldfish".
+2. SensorManager reports a static 0.0, 9.8, 0.0 accelerometer vector.
+3. Battery API reports static 100% AC power state without charging cycles.
+4. Single device IMEI is bound across multiple unrelated customer accounts.`;
+        } else if (lower.includes('alternative') || lower.includes('benign') || lower.includes('payroll')) {
+          replyText = `The Alternative Explanations Agent evaluated benign scenarios:
+• Corporate Payroll: Rejected because outward transfers were immediate (<18 mins) and funds cycled back to the sender.
+• Shared Wi-Fi: Rejected because accounts are linked by hardware IMEI, not local IP.`;
+        } else if (lower.includes('str') || lower.includes('narrative') || lower.includes('fiu')) {
+          replyText = `Draft FIU-IND STR Narrative Summary:
+"Subject ${customerName} (${transactionId}) received ${amount}. Funds were immediately split into secondary mule accounts and partially looped back. Operations originated from a virtualized device routed via proxy relays, violating PMLA Section 3."`;
+        } else {
+          replyText = `Based on forensic network telemetry for ${transactionId} (Risk Score: ${riskScore}/100), this activity correlates with organized money mule ring operations. Recommended action: Place compliance freeze on affected accounts and submit an STR filing.`;
         }
       }
 
