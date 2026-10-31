@@ -13,6 +13,7 @@ from fastapi.responses import HTMLResponse
 from app.core.config import settings
 from app.api.v1.api import api_router
 from app.services.graph_visualizer import generate_interactive_html
+from app.services.langgraph_visualizer import generate_langgraph_html
 import uvicorn
 
 app = FastAPI(
@@ -41,6 +42,11 @@ async def get_graph_visualization(seed_id: str = Query(default="ALERT-001"), rad
     """
     return generate_interactive_html(seed_id=seed_id, radius=radius)
 
+# Interactive LangGraph Multi-Agent Visualizer Route
+@app.get("/langgraph-view", response_class=HTMLResponse, tags=["Visualization"])
+async def get_langgraph_visualization():
+    return generate_langgraph_html()
+
 # Root Index
 @app.get("/", tags=["General"])
 async def root():
@@ -51,6 +57,7 @@ async def root():
         "docs": "/docs",
         "health": "/health",
         "graph_view": "/graph-view",
+        "langgraph_view": "/langgraph-view",
         "endpoints": {
             "graph": f"{settings.API_V1_STR}/graph",
             "investigation": f"{settings.API_V1_STR}/investigation",
