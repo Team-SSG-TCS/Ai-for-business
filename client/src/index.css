@@ -9,7 +9,7 @@
   html {
     scroll-behavior: smooth;
     font-size: 100%;
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   body {
@@ -43,16 +43,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #08090A;
+    background: #F1F5F9;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #1C2420;
+    background: #CBD5E1;
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #2A3630;
+    background: #94A3B8;
   }
 
   :focus-visible {
@@ -61,43 +61,43 @@
   }
 }
 
-/* Competera Electric Ambient Aurora Glow */
-.ambient-green-glow {
-  background: radial-gradient(circle at 10% 20%, rgba(0, 208, 108, 0.12) 0%, transparent 55%),
-              radial-gradient(circle at 90% 60%, rgba(16, 185, 129, 0.06) 0%, transparent 50%);
-}
-
-/* Card utilities */
+/* Crisp Clean Enterprise Utility Classes */
 .nexus-card {
-  background-color: var(--bg-card);
+  background-color: #FFFFFF;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-xs);
+  transition: all var(--dur-fast) ease;
 }
 
-.nexus-card-elevated {
-  background-color: #161C19;
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
+.nexus-card:hover {
+  box-shadow: var(--shadow-sm);
 }
 
-/* Radar pulse for running agents */
-@keyframes radar-pulse {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(0, 208, 108, 0.7);
-  }
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 6px rgba(0, 208, 108, 0);
-  }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(0, 208, 108, 0);
-  }
+.badge-critical {
+  background-color: #FEF2F2;
+  color: #DC2626;
+  border: 1px solid #FECACA;
 }
 
-.animate-radar {
-  animation: radar-pulse 2s infinite;
+.badge-high {
+  background-color: #FFF7ED;
+  color: #EA580C;
+  border: 1px solid #FFEDD5;
+}
+
+.badge-medium {
+  background-color: #FEFCE8;
+  color: #CA8A04;
+  border: 1px solid #FEF08A;
+}
+
+.badge-low {
+  background-color: #F0FDF4;
+  color: #16A34A;
+  border: 1px solid #DCFCE7;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
