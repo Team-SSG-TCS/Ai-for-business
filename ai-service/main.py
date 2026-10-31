@@ -73,7 +73,6 @@ async def health_check():
 app.include_router(api_router, prefix=settings.API_V1_STR)
 
 if __name__ == "__main__":
-    print(f"🚀 Starting FastAPI AI service on http://{settings.HOST}:{settings.PORT}")
-    print(f"🕸️ Interactive Network Visualizer at http://localhost:{settings.PORT}/graph-view")
-    print(f"📖 Interactive Swagger Docs available at http://localhost:{settings.PORT}/docs")
-    uvicorn.run("main:app", host=settings.HOST, port=settings.PORT, reload=settings.DEBUG, reload_dirs=["app"])
+    print(f"Starting FastAPI AI service on http://{settings.HOST}:{settings.PORT}")
+    print(f" Interactive Swagger Docs available at http://localhost:{settings.PORT}/docs")
+    uvicorn.run("main:app", host=settings.HOST, port=settings.PORT, reload=settings.DEBUG)
