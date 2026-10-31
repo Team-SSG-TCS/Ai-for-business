@@ -279,7 +279,7 @@ export const InvestigationPipelinePage: React.FC<InvestigationPipelinePageProps>
               </span>
             </div>
             <div className="text-xs text-[#64748B] mt-0.5">
-              Subject: <strong>{investigationData.profile?.customer_name || investigationData.seed_id}</strong> ({investigationData.profile?.bank || 'Core Banking'}: {investigationData.seed_id}) → {investigationData.prosecution?.crime_typology || 'Multi-Hop Laundering Analysis'}
+              Subject: <strong>{(investigationData.profile?.customer?.full_name || investigationData.profile?.customer_name) || investigationData.seed_id}</strong> ({investigationData.profile?.bank || 'Core Banking'}: {investigationData.seed_id}) → {investigationData.prosecution?.crime_typology || 'Multi-Hop Laundering Analysis'}
             </div>
           </div>
         </div>
@@ -896,7 +896,7 @@ export const InvestigationPipelinePage: React.FC<InvestigationPipelinePageProps>
               <div className="p-5 bg-[#F8FAFC] border border-[#E2E8F0] rounded-xl space-y-4 text-xs text-[#334155] leading-relaxed font-mono">
                 <div>
                   <span className="font-bold text-[#0F172A] block uppercase">1. Case Subject & Classification:</span>
-                  <span>Primary Subject: {investigationData.profile?.customer_name || investigationData.seed_id} | Account: {investigationData.seed_id} | Classification: {investigationData.prosecution?.crime_typology || 'Organized Mule Syndicate'}.</span>
+                  <span>Primary Subject: {(investigationData.profile?.customer?.full_name || investigationData.profile?.customer_name) || investigationData.seed_id} | Account: {investigationData.seed_id} | Classification: {investigationData.prosecution?.crime_typology || 'Organized Mule Syndicate'}.</span>
                 </div>
 
                 <div>
@@ -953,7 +953,7 @@ export const InvestigationPipelinePage: React.FC<InvestigationPipelinePageProps>
             <AIForensicAssistant
               transactionId={investigationData.seed_id || transactionId}
               riskScore={riskScore}
-              customerName={investigationData.profile?.customer_name || 'Vikram Mehra'}
+              customerName={(investigationData.profile?.customer?.full_name || investigationData.profile?.customer_name) || 'Vikram Mehra'}
               amount={investigationData.network_summary?.total_subgraph_flow_volume ? `$${investigationData.network_summary.total_subgraph_flow_volume.toLocaleString()}` : '₹10,00,000'}
               onClose={() => setIsAssistantOpen(false)}
             />
