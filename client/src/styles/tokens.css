@@ -1,96 +1,80 @@
 :root {
-  /* Competera Signature Brand Green */
-  --color-brand-50:  #0D2619;
-  --color-brand-100: #113B26;
+  /* Crisp Enterprise Emerald & Navy Brand */
+  --color-brand-50:  #ECFDF5;
+  --color-brand-100: #D1FAE5;
   --color-brand-400: #34D399;
   --color-brand-500: #10B981;
-  --color-brand-600: #00D06C;   /* PRIMARY COMPETERA ELECTRIC GREEN */
-  --color-brand-700: #05B860;   /* hover */
-  --color-brand-800: #03964E;   /* active */
+  --color-brand-600: #059669;   /* Crisp Enterprise Emerald */
+  --color-brand-700: #047857;   /* hover */
+  --color-brand-800: #065F46;   /* active */
 
-  /* Neutrals ("ink" - Obsidian dark scale) */
-  --color-ink-900: #FFFFFF;
-  --color-ink-800: #F3F4F6;
-  --color-ink-700: #D1D5DB;
-  --color-ink-500: #9CA3AF;
-  --color-ink-400: #6B7280;
-  --color-ink-300: #374151;
-  --color-ink-200: #1F2937;
-  --color-ink-100: #111827;
+  /* Neutrals ("ink" - Clean White / Slate scale) */
+  --color-ink-900: #0F172A; /* Slate 900 */
+  --color-ink-800: #1E293B; /* Slate 800 */
+  --color-ink-700: #334155; /* Slate 700 */
+  --color-ink-600: #475569; /* Slate 600 */
+  --color-ink-500: #64748B; /* Slate 500 */
+  --color-ink-400: #94A3B8; /* Slate 400 */
+  --color-ink-300: #CBD5E1; /* Slate 300 */
+  --color-ink-200: #E2E8F0; /* Slate 200 */
+  --color-ink-100: #F1F5F9; /* Slate 100 */
+  --color-ink-50:  #F8FAFC; /* Slate 50 */
 
-  /* Surfaces - Obsidian dark base */
-  --color-surface:         #08090A;
-  --color-surface-alt:     #0D110F;
-  --color-surface-card:    #131715;
-  --color-surface-inverse: #040505;
+  /* Surfaces - Clean Light / White base */
+  --color-surface:         #F8FAFC;
+  --color-surface-alt:     #F1F5F9;
+  --color-surface-card:    #FFFFFF;
+  --color-surface-inverse: #0F172A;
 
   /* Semantic */
-  --color-success-600: #00D06C;  --color-success-50: #0B2417;
-  --color-warning-600: #F59E0B;  --color-warning-50: #291B05;
-  --color-danger-600:  #EF4444;  --color-danger-50:  #290B0B;
-  --color-info-600:    #3B82F6;  --color-info-50:    #0B1B36;
-  --color-rating:      #FFB400;       /* review stars only */
+  --color-success-600: #059669;  --color-success-50: #ECFDF5;
+  --color-warning-600: #D97706;  --color-warning-50: #FFFBEB;
+  --color-danger-600:  #DC2626;  --color-danger-50:  #FEF2F2;
+  --color-info-600:    #2563EB;  --color-info-50:    #EFF6FF;
+  --color-rating:      #F59E0B;
 
-  /* Role aliases (components use ONLY these) */
-  --text-heading:   #FFFFFF;
-  --text-body:      #D1D5DB;
-  --text-muted:     #9CA3AF;
-  --text-on-brand:  #000000;          /* High-contrast black on electric green CTA */
+  /* Role aliases */
+  --text-heading:   #0F172A;
+  --text-body:      #334155;
+  --text-muted:     #64748B;
+  --text-on-brand:  #FFFFFF;
   --text-link:      var(--color-brand-600);
-  --border-subtle:  #1C2420;
-  --border-strong:  #2A3630;
-  --bg-page:        var(--color-surface);
-  --bg-section-alt: var(--color-surface-alt);
-  --bg-card:        var(--color-surface-card);
-  --bg-chip:        #111915;
+  --border-subtle:  #E2E8F0;
+  --border-strong:  #CBD5E1;
+  --bg-page:        #F8FAFC;
+  --bg-section-alt: #F1F5F9;
+  --bg-card:        #FFFFFF;
+  --bg-chip:        #F1F5F9;
   --focus-ring:     var(--color-brand-600);
 
   /* Primary Theme Aliases */
-  --color-primary:  #00D06C;
-  --color-primary-hover: #05B860;
-  --color-secondary:#06B6D4;
-  --color-success:  #00D06C;
-  --color-warning:  #F59E0B;
-  --color-critical: #EF4444;
+  --color-primary:  #059669;
+  --color-primary-hover: #047857;
+  --color-secondary:#0284C7;
+  --color-success:  #059669;
+  --color-warning:  #D97706;
+  --color-critical: #DC2626;
 
   /* Typography */
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
   /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-pill: 9999px;
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   18px;
+  --radius-pill: 999px;
 
-  /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.6);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.8);
+  /* Elevation (Clean crisp shadows for white cards) */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.03);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
 
-  /* Motion */
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  /* Animation Durations */
   --dur-fast: 150ms;
   --dur-base: 220ms;
   --dur-slow: 380ms;
-  --dur-reveal: 500ms;
-}
-
-[data-theme="light"], :root[data-theme="light"] {
-  --color-brand-50:  #ECFDF5;
-  --color-brand-100: #D1FAE5;
-  --color-surface:         #FFFFFF;
-  --color-surface-alt:     #F4F9F6;
-  --color-surface-card:    #FFFFFF;
-  --text-heading:   #0B1220;
-  --text-body:      #2B3445;
-  --text-muted:     #5B6577;
-  --text-on-brand:  #FFFFFF;
-  --border-subtle:  #E2E8E4;
-  --border-strong:  #CBD5CE;
-  --bg-page:        var(--color-surface);
-  --bg-section-alt: var(--color-surface-alt);
-  --bg-card:        var(--color-surface-card);
-  --bg-chip:        var(--color-brand-50);
 }

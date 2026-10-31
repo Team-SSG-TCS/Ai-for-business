@@ -296,7 +296,7 @@ export const DEVICES: Device[] = Array.from({ length: 40 }, (_, i) => {
     os: isTargetShared ? 'Android 11 (QEMU_VM_DETECTED)' : (isEmulatorDevice ? 'Android 10 (Bluestacks_x86)' : osList[i % osList.length]),
     isEmulator: isTargetShared || isEmulatorDevice,
     emulatorIndicators: (isTargetShared || isEmulatorDevice)
-      ? ['build.prop qemu=1 detected', 'SensorManager: Accelerometer dummy static', 'Null battery hardware report', 'Goldfish kernel driver hook']
+      ? ['build.prop qemu=1 detected', 'SensorManager: Accelerometer static vector spoofed', 'Null battery hardware report', 'Goldfish kernel driver hook']
       : [],
     isRooted: isTargetShared || i % 7 === 0,
     firstSeen: '2026-09-12 04:12:00 IST',

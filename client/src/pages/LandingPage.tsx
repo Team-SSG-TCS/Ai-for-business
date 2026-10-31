@@ -64,13 +64,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onOpenPlatform }) => {
         <AwardsStrip />
 
         {/* 8. Split Section (Text + Product Visual) */}
-        <SplitFeature />
+        <SplitFeature onOpenDemo={handleOpenDemo} />
 
         {/* 9. Feature Grid (5 items) */}
         <FeatureGrid />
 
         {/* 10. Case-Study Carousel (4 cards) */}
-        <CaseStudies />
+        <CaseStudies onOpenDemo={handleOpenDemo} />
 
         {/* 11. Numbered Process Stepper (01-05) */}
         <ProcessStepper />
