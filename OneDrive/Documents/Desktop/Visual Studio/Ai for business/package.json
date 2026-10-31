@@ -1,0 +1,26 @@
+{
+  "name": "ai-for-business-hackathon",
+  "version": "1.0.0",
+  "description": "Fullstack AI Hackathon Monorepo: React Client + Express Backend + FastAPI AI Service",
+  "scripts": {
+    "dev": "concurrently -n \"CLIENT,BACKEND,AI\" -c \"cyan,green,magenta\" \"npm run dev:client\" \"npm run dev:backend\" \"npm run dev:ai\"",
+    "dev:client": "npm --prefix client run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:ai": "cd ai-service && python main.py",
+    "build:client": "npm --prefix client run build",
+    "install:all": "npm --prefix client install && npm --prefix backend install && cd ai-service && pip install -r requirements.txt"
+  },
+  "keywords": [
+    "hackathon",
+    "fastapi",
+    "react",
+    "tailwind",
+    "express",
+    "supabase"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

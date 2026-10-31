@@ -1,0 +1,12 @@
+const express = require('express');
+const router = express.Router();
+const { getItems, createItem, deleteItem } = require('../controllers/items.controller');
+
+router.route('/')
+  .get(getItems)
+  .post(createItem);
+
+router.route('/:id')
+  .delete(deleteItem);
+
+module.exports = router;
