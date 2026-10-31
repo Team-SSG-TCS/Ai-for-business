@@ -43,6 +43,7 @@ async def root():
         "endpoints": {
             "chat": f"{settings.API_V1_STR}/chat",
             "analyze": f"{settings.API_V1_STR}/analyze",
+            "graph": f"{settings.API_V1_STR}/graph",
         }
     }
 
@@ -62,4 +63,4 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 if __name__ == "__main__":
     print(f"🚀 Starting FastAPI AI service on http://{settings.HOST}:{settings.PORT}")
     print(f"📖 Interactive Swagger Docs available at http://localhost:{settings.PORT}/docs")
-    uvicorn.run("main:app", host=settings.HOST, port=settings.PORT, reload=settings.DEBUG)
+    uvicorn.run("main:app", host=settings.HOST, port=settings.PORT, reload=settings.DEBUG, reload_dirs=["app"])
