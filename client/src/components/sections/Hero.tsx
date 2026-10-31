@@ -7,9 +7,10 @@ import { TrendingUp, CheckCircle, ArrowUpRight, ShieldCheck, Activity, Star } fr
 
 interface HeroProps {
   onOpenDemo: () => void;
+  onOpenPlatform?: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenDemo, onOpenPlatform }) => {
   const { eyebrow, titleRegular, titleBold, supportingCopy, primaryCta, secondaryCta, socialProof, dashboardPreview } = heroContent;
 
   return (
@@ -59,6 +60,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemo }) => {
             >
               {primaryCta.label}
             </Button>
+            {onOpenPlatform && (
+              <Button
+                variant="secondary"
+                size="lg"
+                onClick={onOpenPlatform}
+                className="w-full sm:w-auto border-[var(--color-brand-600)]/70 text-[var(--color-brand-400)] hover:bg-[var(--color-brand-50)] hover:text-white"
+              >
+                Launch Live App →
+              </Button>
+            )}
           </div>
 
           {/* Social Proof Review Row (Matching Image 2: Capterra 5.0, G2 4.9, Crozdesk 4.9) */}

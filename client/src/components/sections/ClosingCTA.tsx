@@ -22,7 +22,7 @@ export const ClosingCTA: React.FC<ClosingCTAProps> = ({ onOpenDemo }) => {
 
       <Container className="relative z-10">
         <div className="max-w-3xl mx-auto text-center space-y-6 mb-12 sm:mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-semibold bg-white/10 text-indigo-300 border border-white/15">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[12px] font-semibold bg-[var(--color-brand-50)] text-[var(--color-brand-400)] border border-[var(--color-brand-600)]/30">
             <ShieldCheck className="w-3.5 h-3.5" aria-hidden="true" />
             <span>{metricBadge}</span>
           </span>
