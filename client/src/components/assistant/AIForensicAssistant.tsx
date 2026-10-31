@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { sendAiPrompt } from '../../services/api';
 import {
   Bot, Send, Sparkles, AlertTriangle, ShieldCheck,
   ChevronRight, RefreshCw, X, MessageSquare, Terminal, HelpCircle
@@ -74,7 +75,8 @@ export const AIForensicAssistant: React.FC<AIForensicAssistantProps> = ({
     if (!textToSend) setInputValue('');
     setIsTyping(true);
 
-    setTimeout(() => {
+    // Live AI Call with Heuristic Fallback
+    (async () => {
       let replyText = '';
       let replyBreakdown = undefined;
 
@@ -98,6 +100,21 @@ export const AIForensicAssistant: React.FC<AIForensicAssistantProps> = ({
         replyText = `Based on current network telemetry for ${transactionId}, this transaction has a 94.6% statistical correlation with Money Mule Ring operations. Recommended actions: Place debit freeze on Account ACC-9004, suspend digital banking credentials for DEV-F8821, and file regulatory STR disclosure with FIU-IND.`;
       }
 
+      // If user asks a general question, attempt live LLM prompt
+      if (!replyText) {
+        try {
+          const aiRes = await sendAiPrompt({
+            prompt: `You are an AI Forensic Financial Crime Investigator. Context: Subject Vikram Mehra, transaction ${transactionId}, value ${amount}, risk score ${riskScore}. User asked: "${text}". Answer concisely with exact forensic observations.`,
+            preset: 'business_assistant'
+          });
+          if (aiRes && aiRes.response) {
+            replyText = aiRes.response;
+          }
+        } catch (e) {
+          replyText = `Based on current network telemetry for ${transactionId}, this transaction has a 94.6% statistical correlation with Money Mule Ring operations. Recommended actions: Place debit freeze on Account ACC-9004, suspend digital banking credentials for DEV-F8821, and file regulatory STR disclosure with FIU-IND.`;
+        }
+      }
+
       const aiMsg: Message = {
         id: `ai-${Date.now()}`,
         sender: 'ai',
@@ -108,7 +125,7 @@ export const AIForensicAssistant: React.FC<AIForensicAssistantProps> = ({
 
       setMessages(prev => [...prev, aiMsg]);
       setIsTyping(false);
-    }, 700);
+    })();
   };
 
   const sampleQuestions = [

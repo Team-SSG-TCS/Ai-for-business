@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { PageId } from '../components/layout/AppLayout';
 import {
   Database, UploadCloud, FileText, CheckCircle2,
@@ -15,6 +15,62 @@ export const DataManagementPage: React.FC<DataManagementPageProps> = ({ onNaviga
   const [selectedCategory, setSelectedCategory] = useState<string>('Transactions Stream');
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
   const [ingestionCompleted, setIngestionCompleted] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [selectedFileName, setSelectedFileName] = useState<string | null>(null);
+  const [extractedSeedId, setExtractedSeedId] = useState<string>('ACCT-US-1001');
+
+  const handleBrowseClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    fileInputRef.current?.click();
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setSelectedFileName(file.name);
+    setUploadProgress(0);
+    setIngestionCompleted(false);
+
+    // Read file contents to inspect seed entity
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const content = (event.target?.result as string) || '';
+      if (content.includes('128.146.172.84')) {
+        setExtractedSeedId('128.146.172.84');
+      } else if (content.includes('ACCT-US-1001')) {
+        setExtractedSeedId('ACCT-US-1001');
+      } else if (content.includes('ACCT-CORP-MAIN')) {
+        setExtractedSeedId('ACCT-CORP-MAIN');
+      } else {
+        setExtractedSeedId('ACCT-US-1001');
+      }
+    };
+    reader.readAsText(file);
+
+    // Animate progress bar
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 25;
+      setUploadProgress(progress);
+      if (progress >= 100) {
+        clearInterval(interval);
+        setIngestionCompleted(true);
+        setIngestedBatches(prev => [
+          {
+            id: `BATCH-${Date.now().toString().slice(-4)}`,
+            name: file.name,
+            category: selectedCategory,
+            size: `${(file.size / 1024).toFixed(1)} KB`,
+            records: 125,
+            uploadedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' IST',
+            status: 'Enriched & Scored'
+          },
+          ...prev
+        ]);
+      }
+    }, 150);
+  };
 
   // Manual Form State
   const [manualForm, setManualForm] = useState({
@@ -173,9 +229,18 @@ export const DataManagementPage: React.FC<DataManagementPageProps> = ({ onNaviga
             </div>
           </div>
 
+          {/* Hidden Native File Input */}
+          <input
+            type="file"
+            ref={fileInputRef}
+            onChange={handleFileChange}
+            accept=".csv,.xlsx,.json,.txt"
+            className="hidden"
+          />
+
           {/* Drag & Drop Zone */}
           <div
-            onClick={handleSimulateUpload}
+            onClick={handleBrowseClick}
             className="border-2 border-dashed border-[#CBD5E1] hover:border-[#059669] rounded-xl p-8 flex flex-col items-center justify-center text-center cursor-pointer bg-[#F8FAFC] hover:bg-[#ECFDF5]/30 transition-all group"
           >
             <div className="w-14 h-14 rounded-full bg-[#ECFDF5] border border-[#A7F3D0] flex items-center justify-center text-[#059669] mb-3 group-hover:scale-105 transition-transform">
@@ -183,15 +248,23 @@ export const DataManagementPage: React.FC<DataManagementPageProps> = ({ onNaviga
             </div>
 
             <h3 className="text-sm font-bold text-[#0F172A]">
-              Click or drag and drop your <span className="text-[#059669] font-bold">{selectedCategory}</span> file here
+              {selectedFileName ? (
+                <span>Selected: <strong className="text-[#059669]">{selectedFileName}</strong></span>
+              ) : (
+                <span>Click or drag and drop your <span className="text-[#059669] font-bold">{selectedCategory}</span> file here</span>
+              )}
             </h3>
             <p className="text-xs text-[#64748B] mt-1 max-w-md">
               Supports CSV, XLSX, JSON, or ISO 20022 XML formats. Maximum file size: 250 MB.
             </p>
 
             <div className="mt-4 flex items-center gap-3">
-              <button className="px-4 py-2 bg-white group-hover:bg-[#059669] text-[#334155] group-hover:text-white rounded-lg text-xs font-semibold border border-[#CBD5E1] transition-colors shadow-xs">
-                Browse System Files
+              <button
+                type="button"
+                onClick={handleBrowseClick}
+                className="px-4 py-2 bg-white group-hover:bg-[#059669] text-[#334155] group-hover:text-white rounded-lg text-xs font-bold border border-[#CBD5E1] transition-colors shadow-xs cursor-pointer"
+              >
+                Browse System Files 📂
               </button>
             </div>
 
@@ -223,13 +296,20 @@ export const DataManagementPage: React.FC<DataManagementPageProps> = ({ onNaviga
                 </div>
               </div>
 
-              <button
-                onClick={() => onNavigate('transactions')}
-                className="px-3.5 py-1.5 bg-[#059669] hover:bg-[#047857] text-white rounded text-xs font-semibold flex items-center gap-1.5 shadow-xs"
-              >
-                <span>View in Transactions List</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => onNavigate('transactions')}
+                  className="px-3 py-1.5 bg-white hover:bg-[#F8FAFC] text-[#334155] border border-[#CBD5E1] rounded text-xs font-semibold"
+                >
+                  View Transactions
+                </button>
+                <button
+                  onClick={() => onNavigate('investigation-pipeline', { transactionId: extractedSeedId, networkId: 'NET-004' })}
+                  className="px-3.5 py-1.5 bg-[#059669] hover:bg-[#047857] text-white rounded text-xs font-bold flex items-center gap-1.5 shadow-xs transition"
+                >
+                  <span>Launch LangGraph Investigation ➔</span>
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -249,9 +329,18 @@ export const DataManagementPage: React.FC<DataManagementPageProps> = ({ onNaviga
           </div>
 
           {manualSuccess && (
-            <div className="p-3 bg-[#ECFDF5] border border-[#A7F3D0] rounded-lg text-xs text-[#065F46] flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" />
-              <span>Transaction successfully ingested and passed through the 9-stage investigation pipeline!</span>
+            <div className="p-4 bg-[#ECFDF5] border border-[#A7F3D0] rounded-xl flex items-center justify-between text-xs text-[#065F46]">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#059669]" />
+                <span>Transaction successfully ingested into live financial graph!</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => onNavigate('investigation-pipeline', { transactionId: extractedSeedId, networkId: 'NET-004' })}
+                className="px-3 py-1 bg-[#059669] hover:bg-[#047857] text-white rounded font-bold flex items-center gap-1 shadow-xs"
+              >
+                <span>Investigate via LangGraph ➔</span>
+              </button>
             </div>
           )}
 
