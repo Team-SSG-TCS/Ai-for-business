@@ -114,3 +114,4 @@ class GraphData(BaseModel):
     nodes: List[GraphNode]
     links: List[GraphLink]
     metrics: Dict[str, Any] = Field(default_factory=dict)
+

@@ -1,45 +1,56 @@
-from fastapi import APIRouter, HTTPException
-from typing import List, Dict, Any
-from app.services.dataset_generator import get_case, list_cases
-from app.services.entity_resolver import resolve_entities
-from app.services.graph_engine import build_financial_graph
+from fastapi import APIRouter, HTTPException, Query
+from typing import List, Dict, Any, Optional
+from app.services.enterprise_dataset import get_master_database
+from app.services.graph_engine import (
+    get_or_build_master_graph, extract_investigation_subgraph
+)
+from app.services.entity_resolver import resolve_enterprise_entities
 from app.schemas.financial_graph import GraphData, ResolvedCluster
 
 router = APIRouter()
 
-@router.get("/cases", summary="List available financial crime and false-positive benchmark scenarios")
-def get_available_cases() -> List[Dict[str, str]]:
+@router.get("/alerts", summary="List enterprise alerts triggered across master dataset")
+def get_enterprise_alerts() -> List[Dict[str, Any]]:
     """
-    Returns list of canonical benchmark cases:
-    - CASE_001_MULE_RING (Suspicious)
-    - CASE_002_CAMPUS_WIFI (Benign False-Positive Control)
-    - CASE_003_RAPID_LAYERING (Suspicious)
-    - CASE_004_CORPORATE_PAYROLL (Benign False-Positive Control)
+    Returns the real-time queue of triggered alerts in the enterprise database.
+    Investigators click on any alert to launch a network investigation.
     """
-    return list_cases()
+    db = get_master_database()
+    return db.alerts
 
-@router.get("/{case_id}", response_model=GraphData, summary="Get relationship graph for a case")
-def get_case_graph(case_id: str):
+@router.get("/network/stats", summary="Get master enterprise network statistics")
+def get_master_network_stats() -> Dict[str, Any]:
     """
-    Constructs and returns the full relationship graph with nodes, links, and topological metrics.
-    Includes all 8 entities: Customer, Account, Device, IP, Merchant, Beneficiary, Location, Transaction.
+    Returns top-level metrics for the entire enterprise dataset (nodes, edges, volume).
     """
-    case = get_case(case_id)
-    if not case:
-        raise HTTPException(status_code=404, detail=f"Case '{case_id}' not found.")
+    _, master_data = get_or_build_master_graph()
+    return master_data.metrics
 
-    clusters = resolve_entities(case)
-    _, graph_data = build_financial_graph(case, clusters)
-    return graph_data
-
-@router.get("/{case_id}/clusters", response_model=List[ResolvedCluster], summary="Get resolved entity clusters")
-def get_case_clusters(case_id: str):
+@router.get("/network/full", response_model=GraphData, summary="Get full master enterprise graph")
+def get_full_master_network():
     """
-    Runs multi-dimensional entity resolution and returns grouped Golden Entity clusters.
+    Returns the complete master enterprise knowledge graph (for global visualization).
     """
-    case = get_case(case_id)
-    if not case:
-        raise HTTPException(status_code=404, detail=f"Case '{case_id}' not found.")
+    _, master_data = get_or_build_master_graph()
+    return master_data
 
-    clusters = resolve_entities(case)
-    return clusters
+@router.get("/subgraph/{seed_or_alert_id}", response_model=GraphData, summary="Extract investigation subgraph around seed entity or alert")
+def get_investigation_subgraph(
+    seed_or_alert_id: str,
+    radius: int = Query(default=2, ge=1, le=4, description="Graph traversal hops (depth)")
+):
+    """
+    Extracts the connected sub-network around a target seed entity or alert ID
+    from the master enterprise dataset using multi-hop graph traversal.
+    """
+    try:
+        return extract_investigation_subgraph(seed_or_alert_id, radius=radius)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
+@router.get("/clusters", response_model=List[ResolvedCluster], summary="Get resolved entity clusters across enterprise dataset")
+def get_resolved_clusters():
+    """
+    Runs multi-dimensional entity resolution across all accounts, devices, and IPs in the master database.
+    """
+    return resolve_enterprise_entities()

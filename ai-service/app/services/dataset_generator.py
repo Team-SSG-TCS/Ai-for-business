@@ -303,3 +303,4 @@ def list_cases() -> List[Dict[str, str]]:
         }
         for c in CASES_REGISTRY.values()
     ]
+

@@ -233,3 +233,4 @@ def generate_large_network(num_customers=50, num_transactions=250):
 
 if __name__ == "__main__":
     generate_large_network(50, 250)
+
