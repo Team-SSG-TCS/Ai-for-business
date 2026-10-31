@@ -241,3 +241,4 @@ master_db = EnterpriseDatabase()
 
 def get_master_database() -> EnterpriseDatabase:
     return master_db
+
