@@ -1,0 +1,2 @@
+ip_address,subnet,isp,country,city,is_vpn_or_proxy
+128.146.172.84,128.146.0.0/16,Ohio State University,US,Columbus,False

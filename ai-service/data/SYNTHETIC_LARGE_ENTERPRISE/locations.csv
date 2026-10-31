@@ -1,0 +1,8 @@
+location_id,city,state,country,lat,lon
+LOC-001,New York,NY,US,40.7128,-74.006
+LOC-002,Chicago,IL,US,41.8781,-87.6298
+LOC-003,Columbus,OH,US,40.0076,-83.0305
+LOC-004,San Francisco,CA,US,37.7749,-122.4194
+LOC-005,London,ENG,GB,51.5074,-0.1278
+LOC-006,Amsterdam,NH,NL,52.3676,4.9041
+LOC-007,Panama City,PA,PA,8.9824,-79.5199

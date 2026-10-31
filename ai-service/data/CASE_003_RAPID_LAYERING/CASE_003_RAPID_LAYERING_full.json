@@ -1,0 +1,177 @@
+{
+  "case_id": "CASE_003_RAPID_LAYERING",
+  "title": "High-Velocity Shell Pass-Through & Layering Chain",
+  "description": "Rapid 3-hop transfer chain moving $75,000 to offshore crypto exchange in under 45 minutes with zero resting balance.",
+  "expected_category": "PASS_THROUGH_LAYERING",
+  "customers": [
+    {
+      "customer_id": "CUST-301",
+      "full_name": "Horizon Trading LLC",
+      "tax_id": "TAX-US-9910",
+      "phone": "+1-555-0301",
+      "email": "finance@horizontrade.org",
+      "risk_rating": "HIGH",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-302",
+      "full_name": "BlueSky Logistics Corp",
+      "tax_id": "TAX-US-9911",
+      "phone": "+1-555-0302",
+      "email": "ops@blueskystock.net",
+      "risk_rating": "HIGH",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-303",
+      "full_name": "Vanguard Consulting Partners",
+      "tax_id": "TAX-US-9912",
+      "phone": "+1-555-0303",
+      "email": "settlement@vanguardconsult.co",
+      "risk_rating": "CRITICAL",
+      "kyc_status": "VERIFIED"
+    }
+  ],
+  "accounts": [
+    {
+      "account_number": "ACCT-SHELL-A",
+      "customer_id": "CUST-301",
+      "account_type": "BUSINESS",
+      "balance": 150.0,
+      "currency": "USD",
+      "created_at": "2026-09-01"
+    },
+    {
+      "account_number": "ACCT-SHELL-B",
+      "customer_id": "CUST-302",
+      "account_type": "BUSINESS",
+      "balance": 85.0,
+      "currency": "USD",
+      "created_at": "2026-09-05"
+    },
+    {
+      "account_number": "ACCT-SHELL-C",
+      "customer_id": "CUST-303",
+      "account_type": "BUSINESS",
+      "balance": 40.0,
+      "currency": "USD",
+      "created_at": "2026-09-10"
+    }
+  ],
+  "devices": [
+    {
+      "device_id": "DEV-LINUX-PROXY-01",
+      "device_type": "DESKTOP",
+      "os": "Linux Ubuntu 24",
+      "browser_or_app": "HeadlessChrome/128",
+      "hardware_fingerprint": "VIRT-LINUX-HASH-1"
+    },
+    {
+      "device_id": "DEV-LINUX-PROXY-02",
+      "device_type": "DESKTOP",
+      "os": "Linux Ubuntu 24",
+      "browser_or_app": "HeadlessChrome/128",
+      "hardware_fingerprint": "VIRT-LINUX-HASH-2"
+    }
+  ],
+  "ips": [
+    {
+      "ip_address": "194.38.20.15",
+      "subnet": "194.38.20.0/24",
+      "isp": "DataCamp S.R.O.",
+      "country": "PA",
+      "city": "Panama City",
+      "is_vpn_or_proxy": true
+    },
+    {
+      "ip_address": "194.38.20.16",
+      "subnet": "194.38.20.0/24",
+      "isp": "DataCamp S.R.O.",
+      "country": "PA",
+      "city": "Panama City",
+      "is_vpn_or_proxy": true
+    }
+  ],
+  "merchants": [
+    {
+      "merchant_id": "MERCH-CRYPTO-OFFSHORE",
+      "merchant_name": "BVI Digital Asset Exchange",
+      "category": "Virtual Currency",
+      "risk_level": "CRITICAL",
+      "country": "VG"
+    }
+  ],
+  "beneficiaries": [],
+  "locations": [
+    {
+      "location_id": "LOC-PANAMA",
+      "city": "Panama City",
+      "state": "PA",
+      "country": "PA",
+      "lat": 8.9824,
+      "lon": -79.5199
+    }
+  ],
+  "transactions": [
+    {
+      "tx_id": "TX-LAYER-01",
+      "sender_account": "EXTERNAL-WIRE-ORIGIN",
+      "receiver_account": "ACCT-SHELL-A",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 75000.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T09:00:00Z",
+      "device_id": "DEV-LINUX-PROXY-01",
+      "ip_address": "194.38.20.15",
+      "location_id": "LOC-PANAMA",
+      "tx_type": "DEPOSIT",
+      "description": "International invoice settlement"
+    },
+    {
+      "tx_id": "TX-LAYER-02",
+      "sender_account": "ACCT-SHELL-A",
+      "receiver_account": "ACCT-SHELL-B",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 74400.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T09:14:00Z",
+      "device_id": "DEV-LINUX-PROXY-01",
+      "ip_address": "194.38.20.15",
+      "location_id": "LOC-PANAMA",
+      "tx_type": "TRANSFER",
+      "description": "Intercompany sub-contracting"
+    },
+    {
+      "tx_id": "TX-LAYER-03",
+      "sender_account": "ACCT-SHELL-B",
+      "receiver_account": "ACCT-SHELL-C",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 73900.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T09:32:00Z",
+      "device_id": "DEV-LINUX-PROXY-02",
+      "ip_address": "194.38.20.16",
+      "location_id": "LOC-PANAMA",
+      "tx_type": "TRANSFER",
+      "description": "Escrow consulting allocation"
+    },
+    {
+      "tx_id": "TX-LAYER-04",
+      "sender_account": "ACCT-SHELL-C",
+      "receiver_account": null,
+      "merchant_id": "MERCH-CRYPTO-OFFSHORE",
+      "beneficiary_id": null,
+      "amount": 73500.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T09:44:00Z",
+      "device_id": "DEV-LINUX-PROXY-02",
+      "ip_address": "194.38.20.16",
+      "location_id": "LOC-PANAMA",
+      "tx_type": "PURCHASE",
+      "description": "Liquidity purchase digital tokens"
+    }
+  ]
+}

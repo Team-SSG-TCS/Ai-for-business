@@ -1,0 +1,2 @@
+ip_address,subnet,isp,country,city,is_vpn_or_proxy
+64.104.22.18,64.104.22.0/24,Cisco Systems Dedicated Fiber,US,Chicago,False

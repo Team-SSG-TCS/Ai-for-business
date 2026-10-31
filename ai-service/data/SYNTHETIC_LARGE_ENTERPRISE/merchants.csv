@@ -1,0 +1,10 @@
+merchant_id,merchant_name,category,risk_level,country
+MERCH-001,Amazon Retail,E-Commerce,LOW,US
+MERCH-002,Target Superstore,Retail,LOW,US
+MERCH-003,Shell Gas & Express,Fuel,LOW,US
+MERCH-004,Starbucks Coffee,Food & Beverage,LOW,US
+MERCH-005,Delta Air Lines,Travel,LOW,US
+MERCH-006,Uber Technologies,Transportation,LOW,US
+MERCH-007,BVI Offshore Digital Pay,Virtual Currency,CRITICAL,VG
+MERCH-008,Panama Escrow Global,Financial Services,HIGH,VG
+MERCH-009,Global Remit Express,Money Service Business,HIGH,VG

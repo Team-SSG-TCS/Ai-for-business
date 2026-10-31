@@ -1,0 +1,4 @@
+customer_id,full_name,tax_id,phone,email,risk_rating,kyc_status
+CUST-301,Horizon Trading LLC,TAX-US-9910,+1-555-0301,finance@horizontrade.org,HIGH,VERIFIED
+CUST-302,BlueSky Logistics Corp,TAX-US-9911,+1-555-0302,ops@blueskystock.net,HIGH,VERIFIED
+CUST-303,Vanguard Consulting Partners,TAX-US-9912,+1-555-0303,settlement@vanguardconsult.co,CRITICAL,VERIFIED

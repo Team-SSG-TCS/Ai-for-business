@@ -1,0 +1,7 @@
+customer_id,full_name,tax_id,phone,email,risk_rating,kyc_status
+CUST-CORP-400,Nexus Health Logistics Corp,TAX-CORP-4401,+1-555-0400,payroll@nexushealth.com,LOW,VERIFIED
+CUST-EMP-401,Rachel Green,XXX-XX-5501,+1-555-0401,rachel.g@gmail.com,LOW,VERIFIED
+CUST-EMP-402,Ross Geller,XXX-XX-5502,+1-555-0402,ross.g@gmail.com,LOW,VERIFIED
+CUST-EMP-403,Monica Geller,XXX-XX-5503,+1-555-0403,monica.g@gmail.com,LOW,VERIFIED
+CUST-EMP-404,Chandler Bing,XXX-XX-5504,+1-555-0404,chandler.b@gmail.com,LOW,VERIFIED
+CUST-EMP-405,Joey Tribbiani,XXX-XX-5505,+1-555-0405,joey.t@gmail.com,LOW,VERIFIED

@@ -1,0 +1,13 @@
+ip_address,subnet,isp,country,city,is_vpn_or_proxy
+192.168.1.231,192.168.1.0/24,Comcast Business,US,New York,False
+192.168.2.22,192.168.2.0/24,Comcast Business,US,New York,False
+192.168.3.136,192.168.3.0/24,Comcast Business,US,New York,False
+192.168.4.121,192.168.4.0/24,Comcast Business,US,New York,False
+192.168.5.10,192.168.5.0/24,Comcast Business,US,New York,False
+192.168.6.100,192.168.6.0/24,Comcast Business,US,New York,False
+192.168.7.228,192.168.7.0/24,Comcast Business,US,New York,False
+192.168.8.123,192.168.8.0/24,Comcast Business,US,New York,False
+192.168.9.117,192.168.9.0/24,Comcast Business,US,New York,False
+192.168.10.79,192.168.10.0/24,Cloudflare Proxy Network,NL,Amsterdam,True
+192.168.11.223,192.168.11.0/24,Cloudflare Proxy Network,NL,Amsterdam,True
+192.168.12.108,192.168.12.0/24,Cloudflare Proxy Network,NL,Amsterdam,True

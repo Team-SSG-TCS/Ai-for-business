@@ -1,0 +1,292 @@
+{
+  "case_id": "CASE_002_CAMPUS_WIFI",
+  "title": "University Dormitory Shared Wi-Fi (False-Positive Control)",
+  "description": "Multiple student accounts sharing 1 single public IP. Distinct devices and normal low-risk merchant retail purchases.",
+  "expected_category": "BENIGN_FALSE_POSITIVE",
+  "customers": [
+    {
+      "customer_id": "CUST-201",
+      "full_name": "Sarah Jenkins",
+      "tax_id": "XXX-XX-3011",
+      "phone": "+1-555-0201",
+      "email": "s.jenkins@osu.edu",
+      "risk_rating": "LOW",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-202",
+      "full_name": "David Patel",
+      "tax_id": "XXX-XX-3012",
+      "phone": "+1-555-0202",
+      "email": "d.patel@osu.edu",
+      "risk_rating": "LOW",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-203",
+      "full_name": "Maya Lin",
+      "tax_id": "XXX-XX-3013",
+      "phone": "+1-555-0203",
+      "email": "m.lin@osu.edu",
+      "risk_rating": "LOW",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-204",
+      "full_name": "James O'Connor",
+      "tax_id": "XXX-XX-3014",
+      "phone": "+1-555-0204",
+      "email": "j.oconnor@osu.edu",
+      "risk_rating": "LOW",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-205",
+      "full_name": "Aisha Rahman",
+      "tax_id": "XXX-XX-3015",
+      "phone": "+1-555-0205",
+      "email": "a.rahman@osu.edu",
+      "risk_rating": "LOW",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-206",
+      "full_name": "Tyler Brooks",
+      "tax_id": "XXX-XX-3016",
+      "phone": "+1-555-0206",
+      "email": "t.brooks@osu.edu",
+      "risk_rating": "LOW",
+      "kyc_status": "VERIFIED"
+    }
+  ],
+  "accounts": [
+    {
+      "account_number": "ACCT-CAMPUS-01",
+      "customer_id": "CUST-201",
+      "account_type": "CHECKING",
+      "balance": 1420.0,
+      "currency": "USD",
+      "created_at": "2025-08-01"
+    },
+    {
+      "account_number": "ACCT-CAMPUS-02",
+      "customer_id": "CUST-202",
+      "account_type": "CHECKING",
+      "balance": 890.0,
+      "currency": "USD",
+      "created_at": "2025-08-01"
+    },
+    {
+      "account_number": "ACCT-CAMPUS-03",
+      "customer_id": "CUST-203",
+      "account_type": "CHECKING",
+      "balance": 2100.0,
+      "currency": "USD",
+      "created_at": "2025-08-01"
+    },
+    {
+      "account_number": "ACCT-CAMPUS-04",
+      "customer_id": "CUST-204",
+      "account_type": "CHECKING",
+      "balance": 640.0,
+      "currency": "USD",
+      "created_at": "2025-08-01"
+    },
+    {
+      "account_number": "ACCT-CAMPUS-05",
+      "customer_id": "CUST-205",
+      "account_type": "CHECKING",
+      "balance": 1850.0,
+      "currency": "USD",
+      "created_at": "2025-08-01"
+    },
+    {
+      "account_number": "ACCT-CAMPUS-06",
+      "customer_id": "CUST-206",
+      "account_type": "CHECKING",
+      "balance": 920.0,
+      "currency": "USD",
+      "created_at": "2025-08-01"
+    }
+  ],
+  "devices": [
+    {
+      "device_id": "DEV-MAC-201",
+      "device_type": "DESKTOP",
+      "os": "macOS 15.1",
+      "browser_or_app": "Safari/18.0",
+      "hardware_fingerprint": "MAC-CUST-201"
+    },
+    {
+      "device_id": "DEV-PIXEL-202",
+      "device_type": "MOBILE",
+      "os": "Android 15",
+      "browser_or_app": "Chrome/130",
+      "hardware_fingerprint": "PIXEL-CUST-202"
+    },
+    {
+      "device_id": "DEV-IPHONE-203",
+      "device_type": "MOBILE",
+      "os": "iOS 18.1",
+      "browser_or_app": "MobileBankingApp",
+      "hardware_fingerprint": "IPHONE-CUST-203"
+    },
+    {
+      "device_id": "DEV-DELL-204",
+      "device_type": "DESKTOP",
+      "os": "Windows 11",
+      "browser_or_app": "Edge/129",
+      "hardware_fingerprint": "DELL-CUST-204"
+    },
+    {
+      "device_id": "DEV-SAMSUNG-205",
+      "device_type": "MOBILE",
+      "os": "Android 14",
+      "browser_or_app": "Chrome/130",
+      "hardware_fingerprint": "SAMSUNG-CUST-205"
+    },
+    {
+      "device_id": "DEV-MAC-206",
+      "device_type": "DESKTOP",
+      "os": "macOS 14.7",
+      "browser_or_app": "Chrome/130",
+      "hardware_fingerprint": "MAC-CUST-206"
+    }
+  ],
+  "ips": [
+    {
+      "ip_address": "128.146.172.84",
+      "subnet": "128.146.0.0/16",
+      "isp": "Ohio State University",
+      "country": "US",
+      "city": "Columbus",
+      "is_vpn_or_proxy": false
+    }
+  ],
+  "merchants": [
+    {
+      "merchant_id": "MERCH-BOOKSTORE",
+      "merchant_name": "University Campus Bookstore",
+      "category": "Education",
+      "risk_level": "LOW",
+      "country": "US"
+    },
+    {
+      "merchant_id": "MERCH-DINING",
+      "merchant_name": "Campus Commons Dining",
+      "category": "Food & Beverage",
+      "risk_level": "LOW",
+      "country": "US"
+    },
+    {
+      "merchant_id": "MERCH-COFFEE",
+      "merchant_name": "Buckeye Coffee House",
+      "category": "Food & Beverage",
+      "risk_level": "LOW",
+      "country": "US"
+    }
+  ],
+  "beneficiaries": [],
+  "locations": [
+    {
+      "location_id": "LOC-COLUMBUS",
+      "city": "Columbus",
+      "state": "OH",
+      "country": "US",
+      "lat": 40.0076,
+      "lon": -83.0305
+    }
+  ],
+  "transactions": [
+    {
+      "tx_id": "TX-CAMPUS-01",
+      "sender_account": "ACCT-CAMPUS-01",
+      "receiver_account": null,
+      "merchant_id": "MERCH-BOOKSTORE",
+      "beneficiary_id": null,
+      "amount": 124.5,
+      "currency": "USD",
+      "timestamp": "2026-10-30T10:15:00Z",
+      "device_id": "DEV-MAC-201",
+      "ip_address": "128.146.172.84",
+      "location_id": "LOC-COLUMBUS",
+      "tx_type": "PURCHASE",
+      "description": "Textbooks semester fall"
+    },
+    {
+      "tx_id": "TX-CAMPUS-02",
+      "sender_account": "ACCT-CAMPUS-02",
+      "receiver_account": null,
+      "merchant_id": "MERCH-DINING",
+      "beneficiary_id": null,
+      "amount": 18.75,
+      "currency": "USD",
+      "timestamp": "2026-10-30T11:45:00Z",
+      "device_id": "DEV-PIXEL-202",
+      "ip_address": "128.146.172.84",
+      "location_id": "LOC-COLUMBUS",
+      "tx_type": "PURCHASE",
+      "description": "Lunch meal pass"
+    },
+    {
+      "tx_id": "TX-CAMPUS-03",
+      "sender_account": "ACCT-CAMPUS-03",
+      "receiver_account": null,
+      "merchant_id": "MERCH-COFFEE",
+      "beneficiary_id": null,
+      "amount": 6.5,
+      "currency": "USD",
+      "timestamp": "2026-10-30T12:05:00Z",
+      "device_id": "DEV-IPHONE-203",
+      "ip_address": "128.146.172.84",
+      "location_id": "LOC-COLUMBUS",
+      "tx_type": "PURCHASE",
+      "description": "Latte and snack"
+    },
+    {
+      "tx_id": "TX-CAMPUS-04",
+      "sender_account": "ACCT-CAMPUS-04",
+      "receiver_account": null,
+      "merchant_id": "MERCH-BOOKSTORE",
+      "beneficiary_id": null,
+      "amount": 89.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T13:20:00Z",
+      "device_id": "DEV-DELL-204",
+      "ip_address": "128.146.172.84",
+      "location_id": "LOC-COLUMBUS",
+      "tx_type": "PURCHASE",
+      "description": "Lab chemistry notebook"
+    },
+    {
+      "tx_id": "TX-CAMPUS-05",
+      "sender_account": "ACCT-CAMPUS-05",
+      "receiver_account": null,
+      "merchant_id": "MERCH-DINING",
+      "beneficiary_id": null,
+      "amount": 24.1,
+      "currency": "USD",
+      "timestamp": "2026-10-30T14:00:00Z",
+      "device_id": "DEV-SAMSUNG-205",
+      "ip_address": "128.146.172.84",
+      "location_id": "LOC-COLUMBUS",
+      "tx_type": "PURCHASE",
+      "description": "Dinner meal plan"
+    },
+    {
+      "tx_id": "TX-CAMPUS-06",
+      "sender_account": "ACCT-CAMPUS-06",
+      "receiver_account": null,
+      "merchant_id": "MERCH-COFFEE",
+      "beneficiary_id": null,
+      "amount": 8.2,
+      "currency": "USD",
+      "timestamp": "2026-10-30T14:40:00Z",
+      "device_id": "DEV-MAC-206",
+      "ip_address": "128.146.172.84",
+      "location_id": "LOC-COLUMBUS",
+      "tx_type": "PURCHASE",
+      "description": "Coffee with study group"
+    }
+  ]
+}

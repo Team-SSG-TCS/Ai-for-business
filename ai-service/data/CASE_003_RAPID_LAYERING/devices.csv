@@ -1,0 +1,3 @@
+device_id,device_type,os,browser_or_app,hardware_fingerprint
+DEV-LINUX-PROXY-01,DESKTOP,Linux Ubuntu 24,HeadlessChrome/128,VIRT-LINUX-HASH-1
+DEV-LINUX-PROXY-02,DESKTOP,Linux Ubuntu 24,HeadlessChrome/128,VIRT-LINUX-HASH-2
