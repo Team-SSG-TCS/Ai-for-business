@@ -57,3 +57,95 @@ export interface ApiResponse<T = unknown> {
   data?: T;
   error?: string;
 }
+
+
+// =============================================================================
+// Financial Crime & LangGraph Investigation Types
+// =============================================================================
+
+export interface EvidenceItemDTO {
+  type: string;
+  severity: string;
+  description: string;
+  evidence_txs?: string[];
+  statutory_violation?: string;
+}
+
+export interface ProsecutionHypothesisDTO {
+  theory: string;
+  crime_typology: string;
+  prosecution_confidence: number;
+  evidence_count: number;
+}
+
+export interface DefenseHypothesisDTO {
+  counter_theory: string;
+  innocent_plausibility: number;
+  benign_classification: string;
+}
+
+export interface AdjudicationDTO {
+  verdict: string;
+  risk_score: number;
+  legitimacy_score: number;
+  recommended_action: string;
+  investigator_signoff_required: boolean;
+}
+
+export interface SarReportDTO {
+  narrative: string;
+  total_evidence_citations: number;
+}
+
+export interface RemediationStatusDTO {
+  status: string;
+  action: string;
+  target: string;
+  message: string;
+}
+
+export interface LangGraphInvestigationResult {
+  success: boolean;
+  thread_id?: string;
+  seed_id: string;
+  seed_type: string;
+  stage: string;
+  prosecution: ProsecutionHypothesisDTO;
+  defense: DefenseHypothesisDTO;
+  adjudication: AdjudicationDTO;
+  sar_report: SarReportDTO;
+  remediation: RemediationStatusDTO;
+  evidence_count: number;
+  evidence_items: EvidenceItemDTO[];
+}
+
+export interface GraphNodeDTO {
+  id: string;
+  label: string;
+  type: string;
+  risk_level: string;
+  properties?: Record<string, unknown>;
+}
+
+export interface GraphLinkDTO {
+  source: string;
+  target: string;
+  relation: string;
+  amount?: number;
+  timestamp?: string;
+  tx_id?: string;
+}
+
+export interface SubgraphResponseDTO {
+  case_id: string;
+  nodes: GraphNodeDTO[];
+  links: GraphLinkDTO[];
+  metrics: {
+    subgraph_nodes: number;
+    subgraph_edges: number;
+    seed_node: string;
+    subgraph_volume_usd: number;
+    most_central_hub: string;
+    centrality_score: number;
+  };
+}

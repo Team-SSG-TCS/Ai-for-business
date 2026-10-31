@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { fetchLangGraphInvestigation, executeRemediationAction, MOCK_LANGGRAPH_RESULT } from '../services/api';
+import type { LangGraphInvestigationResult } from '../types';
 import { PageId } from '../components/layout/AppLayout';
 import { CytoscapeGraph } from '../components/network/CytoscapeGraph';
 import { AIForensicAssistant } from '../components/assistant/AIForensicAssistant';
@@ -23,6 +25,24 @@ export const InvestigationPipelinePage: React.FC<InvestigationPipelinePageProps>
   const [activeTab, setActiveTab] = useState<string>('graph');
   const [isAssistantOpen, setIsAssistantOpen] = useState<boolean>(true);
   const [isSignedOff, setIsSignedOff] = useState<boolean>(false);
+  const [investigationData, setInvestigationData] = useState<LangGraphInvestigationResult>(MOCK_LANGGRAPH_RESULT);
+  const [isLoadingLangGraph, setIsLoadingLangGraph] = useState<boolean>(false);
+  const [remediationMsg, setRemediationMsg] = useState<string | null>(null);
+
+  useEffect(() => {
+    setIsLoadingLangGraph(true);
+    fetchLangGraphInvestigation(transactionId)
+      .then((data) => setInvestigationData(data))
+      .catch(() => setInvestigationData(MOCK_LANGGRAPH_RESULT))
+      .finally(() => setIsLoadingLangGraph(false));
+  }, [transactionId]);
+
+  const handleExecuteRemediation = async () => {
+    const action = investigationData.adjudication?.recommended_action || 'FREEZE_ACCOUNT';
+    const res = await executeRemediationAction(action, transactionId);
+    setRemediationMsg(res.message);
+    setIsSignedOff(true);
+  };
 
   // Pipeline stages
   const pipelineStages = [
@@ -112,6 +132,44 @@ export const InvestigationPipelinePage: React.FC<InvestigationPipelinePageProps>
               </button>
             );
           })}
+        </div>
+      </div>
+
+      {/* Live LangGraph Multi-Agent Status Banner */}
+      <div className="bg-[#0F172A] text-white p-3.5 rounded-xl border border-slate-700 shadow-sm flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div className="flex items-center gap-2.5">
+          <span className="text-xl">🕸️</span>
+          <div>
+            <span className="font-bold text-slate-100 flex items-center gap-2">
+              LangGraph State Machine Active • Seed: <code className="text-emerald-400 font-mono font-bold">{investigationData.seed_id}</code>
+              {isLoadingLangGraph && <span className="text-amber-400 text-[11px] animate-pulse font-normal">(Running Agent Nodes...)</span>}
+            </span>
+            <span className="text-[11px] text-slate-400 block mt-0.5">
+              Prosecution Typology Reasoner ➔ Devil's Advocate ➔ Compliance Adjudicator ➔ Automated Interdiction
+            </span>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 font-mono text-xs flex items-center gap-2">
+            <div>
+              <span className="text-slate-400 text-[10px] block leading-none">CRIMINAL RISK</span>
+              <span className="text-red-400 font-bold">{investigationData.adjudication?.risk_score || 94}/100</span>
+            </div>
+            <div className="h-5 w-px bg-slate-700"></div>
+            <div>
+              <span className="text-slate-400 text-[10px] block leading-none">LEGITIMACY</span>
+              <span className="text-emerald-400 font-bold">{investigationData.adjudication?.legitimacy_score || 15}/100</span>
+            </div>
+          </div>
+          <a
+            href="http://localhost:8000/langgraph-view"
+            target="_blank"
+            rel="noreferrer"
+            className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-bold text-xs shadow-xs transition flex items-center gap-1"
+          >
+            <span>Live Agent Visualizer</span>
+            <span>↗</span>
+          </a>
         </div>
       </div>
 
@@ -341,12 +399,33 @@ export const InvestigationPipelinePage: React.FC<InvestigationPipelinePageProps>
                 </p>
               </div>
 
+              {/* LangGraph Agent Input/Output State */}
+              <div className="bg-[#0F172A] text-slate-100 p-3.5 rounded-xl border border-slate-700 text-xs font-mono space-y-1.5 shadow-xs">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-red-400 flex items-center gap-1.5">
+                    <span>⚖️</span>
+                    <span>AGENT NODE: Prosecution Typology Reasoner</span>
+                  </span>
+                  <span className="text-[10px] bg-slate-800 text-emerald-400 px-2 py-0.5 rounded font-mono border border-slate-700">
+                    Tool: detect_structuring_and_velocity
+                  </span>
+                </div>
+                <div className="text-[11px] text-slate-300">
+                  <span className="text-slate-400">Agent Input: </span>
+                  <span>Ego-subgraph for {investigationData.seed_id} + Ledger velocity logs + Device Farm Swarms</span>
+                </div>
+                <div className="text-[11px] text-red-300">
+                  <span className="text-slate-400">Agent Output: </span>
+                  <span>Typology: {investigationData.prosecution?.crime_typology || 'MULE_RING_STRUCTURING_AND_PASS_THROUGH'} (Confidence: {((investigationData.prosecution?.prosecution_confidence || 0.94) * 100).toFixed(0)}%)</span>
+                </div>
+              </div>
+
               <div className="p-5 bg-[#ECFDF5] border border-[#A7F3D0] rounded-xl space-y-3">
                 <div className="flex justify-between items-center">
                   <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#059669] text-white">
-                    Primary Forensic Hypothesis (94.6% Confidence)
+                    Primary Forensic Indictment ({((investigationData.prosecution?.prosecution_confidence || 0.94) * 100).toFixed(0)}% Confidence)
                   </span>
-                  <span className="font-mono text-xs font-bold text-[#065F46]">STATUTORY VIOLATION IDENTIFIED</span>
+                  <span className="font-mono text-xs font-bold text-[#065F46]">31 U.S.C. 5324 VIOLATION</span>
                 </div>
 
                 <h4 className="text-sm font-bold text-[#065F46]">
@@ -406,6 +485,27 @@ export const InvestigationPipelinePage: React.FC<InvestigationPipelinePageProps>
                 <p className="text-xs text-[#64748B] mt-0.5">
                   Rigorous testing of non-malicious business explanations to avoid false positives.
                 </p>
+              </div>
+
+              {/* LangGraph Agent Input/Output State */}
+              <div className="bg-[#0F172A] text-slate-100 p-3.5 rounded-xl border border-slate-700 text-xs font-mono space-y-1.5 shadow-xs mb-4">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-purple-400 flex items-center gap-1.5">
+                    <span>🛡️</span>
+                    <span>AGENT NODE: Devil's Advocate (Defense Counsel)</span>
+                  </span>
+                  <span className="text-[10px] bg-slate-800 text-purple-300 px-2 py-0.5 rounded font-mono border border-slate-700">
+                    Tool: evaluate_benign_business_context
+                  </span>
+                </div>
+                <div className="text-[11px] text-slate-300">
+                  <span className="text-slate-400">Agent Input: </span>
+                  <span>Prosecution Indictment + Scheduled Corporate Payroll + University Campus Wi-Fi NAT</span>
+                </div>
+                <div className="text-[11px] text-emerald-300">
+                  <span className="text-slate-400">Agent Output: </span>
+                  <span>Innocent Plausibility: {((investigationData.defense?.innocent_plausibility || 0.15) * 100).toFixed(0)}% • Rebuttal: {investigationData.defense?.counter_theory || 'Activity ungrounded in commercial records'}</span>
+                </div>
               </div>
 
               <div className="space-y-4">
@@ -522,18 +622,23 @@ export const InvestigationPipelinePage: React.FC<InvestigationPipelinePageProps>
                   </span>
                 </div>
 
-                <button
-                  onClick={() => setIsSignedOff(true)}
-                  disabled={isSignedOff}
-                  className={`px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
-                    isSignedOff
-                      ? 'bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0]'
-                      : 'bg-[#059669] hover:bg-[#047857] text-white shadow-xs'
-                  }`}
-                >
-                  <Check className="w-3.5 h-3.5" />
-                  <span>{isSignedOff ? 'Approved & Signed' : 'Sign & Submit STR'}</span>
-                </button>
+                <div className="flex flex-col items-end gap-1">
+                  {remediationMsg && (
+                    <span className="text-[11px] font-mono text-emerald-600 font-semibold">{remediationMsg}</span>
+                  )}
+                  <button
+                    onClick={handleExecuteRemediation}
+                    disabled={isSignedOff}
+                    className={`px-4 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                      isSignedOff
+                        ? 'bg-[#ECFDF5] text-[#059669] border border-[#A7F3D0]'
+                        : 'bg-[#DC2626] hover:bg-[#B91C1C] text-white shadow-xs'
+                    }`}
+                  >
+                    <Check className="w-3.5 h-3.5" />
+                    <span>{isSignedOff ? 'Interdiction Executed & Signed' : `Execute ${investigationData.adjudication?.recommended_action || 'FREEZE_ACCOUNT'} ➔`}</span>
+                  </button>
+                </div>
               </div>
             </div>
           )}

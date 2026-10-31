@@ -223,13 +223,20 @@ export const DataManagementPage: React.FC<DataManagementPageProps> = ({ onNaviga
                 </div>
               </div>
 
-              <button
-                onClick={() => onNavigate('transactions')}
-                className="px-3.5 py-1.5 bg-[#059669] hover:bg-[#047857] text-white rounded text-xs font-semibold flex items-center gap-1.5 shadow-xs"
-              >
-                <span>View in Transactions List</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => onNavigate('transactions')}
+                  className="px-3 py-1.5 bg-white hover:bg-[#F8FAFC] text-[#334155] border border-[#CBD5E1] rounded text-xs font-semibold"
+                >
+                  View Transactions
+                </button>
+                <button
+                  onClick={() => onNavigate('investigation-pipeline', { transactionId: 'TXN-88041', networkId: 'NET-004' })}
+                  className="px-3.5 py-1.5 bg-[#059669] hover:bg-[#047857] text-white rounded text-xs font-bold flex items-center gap-1.5 shadow-xs transition"
+                >
+                  <span>Launch LangGraph Investigation ➔</span>
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -249,9 +256,18 @@ export const DataManagementPage: React.FC<DataManagementPageProps> = ({ onNaviga
           </div>
 
           {manualSuccess && (
-            <div className="p-3 bg-[#ECFDF5] border border-[#A7F3D0] rounded-lg text-xs text-[#065F46] flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-[#059669]" />
-              <span>Transaction successfully ingested and passed through the 9-stage investigation pipeline!</span>
+            <div className="p-4 bg-[#ECFDF5] border border-[#A7F3D0] rounded-xl flex items-center justify-between text-xs text-[#065F46]">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#059669]" />
+                <span>Transaction successfully ingested into live financial graph!</span>
+              </div>
+              <button
+                type="button"
+                onClick={() => onNavigate('investigation-pipeline', { transactionId: 'TXN-88041', networkId: 'NET-004' })}
+                className="px-3 py-1 bg-[#059669] hover:bg-[#047857] text-white rounded font-bold flex items-center gap-1 shadow-xs"
+              >
+                <span>Investigate via LangGraph ➔</span>
+              </button>
             </div>
           )}
 
