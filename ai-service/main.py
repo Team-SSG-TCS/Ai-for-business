@@ -1,3 +1,12 @@
+import sys
+
+if sys.platform == "win32":
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+        sys.stderr.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
@@ -32,9 +41,10 @@ async def root():
         "docs": "/docs",
         "health": "/health",
         "endpoints": {
+            "graph": f"{settings.API_V1_STR}/graph",
+            "investigation": f"{settings.API_V1_STR}/investigation",
             "chat": f"{settings.API_V1_STR}/chat",
             "analyze": f"{settings.API_V1_STR}/analyze",
-            "investigation": f"{settings.API_V1_STR}/investigation",
         }
     }
 
@@ -54,4 +64,4 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 if __name__ == "__main__":
     print(f"🚀 Starting FastAPI AI service on http://{settings.HOST}:{settings.PORT}")
     print(f"📖 Interactive Swagger Docs available at http://localhost:{settings.PORT}/docs")
-    uvicorn.run("main:app", host=settings.HOST, port=settings.PORT, reload=settings.DEBUG)
+    uvicorn.run("main:app", host=settings.HOST, port=settings.PORT, reload=settings.DEBUG, reload_dirs=["app"])

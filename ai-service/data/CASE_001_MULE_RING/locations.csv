@@ -1,0 +1,3 @@
+location_id,city,state,country,lat,lon
+LOC-NY,New York,NY,US,40.7128,-74.006
+LOC-AMS,Amsterdam,NH,NL,52.3676,4.9041

@@ -1,0 +1,220 @@
+{
+  "case_id": "CASE_004_CORPORATE_PAYROLL",
+  "title": "Corporate Monthly Payroll Batch Run (False-Positive Control)",
+  "description": "Single commercial enterprise account executing rapid fan-out disbursements to employees on monthly payday.",
+  "expected_category": "BENIGN_FALSE_POSITIVE",
+  "customers": [
+    {
+      "customer_id": "CUST-CORP-400",
+      "full_name": "Nexus Health Logistics Corp",
+      "tax_id": "TAX-CORP-4401",
+      "phone": "+1-555-0400",
+      "email": "payroll@nexushealth.com",
+      "risk_rating": "LOW",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-EMP-401",
+      "full_name": "Rachel Green",
+      "tax_id": "XXX-XX-5501",
+      "phone": "+1-555-0401",
+      "email": "rachel.g@gmail.com",
+      "risk_rating": "LOW",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-EMP-402",
+      "full_name": "Ross Geller",
+      "tax_id": "XXX-XX-5502",
+      "phone": "+1-555-0402",
+      "email": "ross.g@gmail.com",
+      "risk_rating": "LOW",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-EMP-403",
+      "full_name": "Monica Geller",
+      "tax_id": "XXX-XX-5503",
+      "phone": "+1-555-0403",
+      "email": "monica.g@gmail.com",
+      "risk_rating": "LOW",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-EMP-404",
+      "full_name": "Chandler Bing",
+      "tax_id": "XXX-XX-5504",
+      "phone": "+1-555-0404",
+      "email": "chandler.b@gmail.com",
+      "risk_rating": "LOW",
+      "kyc_status": "VERIFIED"
+    },
+    {
+      "customer_id": "CUST-EMP-405",
+      "full_name": "Joey Tribbiani",
+      "tax_id": "XXX-XX-5505",
+      "phone": "+1-555-0405",
+      "email": "joey.t@gmail.com",
+      "risk_rating": "LOW",
+      "kyc_status": "VERIFIED"
+    }
+  ],
+  "accounts": [
+    {
+      "account_number": "ACCT-CORP-MAIN",
+      "customer_id": "CUST-CORP-400",
+      "account_type": "BUSINESS",
+      "balance": 285000.0,
+      "currency": "USD",
+      "created_at": "2022-03-10"
+    },
+    {
+      "account_number": "ACCT-EMP-01",
+      "customer_id": "CUST-EMP-401",
+      "account_type": "CHECKING",
+      "balance": 4120.0,
+      "currency": "USD",
+      "created_at": "2023-01-15"
+    },
+    {
+      "account_number": "ACCT-EMP-02",
+      "customer_id": "CUST-EMP-402",
+      "account_type": "CHECKING",
+      "balance": 5890.0,
+      "currency": "USD",
+      "created_at": "2023-02-10"
+    },
+    {
+      "account_number": "ACCT-EMP-03",
+      "customer_id": "CUST-EMP-403",
+      "account_type": "CHECKING",
+      "balance": 6200.0,
+      "currency": "USD",
+      "created_at": "2023-04-05"
+    },
+    {
+      "account_number": "ACCT-EMP-04",
+      "customer_id": "CUST-EMP-404",
+      "account_type": "CHECKING",
+      "balance": 7800.0,
+      "currency": "USD",
+      "created_at": "2023-06-20"
+    },
+    {
+      "account_number": "ACCT-EMP-05",
+      "customer_id": "CUST-EMP-405",
+      "account_type": "CHECKING",
+      "balance": 3450.0,
+      "currency": "USD",
+      "created_at": "2023-08-11"
+    }
+  ],
+  "devices": [
+    {
+      "device_id": "DEV-OFFICE-FINANCE-PC",
+      "device_type": "DESKTOP",
+      "os": "Windows 11 Enterprise",
+      "browser_or_app": "Chrome/130 Enterprise",
+      "hardware_fingerprint": "NEXUS-FIN-CORP-01"
+    }
+  ],
+  "ips": [
+    {
+      "ip_address": "64.104.22.18",
+      "subnet": "64.104.22.0/24",
+      "isp": "Cisco Systems Dedicated Fiber",
+      "country": "US",
+      "city": "Chicago",
+      "is_vpn_or_proxy": false
+    }
+  ],
+  "merchants": [],
+  "beneficiaries": [],
+  "locations": [
+    {
+      "location_id": "LOC-CHICAGO",
+      "city": "Chicago",
+      "state": "IL",
+      "country": "US",
+      "lat": 41.8781,
+      "lon": -87.6298
+    }
+  ],
+  "transactions": [
+    {
+      "tx_id": "TX-PAY-01",
+      "sender_account": "ACCT-CORP-MAIN",
+      "receiver_account": "ACCT-EMP-01",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 4850.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T08:00:01Z",
+      "device_id": "DEV-OFFICE-FINANCE-PC",
+      "ip_address": "64.104.22.18",
+      "location_id": "LOC-CHICAGO",
+      "tx_type": "PAYROLL",
+      "description": "Monthly Payroll - October 2026"
+    },
+    {
+      "tx_id": "TX-PAY-02",
+      "sender_account": "ACCT-CORP-MAIN",
+      "receiver_account": "ACCT-EMP-02",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 5200.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T08:00:03Z",
+      "device_id": "DEV-OFFICE-FINANCE-PC",
+      "ip_address": "64.104.22.18",
+      "location_id": "LOC-CHICAGO",
+      "tx_type": "PAYROLL",
+      "description": "Monthly Payroll - October 2026"
+    },
+    {
+      "tx_id": "TX-PAY-03",
+      "sender_account": "ACCT-CORP-MAIN",
+      "receiver_account": "ACCT-EMP-03",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 5600.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T08:00:05Z",
+      "device_id": "DEV-OFFICE-FINANCE-PC",
+      "ip_address": "64.104.22.18",
+      "location_id": "LOC-CHICAGO",
+      "tx_type": "PAYROLL",
+      "description": "Monthly Payroll - October 2026"
+    },
+    {
+      "tx_id": "TX-PAY-04",
+      "sender_account": "ACCT-CORP-MAIN",
+      "receiver_account": "ACCT-EMP-04",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 6100.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T08:00:07Z",
+      "device_id": "DEV-OFFICE-FINANCE-PC",
+      "ip_address": "64.104.22.18",
+      "location_id": "LOC-CHICAGO",
+      "tx_type": "PAYROLL",
+      "description": "Monthly Payroll - October 2026"
+    },
+    {
+      "tx_id": "TX-PAY-05",
+      "sender_account": "ACCT-CORP-MAIN",
+      "receiver_account": "ACCT-EMP-05",
+      "merchant_id": null,
+      "beneficiary_id": null,
+      "amount": 3900.0,
+      "currency": "USD",
+      "timestamp": "2026-10-30T08:00:09Z",
+      "device_id": "DEV-OFFICE-FINANCE-PC",
+      "ip_address": "64.104.22.18",
+      "location_id": "LOC-CHICAGO",
+      "tx_type": "PAYROLL",
+      "description": "Monthly Payroll - October 2026"
+    }
+  ]
+}
