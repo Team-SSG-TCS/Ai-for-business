@@ -30,7 +30,7 @@ export const InvestigationPipelinePage: React.FC<InvestigationPipelinePageProps>
   const [investigationData, setInvestigationData] = useState<LangGraphInvestigationResult>(MOCK_LANGGRAPH_RESULT);
   const [isLoadingLangGraph, setIsLoadingLangGraph] = useState<boolean>(false);
   const [remediationMsg, setRemediationMsg] = useState<string | null>(null);
-  const [showEngineBanner, setShowEngineBanner] = useState<boolean>(true);
+  const [showEngineBanner, setShowEngineBanner] = useState<boolean>(false);
 
   const loadData = () => {
     setIsLoadingLangGraph(true);
