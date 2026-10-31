@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageId } from '../components/layout/AppLayout';
 import {
   ShieldAlert, TrendingUp, AlertTriangle, Cpu, Layers,
@@ -15,6 +15,18 @@ interface DashboardPageProps {
 }
 
 export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
+  const [recentUpload, setRecentUpload] = useState<any>(null);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('forensic_recent_upload');
+      if (stored) {
+        setRecentUpload(JSON.parse(stored));
+      }
+    } catch (e) {
+      console.warn('Failed to parse recent upload', e);
+    }
+  }, []);
   // Chart Data: Hourly Transaction Volume & Flagged Anomalies
   const hourlyData = [
     { time: '00:00', totalVolume: 120, flaggedVolume: 8 },
@@ -49,6 +61,16 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
 
   // Urgent Flagged Transactions
   const urgentQueue = [
+    ...(recentUpload ? [{
+      id: recentUpload.seedId,
+      customer: recentUpload.riskLevel === 'BENIGN' ? 'Campus Network / Benign User' : 'Syndicate Seed (Uploaded)',
+      account: recentUpload.seedId,
+      amount: recentUpload.riskLevel === 'BENIGN' ? 120000 : 988000,
+      score: recentUpload.riskLevel === 'BENIGN' ? 15 : 96,
+      cluster: recentUpload.riskLevel === 'BENIGN' ? 'NET-NAT-01' : 'NET-004',
+      reason: `Uploaded Batch: ${recentUpload.syndicate}`,
+      time: 'Just now'
+    }] : []),
     {
       id: 'TXN-88041',
       customer: 'Vikram Mehra',
@@ -117,6 +139,54 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ onNavigate }) => {
           </button>
         </div>
       </div>
+
+      {/* Live Notification: Newly Uploaded & Processed Dataset */}
+      {recentUpload && (
+        <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 p-4 rounded-xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-3 animate-in fade-in">
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-lg bg-emerald-100 text-emerald-700 shrink-0">
+              <CheckCircle2 className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-emerald-950">
+                  New Dataset Ingested: {recentUpload.fileName}
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded font-mono font-bold bg-emerald-200/70 text-emerald-800">
+                  +{recentUpload.recordsCount || 125} Records Enriched
+                </span>
+                <span className={`text-[10px] px-2 py-0.5 rounded font-mono font-bold ${
+                  recentUpload.riskLevel === 'BENIGN' ? 'bg-blue-100 text-blue-700' : 'bg-rose-100 text-rose-700'
+                }`}>
+                  {recentUpload.riskLevel}
+                </span>
+              </div>
+              <p className="text-xs text-emerald-800 mt-0.5">
+                Surveillance pipeline identified seed <strong>{recentUpload.seedId}</strong> ({recentUpload.syndicate}) at {recentUpload.uploadedAt}.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              onClick={() => onNavigate('investigation-pipeline', { transactionId: recentUpload.seedId, networkId: 'NET-004' })}
+              className="px-3.5 py-1.5 bg-[#059669] hover:bg-[#047857] text-white rounded-lg text-xs font-bold flex items-center gap-1.5 shadow-xs transition cursor-pointer"
+            >
+              <span>Investigate Seed ({recentUpload.seedId}) ➔</span>
+            </button>
+            <button
+              onClick={() => {
+                localStorage.removeItem('forensic_recent_upload');
+                setRecentUpload(null);
+              }}
+              className="p-1.5 text-slate-400 hover:text-slate-600 rounded text-xs"
+              title="Dismiss notification"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* KPI Stats Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">

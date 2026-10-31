@@ -56,6 +56,31 @@ export const DataManagementPage: React.FC<DataManagementPageProps> = ({ onNaviga
       if (progress >= 100) {
         clearInterval(interval);
         setIngestionCompleted(true);
+        const detectedSeed = file.name.includes('campus_wifi') || file.name.includes('02_') 
+          ? '128.146.172.84' 
+          : file.name.includes('payroll') || file.name.includes('03_')
+          ? 'ACCT-CORP-MAIN'
+          : 'ACCT-US-1001';
+        
+        const uploadMeta = {
+          fileName: file.name,
+          fileSize: `${(file.size / 1024).toFixed(1)} KB`,
+          seedId: detectedSeed,
+          recordsCount: 125,
+          uploadedAt: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' IST',
+          riskLevel: detectedSeed === '128.146.172.84' ? 'BENIGN' : detectedSeed === 'ACCT-CORP-MAIN' ? 'BENIGN' : 'CRITICAL',
+          syndicate: detectedSeed === '128.146.172.84' 
+            ? 'Campus Wi-Fi False Positive (Benign NAT)' 
+            : detectedSeed === 'ACCT-CORP-MAIN'
+            ? 'Corporate Contractor Payroll Batch'
+            : 'Mule Ring Structuring & Pass-Through Layering'
+        };
+        try {
+          localStorage.setItem('forensic_recent_upload', JSON.stringify(uploadMeta));
+        } catch (e) {
+          console.warn('LocalStorage error:', e);
+        }
+
         setIngestedBatches(prev => [
           {
             id: `BATCH-${Date.now().toString().slice(-4)}`,
@@ -296,7 +321,13 @@ export const DataManagementPage: React.FC<DataManagementPageProps> = ({ onNaviga
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  onClick={() => onNavigate('dashboard')}
+                  className="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 rounded text-xs font-bold flex items-center gap-1.5 transition"
+                >
+                  <span>View Updated Dashboard 📊 ➔</span>
+                </button>
                 <button
                   onClick={() => onNavigate('transactions')}
                   className="px-3 py-1.5 bg-white hover:bg-[#F8FAFC] text-[#334155] border border-[#CBD5E1] rounded text-xs font-semibold"
