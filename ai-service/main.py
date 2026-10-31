@@ -34,6 +34,7 @@ async def root():
         "endpoints": {
             "chat": f"{settings.API_V1_STR}/chat",
             "analyze": f"{settings.API_V1_STR}/analyze",
+            "investigation": f"{settings.API_V1_STR}/investigation",
         }
     }
 
